@@ -3,8 +3,10 @@
 	import { i18n } from '$lib/i18n';
 
 	import '../app.css';
+
+	let { children } = $props();
 </script>
 
 <ParaglideJS {i18n}>
-	<slot></slot>
+	{@render children()}
 </ParaglideJS>
