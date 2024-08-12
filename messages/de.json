@@ -1,4 +1,10 @@
 {
-    "$schema": "https://inlang.com/schema/inlang-message-format",
-    "hello_world": "Hallo Welt!"
+	"$schema": "https://inlang.com/schema/inlang-message-format",
+	"check_out_language": "Schauen Sie sich die {language} Website an",
+	"dutch": "niederländische",
+	"english": "englische",
+	"german": "deutsche",
+	"goodbye": "Auf Wiedersehen!",
+	"hello_world": "Hallo Welt!",
+	"welcome": "Willkommen auf unserer Website!"
 }

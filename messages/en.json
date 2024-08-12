@@ -1,4 +1,8 @@
 {
-    "$schema": "https://inlang.com/schema/inlang-message-format",
-    "hello_world": "Hello World!"
+	"$schema": "https://inlang.com/schema/inlang-message-format",
+	"check_out_language": "Check out the {language} site",
+	"dutch": "dutch",
+	"english": "english",
+	"german": "german",
+	"hello_world": "Hello World!"
 }
