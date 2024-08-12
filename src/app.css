@@ -76,3 +76,8 @@
 		@apply bg-background text-foreground;
 	}
 }
+
+@font-face {
+	font-family: 'Borel';
+	src: url('/fonts/Borel/Borel-Regular.ttf');
+}
