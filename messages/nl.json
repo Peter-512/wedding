@@ -1,10 +1,4 @@
 {
 	"$schema": "https://inlang.com/schema/inlang-message-format",
-	"check_out_language": "Bekijk de website in het {language}",
-	"dutch": "Nederlands",
-	"english": "Engels",
-	"german": "Duits",
-	"goodbye": "Tot ziens!",
-	"hello_world": "Hoi wereld!",
-	"welcome": "Welkom op onze website!"
+	"weddingParty": ""
 }
