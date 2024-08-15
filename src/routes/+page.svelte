@@ -1,9 +1,5 @@
 <script lang="ts">
 	import * as m from '$lib/paraglide/messages.js';
-
-	import { page } from '$app/stores';
-	import { i18n } from '$lib/i18n';
-	const language = { de: 'german', en: 'english', nl: 'dutch' } as const;
 </script>
 
 <!--

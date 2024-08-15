@@ -1,30 +1,16 @@
 <script>
 	import * as m from '$lib/paraglide/messages.js';
-	import { availableLanguageTags } from '$lib/paraglide/runtime.js';
 
 	import '../app.css';
-	import { page } from '$app/stores';
-	import { Root, Trigger, Content, Item } from '$lib/components/ui/dropdown-menu';
 	import { Button } from '$lib/components/ui/button';
-	import { Languages } from 'lucide-svelte';
-	import I18n from '$lib/paraglide/I18n.svelte';
+	import { ParaglideJS } from '@inlang/paraglide-sveltekit';
 	import { i18n } from '$lib/i18n';
+	import LanguageSwitcher from '$lib/components/LanguageSwitcher.svelte';
 
 	let { children } = $props();
-
-	const currentPathWithoutLanguage = $derived.by(() => i18n.route($page.url.pathname));
-	$inspect(currentPathWithoutLanguage);
 </script>
 
-<I18n>
-	{#each availableLanguageTags as lang}
-		<div>
-			<a href={currentPathWithoutLanguage} hreflang={lang}>
-				{lang}
-			</a>
-		</div>
-	{/each}
-
+<ParaglideJS {i18n}>
 	<div class="prose-xl flex min-h-[100dvh] flex-col">
 		<header class="flex h-14 items-center px-4 lg:px-6">
 			<a class="flex items-center justify-center" href="#">
@@ -75,18 +61,7 @@
 				>
 					Contact
 				</Button>
-				<Root>
-					<Trigger><Languages /></Trigger>
-					<Content>
-						{#each availableLanguageTags as lang}
-							<a href={currentPathWithoutLanguage} hreflang={lang}>
-								<Item>
-									{lang}
-								</Item>
-							</a>
-						{/each}
-					</Content>
-				</Root>
+				<LanguageSwitcher />
 			</nav>
 		</header>
 		<main class="flex-1">
@@ -104,4 +79,4 @@
 			</nav>
 		</footer>
 	</div>
-</I18n>
+</ParaglideJS>
