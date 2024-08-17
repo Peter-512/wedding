@@ -1,10 +1,10 @@
 {
 	"$schema": "https://inlang.com/schema/inlang-message-format",
-	"check_out_language": "Bekijk de website in het {language}",
-	"dutch": "Nederlands",
-	"english": "Engels",
-	"german": "Duits",
-	"goodbye": "Tot ziens!",
-	"hello_world": "Hoi wereld!",
-	"welcome": "Welkom op onze website!"
+	"MeetThePeople": "Maak kennis met de bijzondere mensen die op onze speciale dag aan onze zijde staan.",
+	"contact": "Contact",
+	"ourWeddingParty": "Ons huwelijksfeest",
+	"ourWeddingRegistry": "Ons huwelijksregister",
+	"registry": "Register",
+	"rsvp": "Aanmelden",
+	"weddingParty": "Bruiloftsfeest"
 }

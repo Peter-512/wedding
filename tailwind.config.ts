@@ -55,10 +55,13 @@ const config: Config = {
 				sm: 'calc(var(--radius) - 4px)'
 			},
 			fontFamily: {
-				sans: ['Borel', ...fontFamily.sans]
+				sans: [...fontFamily.serif],
+				fancy: ['Borel'],
+				playwrite: ['Playwrite_AT']
 			}
 		}
-	}
+	},
+	plugins: [require('@tailwindcss/typography')]
 };
 
 export default config;

@@ -1,8 +1,10 @@
 {
 	"$schema": "https://inlang.com/schema/inlang-message-format",
-	"check_out_language": "Check out the {language} site",
-	"dutch": "dutch",
-	"english": "english",
-	"german": "german",
-	"hello_world": "Hello World!"
+	"MeetThePeople": "Meet the special people who will be standing by our side on our special day.",
+	"contact": "Contact",
+	"ourWeddingParty": "Our Wedding Party",
+	"ourWeddingRegistry": "Our Wedding Registry",
+	"registry": "Registry",
+	"rsvp": "RSVP",
+	"weddingParty": "Wedding Party"
 }

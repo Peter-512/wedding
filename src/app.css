@@ -61,3 +61,9 @@
 	font-family: 'Borel';
 	src: url('/fonts/Borel/Borel-Regular.ttf');
 }
+
+@font-face {
+	font-family: 'Playwrite_AT';
+	src: url('/fonts/Playwrite_AT/PlaywriteAT-VariableFont_wght.ttf');
+	font-weight: 100 400;
+}
