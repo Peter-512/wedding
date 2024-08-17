@@ -1,5 +1,96 @@
 <script lang="ts">
 	import * as m from '$lib/paraglide/messages.js';
+	import { languageTag } from '$lib/paraglide/runtime';
+	import { Avatar, AvatarFallback, AvatarImage } from '$lib/components/ui/avatar';
+
+	const date = new Date('2025-08-03').toLocaleDateString(languageTag(), {
+		year: 'numeric',
+		month: 'long',
+		day: 'numeric',
+		weekday: 'long'
+	});
+
+	type Person = {
+		name: string;
+		fallback: string;
+		role: string;
+		image: string;
+	};
+
+	const people: Person[] = [
+		{
+			name: 'John Doe',
+			fallback: 'JD',
+			role: 'Best man',
+			image: '../lib/images/john-doe.jpg'
+		},
+		{
+			name: 'Jane Arden',
+			fallback: 'JA',
+			role: 'Maid of honor',
+			image: '../lib/images/jane-arden.jpg'
+		},
+		{
+			name: 'Tom Smith',
+			fallback: 'TS',
+			role: 'Groomsman',
+			image: '../lib/images/tom-smith.jpg'
+		},
+		{
+			name: 'Emily Sato',
+			fallback: 'ES',
+			role: 'Bridesmaid',
+			image: '../lib/images/emily-sato.jpg'
+		},
+		{
+			name: 'Ryan Jones',
+			fallback: 'RJ',
+			role: 'Groomsman',
+			image: '../lib/images/ryan-jones.jpg'
+		},
+		{
+			name: 'Sarah Johnson',
+			fallback: 'SJ',
+			role: 'Bridesmaid',
+			image: '../lib/images/sarah-johnson.jpg'
+		},
+		{
+			name: 'Michael Brown',
+			fallback: 'MB',
+			role: 'Groomsman',
+			image: '../lib/images/michael-brown.jpg'
+		},
+		{
+			name: 'Jessica Lee',
+			fallback: 'JL',
+			role: 'Bridesmaid',
+			image: '../lib/images/jessica-lee.jpg'
+		},
+		{
+			name: 'David White',
+			fallback: 'DW',
+			role: 'Groomsman',
+			image: '../lib/images/david-white.jpg'
+		},
+		{
+			name: 'Emma Green',
+			fallback: 'EG',
+			role: 'Bridesmaid',
+			image: '../lib/images/emma-green.jpg'
+		},
+		{
+			name: 'James Black',
+			fallback: 'JB',
+			role: 'Groomsman',
+			image: '../lib/images/james-black.jpg'
+		},
+		{
+			name: 'Olivia Brown',
+			fallback: 'OB',
+			role: 'Bridesmaid',
+			image: '../lib/images/olivia-brown.jpg'
+		}
+	];
 </script>
 
 <!--
@@ -19,7 +110,7 @@
 					<h1 class="text-3xl font-bold tracking-tighter sm:text-5xl xl:text-6xl/none">
 						Charlotte &amp; Peter
 					</h1>
-					<p class="max-w-[600px] text-muted-foreground md:text-xl">August 3rd, 2025</p>
+					<p class="max-w-[600px] text-muted-foreground md:text-xl">{date}</p>
 				</div>
 			</div>
 		</div>
@@ -29,69 +120,28 @@
 	<div class="container px-4 md:px-6">
 		<div class="flex flex-col items-center justify-center space-y-4 text-center">
 			<div class="space-y-2">
-				<h2 class="text-3xl font-bold tracking-tighter sm:text-5xl">Our Wedding Party</h2>
+				<h2 id="wedding-party" class="font-fancy text-3xl font-bold tracking-tighter sm:text-5xl">
+					{m.ourWeddingParty()}
+				</h2>
 				<p
 					class="max-w-[900px] text-muted-foreground md:text-xl/relaxed lg:text-base/relaxed xl:text-xl/relaxed"
 				>
-					Meet the special people who will be standing by our side on our special day.
+					{m.MeetThePeople()}
 				</p>
 			</div>
 			<div class="grid max-w-5xl grid-cols-2 gap-6 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5">
-				<div class="flex flex-col items-center gap-2">
-					<span class="relative flex h-10 w-10 shrink-0 overflow-hidden rounded-full">
-						<span class="flex h-full w-full items-center justify-center rounded-full bg-muted"
-							>JD</span
-						>
-					</span>
-					<div class="text-center">
-						<p class="text-sm font-medium">John Doe</p>
-						<p class="text-sm text-muted-foreground">Best Man</p>
+				{#each people as person}
+					<div class="flex flex-col items-center gap-2">
+						<Avatar>
+							<AvatarImage src={person.image} alt={person.name} />
+							<AvatarFallback>{person.fallback}</AvatarFallback>
+						</Avatar>
+						<div class="text-center">
+							<p class="text-sm font-medium">{person.name}</p>
+							<p class="text-sm text-muted-foreground">{person.role}</p>
+						</div>
 					</div>
-				</div>
-				<div class="flex flex-col items-center gap-2">
-					<span class="relative flex h-10 w-10 shrink-0 overflow-hidden rounded-full">
-						<span class="flex h-full w-full items-center justify-center rounded-full bg-muted"
-							>JA</span
-						>
-					</span>
-					<div class="text-center">
-						<p class="text-sm font-medium">Jane Arden</p>
-						<p class="text-sm text-muted-foreground">Maid of Honor</p>
-					</div>
-				</div>
-				<div class="flex flex-col items-center gap-2">
-					<span class="relative flex h-10 w-10 shrink-0 overflow-hidden rounded-full">
-						<span class="flex h-full w-full items-center justify-center rounded-full bg-muted"
-							>TS</span
-						>
-					</span>
-					<div class="text-center">
-						<p class="text-sm font-medium">Tom Smith</p>
-						<p class="text-sm text-muted-foreground">Groomsman</p>
-					</div>
-				</div>
-				<div class="flex flex-col items-center gap-2">
-					<span class="relative flex h-10 w-10 shrink-0 overflow-hidden rounded-full">
-						<span class="flex h-full w-full items-center justify-center rounded-full bg-muted"
-							>ES</span
-						>
-					</span>
-					<div class="text-center">
-						<p class="text-sm font-medium">Emily Sato</p>
-						<p class="text-sm text-muted-foreground">Bridesmaid</p>
-					</div>
-				</div>
-				<div class="flex flex-col items-center gap-2">
-					<span class="relative flex h-10 w-10 shrink-0 overflow-hidden rounded-full">
-						<span class="flex h-full w-full items-center justify-center rounded-full bg-muted"
-							>RJ</span
-						>
-					</span>
-					<div class="text-center">
-						<p class="text-sm font-medium">Ryan Jones</p>
-						<p class="text-sm text-muted-foreground">Groomsman</p>
-					</div>
-				</div>
+				{/each}
 			</div>
 		</div>
 	</div>
@@ -100,7 +150,9 @@
 	<div class="container px-4 md:px-6">
 		<div class="flex flex-col items-center justify-center space-y-4 text-center">
 			<div class="space-y-2">
-				<h2 class="text-3xl font-bold tracking-tighter sm:text-5xl">Our Wedding Registry</h2>
+				<h2 id="registry" class="font-playwrite text-3xl tracking-tighter sm:text-5xl">
+					{m.ourWeddingRegistry()}
+				</h2>
 				<p
 					class="max-w-[900px] text-muted-foreground md:text-xl/relaxed lg:text-base/relaxed xl:text-xl/relaxed"
 				>
@@ -128,7 +180,7 @@
 	<div class="container px-4 md:px-6">
 		<div class="flex flex-col items-center justify-center space-y-4 text-center">
 			<div class="space-y-2">
-				<h2 class="text-3xl font-bold tracking-tighter sm:text-5xl">RSVP</h2>
+				<h2 id="rsvp" class="text-3xl font-bold tracking-tighter sm:text-5xl">RSVP</h2>
 				<p
 					class="max-w-[900px] text-muted-foreground md:text-xl/relaxed lg:text-base/relaxed xl:text-xl/relaxed"
 				>
@@ -166,7 +218,7 @@
 	<div class="container px-4 md:px-6">
 		<div class="flex flex-col items-center justify-center space-y-4 text-center">
 			<div class="space-y-2">
-				<h2 class="text-3xl font-bold tracking-tighter sm:text-5xl">Contact Us</h2>
+				<h2 id="contact" class="text-3xl font-bold tracking-tighter sm:text-5xl">Contact Us</h2>
 				<p
 					class="max-w-[900px] text-muted-foreground md:text-xl/relaxed lg:text-base/relaxed xl:text-xl/relaxed"
 				>
