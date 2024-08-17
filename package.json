@@ -11,7 +11,7 @@
 		"test": "vitest",
 		"lint": "prettier --check . && eslint . && inlang lint --project project.inlang",
 		"format": "prettier --write .",
-		"translate": "inlang machine translate --project project.inlang"
+		"translate": "for file in messages/*.json; do \n jq 'walk(if type == \"object\" then with_entries(select(.value != \"\")) else . end)' \"$file\" > temp && mv temp \"$file\" \n done && inlang machine translate --project project.inlang"
 	},
 	"devDependencies": {
 		"@inlang/cli": "^2.18.1",
