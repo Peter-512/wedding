@@ -1,4 +1,10 @@
 {
 	"$schema": "https://inlang.com/schema/inlang-message-format",
-	"weddingParty": ""
+	"MeetThePeople": "Maak kennis met de bijzondere mensen die op onze speciale dag aan onze zijde staan.",
+	"contact": "Contact",
+	"ourWeddingParty": "Ons huwelijksfeest",
+	"ourWeddingRegistry": "Ons huwelijksregister",
+	"registry": "Register",
+	"rsvp": "Aanmelden",
+	"weddingParty": "Bruiloftsfeest"
 }
