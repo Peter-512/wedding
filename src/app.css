@@ -57,13 +57,20 @@
 	}
 }
 
-@font-face {
-	font-family: 'Borel';
-	src: url('/fonts/Borel/Borel-Regular.ttf');
-}
+@layer base {
+	@font-face {
+		font-family: 'Borel';
+		font-style: normal;
+		font-weight: 400;
+		font-display: swap;
+		src: url('/fonts/Borel/Borel-Regular.ttf');
+	}
 
-@font-face {
-	font-family: 'Playwrite_AT';
-	src: url('/fonts/Playwrite_AT/PlaywriteAT-VariableFont_wght.ttf');
-	font-weight: 100 400;
+	@font-face {
+		font-family: 'Amsterdam';
+		font-style: normal;
+		font-weight: 400;
+		font-display: swap;
+		src: url('/fonts/amsterdam_4/Amsterdam.ttf');
+	}
 }
