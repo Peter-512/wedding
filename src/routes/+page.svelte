@@ -2,6 +2,22 @@
 	import * as m from '$lib/paraglide/messages.js';
 	import { languageTag } from '$lib/paraglide/runtime';
 	import { Avatar, AvatarFallback, AvatarImage } from '$lib/components/ui/avatar';
+	import { formSchema, type FormSchema } from './contactSchema';
+	import { type SuperValidated, type Infer, superForm } from 'sveltekit-superforms';
+	import { zodClient } from 'sveltekit-superforms/adapters';
+	import { FormButton, FormField, FormControl } from '$lib/components/ui/form';
+	import { Input } from '$lib/components/ui/input';
+	import { FormFieldErrors, FormLabel } from '$lib/components/ui/form/index.js';
+	import { Textarea } from '$lib/components/ui/textarea';
+
+	let { data }: SuperValidated<Infer<FormSchema>> = $props();
+
+	const form = superForm(data, {
+		dataType: 'json',
+		validators: zodClient(formSchema)
+	});
+
+	const { form: formData, enhance } = form;
 
 	const date = new Date('2025-08-03').toLocaleDateString(languageTag(), {
 		year: 'numeric',
@@ -227,28 +243,31 @@
 					Have a question or need more information? Get in touch with us.
 				</p>
 			</div>
-			<div class="mx-auto w-full max-w-sm space-y-2">
-				<form class="flex flex-col gap-2">
-					<input
-						class="flex h-10 w-full max-w-lg flex-1 rounded-md border border-input bg-background px-3 py-2 text-sm ring-offset-background file:border-0 file:bg-transparent file:text-sm file:font-medium placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50"
-						type="text"
-						placeholder="Your Name"
-					/>
-					<input
-						class="flex h-10 w-full max-w-lg flex-1 rounded-md border border-input bg-background px-3 py-2 text-sm ring-offset-background file:border-0 file:bg-transparent file:text-sm file:font-medium placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50"
-						type="email"
-						placeholder="Your Email"
-					/>
-					<textarea
-						class="flex min-h-[80px] w-full max-w-lg flex-1 rounded-md border border-input bg-background px-3 py-2 text-sm ring-offset-background placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50"
-						placeholder="Your Message"
-					></textarea>
-					<button
-						class="inline-flex h-10 items-center justify-center whitespace-nowrap rounded-md bg-primary px-4 py-2 text-sm font-medium text-primary-foreground ring-offset-background transition-colors hover:bg-primary/90 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50"
-						type="submit"
-					>
-						Send Message
-					</button>
+			<div class="w-full max-w-sm space-y-2">
+				<form use:enhance method="POST" action="?/contact">
+					<FormField {form} name="name">
+						<FormControl let:attrs>
+							<FormLabel class="sr-only">{m.name()}</FormLabel>
+							<Input {...attrs} placeholder={m.yourName()} bind:value={$formData.name} />
+						</FormControl>
+						<FormFieldErrors />
+					</FormField>
+					<FormField {form} name="email">
+						<FormControl let:attrs>
+							<FormLabel class="sr-only">{m.email()}</FormLabel>
+							<Input {...attrs} placeholder={m.yourEmail()} bind:value={$formData.email} />
+						</FormControl>
+						<FormFieldErrors />
+					</FormField>
+					<FormField {form} name="message">
+						<FormControl let:attrs>
+							<FormLabel class="sr-only">{m.message()}</FormLabel>
+							<Textarea {...attrs} placeholder={m.yourMessage()} bind:value={$formData.message}
+							></Textarea>
+						</FormControl>
+						<FormFieldErrors />
+					</FormField>
+					<FormButton class="h-10 w-full" type="submit">{m.sendMessage()}</FormButton>
 				</form>
 			</div>
 		</div>
