@@ -56,8 +56,7 @@ const config: Config = {
 			},
 			fontFamily: {
 				sans: [...fontFamily.serif],
-				fancy: ['Borel'],
-				playwrite: ['Playwrite_AT']
+				fancy: ['Amsterdam', 'Borel']
 			}
 		}
 	},
