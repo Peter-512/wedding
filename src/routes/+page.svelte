@@ -99,7 +99,7 @@
 -->
 <section class="w-full py-12 md:py-24 lg:py-32 xl:py-48">
 	<div class="container px-4 md:px-6">
-		<div class="grid gap-6 lg:grid-cols-[1fr_400px] lg:gap-12 xl:grid-cols-[1fr_600px]">
+		<div class="grid gap-6 lg:grid-cols-[1fr_500px] lg:gap-12 xl:grid-cols-[1fr_600px]">
 			<enhanced:img
 				src="../lib/images/hands.jpg"
 				alt="Wedding Hero"
@@ -107,7 +107,7 @@
 			/>
 			<div class="flex flex-col justify-center space-y-4">
 				<div class="space-y-2">
-					<h1 class="text-3xl font-bold tracking-tighter sm:text-5xl xl:text-6xl/none">
+					<h1 class="whitespace-nowrap font-fancy text-3xl sm:text-5xl xl:text-6xl/none">
 						Charlotte &amp; Peter
 					</h1>
 					<p class="max-w-[600px] text-muted-foreground md:text-xl">{date}</p>
@@ -120,7 +120,7 @@
 	<div class="container px-4 md:px-6">
 		<div class="flex flex-col items-center justify-center space-y-4 text-center">
 			<div class="space-y-2">
-				<h2 id="wedding-party" class="font-fancy text-3xl font-bold tracking-tighter sm:text-5xl">
+				<h2 id="wedding-party" class="font-fancy text-3xl sm:text-5xl">
 					{m.ourWeddingParty()}
 				</h2>
 				<p
@@ -150,7 +150,7 @@
 	<div class="container px-4 md:px-6">
 		<div class="flex flex-col items-center justify-center space-y-4 text-center">
 			<div class="space-y-2">
-				<h2 id="registry" class="font-playwrite text-3xl tracking-tighter sm:text-5xl">
+				<h2 id="registry" class="font-fancy text-3xl sm:text-5xl">
 					{m.ourWeddingRegistry()}
 				</h2>
 				<p
@@ -180,7 +180,9 @@
 	<div class="container px-4 md:px-6">
 		<div class="flex flex-col items-center justify-center space-y-4 text-center">
 			<div class="space-y-2">
-				<h2 id="rsvp" class="text-3xl font-bold tracking-tighter sm:text-5xl">RSVP</h2>
+				<h2 id="rsvp" class="font-fancy text-3xl sm:text-5xl">
+					{m.rsvp()}
+				</h2>
 				<p
 					class="max-w-[900px] text-muted-foreground md:text-xl/relaxed lg:text-base/relaxed xl:text-xl/relaxed"
 				>
@@ -218,7 +220,7 @@
 	<div class="container px-4 md:px-6">
 		<div class="flex flex-col items-center justify-center space-y-4 text-center">
 			<div class="space-y-2">
-				<h2 id="contact" class="text-3xl font-bold tracking-tighter sm:text-5xl">Contact Us</h2>
+				<h2 id="contact" class="font-fancy text-3xl sm:text-5xl">{m.contactUs()}</h2>
 				<p
 					class="max-w-[900px] text-muted-foreground md:text-xl/relaxed lg:text-base/relaxed xl:text-xl/relaxed"
 				>
