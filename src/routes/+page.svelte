@@ -10,87 +10,87 @@
 		weekday: 'long'
 	});
 
+	interface Result {
+		picture: Picture;
+	}
+	interface Picture {
+		large: string;
+		medium: string;
+		thumbnail: string;
+	}
+
+	let pictures = $state<string[]>([]);
+	$effect(() => {
+		fetch('https://randomuser.me/api/?results=12')
+			.then((res) => res.json())
+			.then((data) => {
+				pictures = data.results.map((result: Result) => result.picture.thumbnail);
+			});
+	});
+
 	type Person = {
 		name: string;
 		fallback: string;
 		role: string;
-		image: string;
+		image: () => string;
 	};
 
-	const people: Person[] = [
+	const people = $state<Person[]>([
 		{
 			name: 'John Doe',
 			fallback: 'JD',
 			role: 'Best man',
-			image: '../lib/images/john-doe.jpg'
+			image: () => pictures[0]
 		},
 		{
 			name: 'Jane Arden',
 			fallback: 'JA',
 			role: 'Maid of honor',
-			image: '../lib/images/jane-arden.jpg'
+			image: () => pictures[1]
 		},
 		{
 			name: 'Tom Smith',
 			fallback: 'TS',
 			role: 'Groomsman',
-			image: '../lib/images/tom-smith.jpg'
+			image: () => pictures[2]
 		},
 		{
 			name: 'Emily Sato',
 			fallback: 'ES',
 			role: 'Bridesmaid',
-			image: '../lib/images/emily-sato.jpg'
+			image: () => pictures[3]
 		},
 		{
 			name: 'Ryan Jones',
 			fallback: 'RJ',
 			role: 'Groomsman',
-			image: '../lib/images/ryan-jones.jpg'
+			image: () => pictures[4]
 		},
 		{
 			name: 'Sarah Johnson',
 			fallback: 'SJ',
 			role: 'Bridesmaid',
-			image: '../lib/images/sarah-johnson.jpg'
+			image: () => pictures[5]
 		},
 		{
 			name: 'Michael Brown',
 			fallback: 'MB',
 			role: 'Groomsman',
-			image: '../lib/images/michael-brown.jpg'
+			image: () => pictures[6]
 		},
 		{
 			name: 'Jessica Lee',
 			fallback: 'JL',
 			role: 'Bridesmaid',
-			image: '../lib/images/jessica-lee.jpg'
+			image: () => pictures[7]
 		},
 		{
 			name: 'David White',
 			fallback: 'DW',
 			role: 'Groomsman',
-			image: '../lib/images/david-white.jpg'
-		},
-		{
-			name: 'Emma Green',
-			fallback: 'EG',
-			role: 'Bridesmaid',
-			image: '../lib/images/emma-green.jpg'
-		},
-		{
-			name: 'James Black',
-			fallback: 'JB',
-			role: 'Groomsman',
-			image: '../lib/images/james-black.jpg'
-		},
-		{
-			name: 'Olivia Brown',
-			fallback: 'OB',
-			role: 'Bridesmaid',
-			image: '../lib/images/olivia-brown.jpg'
+			image: () => pictures[8]
 		}
-	];
+	]);
 </script>
 
 <!--
@@ -133,7 +133,7 @@
 				{#each people as person}
 					<div class="flex flex-col items-center gap-2">
 						<Avatar>
-							<AvatarImage src={person.image} alt={person.name} />
+							<AvatarImage class="not-prose" src={person.image()} alt={person.name} />
 							<AvatarFallback>{person.fallback}</AvatarFallback>
 						</Avatar>
 						<div class="text-center">
