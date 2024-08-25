@@ -21,14 +21,17 @@
 
 <ParaglideJS {i18n}>
 	<div class="prose-xl flex min-h-[100dvh] flex-col">
-		<header class="font-playwrite flex px-4 lg:px-6">
-			<a class="flex items-center justify-center" href="/{languageTag()}">
+		<header class="flex px-4 lg:px-6">
+			<a
+				class="flex items-center justify-center"
+				href="/{languageTag() === 'en' ? '' : languageTag()}"
+			>
 				<Heart />
 				<span class="sr-only">Wedding</span>
 			</a>
 
 			<nav class="ml-auto mt-2 flex items-center gap-4 sm:gap-6">
-				<MediaQuery query="(min-width: 750px)">
+				<MediaQuery size="isAboveMD">
 					{#snippet match()}
 						<Button class="text-lg" variant="link" href="#wedding-party">
 							{m.weddingParty()}
@@ -46,9 +49,7 @@
 					{#snippet notMatch()}
 						<DropdownMenu>
 							<Trigger>
-								<Button size="icon" variant="link">
-									<MenuIcon />
-								</Button>
+								<MenuIcon />
 							</Trigger>
 							<DropdownMenuContent>
 								<Item href="#wedding-party">{m.weddingParty()}</Item>
