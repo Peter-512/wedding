@@ -27,7 +27,7 @@
 				href="/{languageTag() === 'en' ? '' : languageTag()}"
 			>
 				<Heart />
-				<span class="sr-only">Wedding</span>
+				<span class="sr-only">{m.wedding()}</span>
 			</a>
 
 			<nav class="ml-auto mt-2 flex items-center gap-4 sm:gap-6">
