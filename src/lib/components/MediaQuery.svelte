@@ -26,5 +26,7 @@
 {:else if notMatch && !matches}
 	{@render notMatch()}
 {:else}
-	{$inspect('MediaQuery requires either a `match` or `notMatch` prop')}
+	{console.error(
+		`MediaQuery requires either a \`match\` or \`notMatch\` prop but neither was provided. Match: ${match}, Not Match: ${notMatch}`
+	)}
 {/if}
