@@ -9,8 +9,36 @@
 	import { Input } from '$lib/components/ui/input';
 	import { FormFieldErrors, FormLabel } from '$lib/components/ui/form/index.js';
 	import { Textarea } from '$lib/components/ui/textarea';
+	import { inView, type ViewChangeHandler, animate, type InViewOptions } from 'motion';
+	import { cubicOut } from 'svelte/easing';
 
 	let { data }: SuperValidated<Infer<FormSchema>> = $props();
+
+	let headerSection: HTMLElement;
+	let weddingPartySection: HTMLElement;
+	let registrySection: HTMLElement;
+	let rsvpSection: HTMLElement;
+	let contactSection: HTMLElement;
+
+	const options: InViewOptions = {
+		margin: '-50px'
+	};
+
+	const onStart: void | ViewChangeHandler = (entry: IntersectionObserverEntry) => {
+		animate(
+			entry.target,
+			{ opacity: 1, transform: 'none' },
+			{ delay: 0.2, duration: 1, easing: cubicOut }
+		);
+	};
+
+	$effect(() => {
+		inView(headerSection, onStart, options);
+		inView(weddingPartySection, onStart, options);
+		inView(registrySection, onStart, options);
+		inView(rsvpSection, onStart, options);
+		inView(contactSection, onStart, options);
+	});
 
 	const form = superForm(data, {
 		dataType: 'json',
@@ -118,7 +146,7 @@
 </svelte:head>
 
 <section class="w-full py-12 md:py-24 lg:py-32 xl:py-48">
-	<div class="container px-4 md:px-6">
+	<div bind:this={headerSection} class="container translate-y-10 px-4 opacity-0 md:px-6">
 		<div class="grid gap-6 lg:grid-cols-[1fr_500px] lg:gap-12 xl:grid-cols-[1fr_600px]">
 			<enhanced:img
 				src="../lib/images/hands.jpg"
@@ -137,7 +165,7 @@
 	</div>
 </section>
 <section class="w-full bg-muted py-12 md:py-24 lg:py-32">
-	<div class="container px-4 md:px-6">
+	<div bind:this={weddingPartySection} class="container translate-y-10 px-4 opacity-0 md:px-6">
 		<div class="flex flex-col items-center justify-center space-y-4 text-center">
 			<div class="space-y-2">
 				<h2 id="wedding-party" class="font-fancy text-3xl sm:text-5xl">
@@ -167,7 +195,7 @@
 	</div>
 </section>
 <section class="w-full py-12 md:py-24 lg:py-32">
-	<div class="container px-4 md:px-6">
+	<div bind:this={registrySection} class="container translate-y-10 px-4 opacity-0 md:px-6">
 		<div class="flex flex-col items-center justify-center space-y-4 text-center">
 			<div class="space-y-2">
 				<h2 id="registry" class="font-fancy text-3xl sm:text-5xl">
@@ -197,7 +225,7 @@
 	</div>
 </section>
 <section class="w-full bg-muted py-12 md:py-24 lg:py-32">
-	<div class="container px-4 md:px-6">
+	<div bind:this={rsvpSection} class="container translate-y-10 px-4 opacity-0 md:px-6">
 		<div class="flex flex-col items-center justify-center space-y-4 text-center">
 			<div class="space-y-2">
 				<h2 id="rsvp" class="font-fancy text-3xl sm:text-5xl">
@@ -237,7 +265,7 @@
 	</div>
 </section>
 <section class="w-full py-12 md:py-24 lg:py-32">
-	<div class="container px-4 md:px-6">
+	<div bind:this={contactSection} class="container translate-y-10 px-4 opacity-0 md:px-6">
 		<div class="flex flex-col items-center justify-center space-y-4 text-center">
 			<div class="space-y-2">
 				<h2 id="contact" class="font-fancy text-3xl sm:text-5xl">{m.contactUs()}</h2>
