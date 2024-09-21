@@ -1,0 +1,61 @@
+<script>
+	import { Button } from '$lib/components/ui/button';
+</script>
+
+<section class="container">
+	<h2>Travel information</h2>
+
+	<p>
+		This page is four our dear internationals, traveling to Belgium. We hope this information is
+		useful for you to easily find your way over here.
+	</p>
+	<h3>Flying</h3>
+	<p>
+		When flying to Belgium, you will most likely want to land at Brussels Airport (Zaventem) and use
+		the train to get to Antwerp. The train station is located in the airport itself, and you can
+		take a direct train to Antwerp. The train ride takes about 30 minutes. For this option you will
+		most likely fly with either Brussels Airlines or Austrian Airlines (if you're joining us from
+		Austria).
+	</p>
+	<p>
+		A cheaper option is to fly to Eindhoven Airport in the Netherlands. From there you can take a
+		train to Antwerp. The train ride takes about 1 hour and 30 minutes. This option is especially
+		interesting if you're flying with Ryanair.
+	</p>
+	<h3>Hotels</h3>
+	<p>If you're looking for a place to stay in Antwerp, we recommend the following hotels:</p>
+	<ul>
+		<li>
+			<Button size="inline" variant="link" href="https://www.colonie7.be/">Colonie 7</Button>: Right
+			across from the venue
+		</li>
+		<li><Button size="inline" variant="link" href="#">UNKNOWN</Button>: Close to our apartment</li>
+	</ul>
+	<h3>Transport</h3>
+	<p>
+		Antwerp has a decent public transport system, although it's best to calculate some extra time as
+		it can be a bit unreliable.
+	</p>
+	<p>
+		Taxis are also a good option, you can call one at
+		<Button size="inline" variant="link" href="tel:+32 3 238 38 38">+32 3 238 38 38</Button>
+		or get an <Button size="inline" variant="link" href="https://m.uber.com">Uber</Button>.
+	</p>
+	<h3>General</h3>
+	<ul>
+		<li>Please make sure to bring your passport or ID card.</li>
+		<li>Paying by card is encouraged by almost all places and preffered to cash payments.</li>
+		<li>
+			If you have any questions or need help, don't hesitate to contact us via
+			<Button size="inline" variant="link" href="mailto:peter.buschenreiter+wedding@gmail.com"
+				>email</Button
+			> or this
+			<Button size="inline" variant="link" href="/#contact">form</Button>.
+		</li>
+		<li>
+			If you're planning to stay in Belgium for a little longerm we have collected some of our
+			favorite places to visit and activities to do in Antwerp which you can find
+			<Button size="inline" variant="link" href="/favorite-spots">here</Button>.
+		</li>
+	</ul>
+</section>

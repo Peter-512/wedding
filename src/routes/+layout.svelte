@@ -22,27 +22,27 @@
 <ParaglideJS {i18n}>
 	<div class="prose-xl flex min-h-[100dvh] flex-col">
 		<header class="flex px-4 lg:px-6">
-			<a
-				class="flex items-center justify-center"
+			<Button
+				variant="link"
+				class="self-center"
 				href="/{languageTag() === 'en' ? '' : languageTag()}"
 			>
 				<Heart />
 				<span class="sr-only">{m.wedding()}</span>
-			</a>
+			</Button>
 
 			<nav class="ml-auto mt-2 flex items-center gap-4 sm:gap-6">
 				<MediaQuery size="isAboveMD">
 					{#snippet match()}
-						<Button class="text-lg" variant="link" href="#wedding-party">
-							{m.weddingParty()}
+						<Button class="text-lg" variant="link" href="/travel-information">
+							Travel information
 						</Button>
-						<Button class="text-lg" variant="link" href="#registry">
-							{m.registry()}
-						</Button>
-						<Button class="text-lg" variant="link" href="#rsvp">
+						<Button class="text-lg" variant="link" href="/timeline">Timeline</Button>
+						<Button class="text-lg" variant="link" href="/favorite-spots">Favorite spots</Button>
+						<Button class="text-lg" variant="link" href="/rsvp">
 							{m.rsvp()}
 						</Button>
-						<Button class="text-lg" variant="link" href="#contact">
+						<Button class="text-lg" variant="link" href="/#contact">
 							{m.contact()}
 						</Button>
 					{/snippet}
@@ -52,9 +52,10 @@
 								<MenuIcon />
 							</Trigger>
 							<DropdownMenuContent>
-								<Item href="#wedding-party">{m.weddingParty()}</Item>
-								<Item href="#registry">{m.registry()}</Item>
-								<Item href="#rsvp">{m.rsvp()}</Item>
+								<Item href="/travel-information">Travel information</Item>
+								<Item href="/timeline">Timeline</Item>
+								<Item href="/favorite-spots">Favorite spots</Item>
+								<Item href="/rsvp">{m.rsvp()}</Item>
 								<Item href="#contact">{m.contact()}</Item>
 							</DropdownMenuContent>
 						</DropdownMenu>
@@ -72,9 +73,13 @@
 			<p class="text-xs text-muted-foreground">
 				© 2024 Charlotte &amp; Peter. All rights reserved.
 			</p>
-			<nav class="flex gap-4 sm:ml-auto sm:gap-6">
-				<a class="text-xs underline-offset-4 hover:underline" href="#"> Privacy </a>
-				<a class="text-xs underline-offset-4 hover:underline" href="#"> Terms </a>
+			<nav class="flex gap-4 sm:ml-auto sm:gap-2">
+				<Button variant="link" class="text-xs underline-offset-4 hover:underline" href="#"
+					>Privacy</Button
+				>
+				<Button variant="link" class="text-xs underline-offset-4 hover:underline" href="#"
+					>Terms</Button
+				>
 			</nav>
 		</footer>
 	</div>

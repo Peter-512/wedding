@@ -1,7 +1,6 @@
 <script lang="ts">
 	import * as m from '$lib/paraglide/messages.js';
 	import { languageTag } from '$lib/paraglide/runtime';
-	import { Avatar, AvatarFallback, AvatarImage } from '$lib/components/ui/avatar';
 	import { formSchema, type FormSchema } from './contactSchema';
 	import { type SuperValidated, type Infer, superForm } from 'sveltekit-superforms';
 	import { zodClient } from 'sveltekit-superforms/adapters';
@@ -9,36 +8,8 @@
 	import { Input } from '$lib/components/ui/input';
 	import { FormFieldErrors, FormLabel } from '$lib/components/ui/form/index.js';
 	import { Textarea } from '$lib/components/ui/textarea';
-	import { inView, type ViewChangeHandler, animate, type InViewOptions } from 'motion';
-	import { cubicOut } from 'svelte/easing';
 
 	let { data }: SuperValidated<Infer<FormSchema>> = $props();
-
-	let headerSection: HTMLElement;
-	let weddingPartySection: HTMLElement;
-	let registrySection: HTMLElement;
-	let rsvpSection: HTMLElement;
-	let contactSection: HTMLElement;
-
-	const options: InViewOptions = {
-		margin: '-50px'
-	};
-
-	const onStart: void | ViewChangeHandler = (entry: IntersectionObserverEntry) => {
-		animate(
-			entry.target,
-			{ opacity: 1, transform: 'none' },
-			{ delay: 0.2, duration: 1, easing: cubicOut }
-		);
-	};
-
-	$effect(() => {
-		inView(headerSection, onStart, options);
-		inView(weddingPartySection, onStart, options);
-		inView(registrySection, onStart, options);
-		inView(rsvpSection, onStart, options);
-		inView(contactSection, onStart, options);
-	});
 
 	const form = superForm(data, {
 		dataType: 'json',
@@ -47,94 +18,27 @@
 
 	const { form: formData, enhance } = form;
 
-	const date = new Date('2025-08-03').toLocaleDateString(languageTag(), {
+	const weddingDate = new Date('2025-08-03');
+	const formattedDate = weddingDate.toLocaleDateString(languageTag(), {
 		year: 'numeric',
 		month: 'long',
 		day: 'numeric',
 		weekday: 'long'
 	});
 
-	interface Result {
-		picture: Picture;
-	}
-	interface Picture {
-		large: string;
-		medium: string;
-		thumbnail: string;
-	}
+	let now = $state(new Date());
+	const diff = $derived(Math.abs(weddingDate.getTime() - now.getTime()));
 
-	let pictures = $state<string[]>([]);
+	const days = $derived(Math.floor(diff / (1000 * 60 * 60 * 24)));
+	const hours = $derived(Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60)));
+	const minutes = $derived(Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60)));
+	const seconds = $derived(Math.floor((diff % (1000 * 60)) / 1000));
+
 	$effect(() => {
-		fetch('https://randomuser.me/api/?results=12')
-			.then((res) => res.json())
-			.then((data) => {
-				pictures = data.results.map((result: Result) => result.picture.thumbnail);
-			});
+		setInterval(() => {
+			now = new Date();
+		}, 100);
 	});
-
-	type Person = {
-		name: string;
-		fallback: string;
-		role: string;
-		image: () => string;
-	};
-
-	const people = $state<Person[]>([
-		{
-			name: 'John Doe',
-			fallback: 'JD',
-			role: 'Best man',
-			image: () => pictures[0]
-		},
-		{
-			name: 'Jane Arden',
-			fallback: 'JA',
-			role: 'Maid of honor',
-			image: () => pictures[1]
-		},
-		{
-			name: 'Tom Smith',
-			fallback: 'TS',
-			role: 'Groomsman',
-			image: () => pictures[2]
-		},
-		{
-			name: 'Emily Sato',
-			fallback: 'ES',
-			role: 'Bridesmaid',
-			image: () => pictures[3]
-		},
-		{
-			name: 'Ryan Jones',
-			fallback: 'RJ',
-			role: 'Groomsman',
-			image: () => pictures[4]
-		},
-		{
-			name: 'Sarah Johnson',
-			fallback: 'SJ',
-			role: 'Bridesmaid',
-			image: () => pictures[5]
-		},
-		{
-			name: 'Michael Brown',
-			fallback: 'MB',
-			role: 'Groomsman',
-			image: () => pictures[6]
-		},
-		{
-			name: 'Jessica Lee',
-			fallback: 'JL',
-			role: 'Bridesmaid',
-			image: () => pictures[7]
-		},
-		{
-			name: 'David White',
-			fallback: 'DW',
-			role: 'Groomsman',
-			image: () => pictures[8]
-		}
-	]);
 </script>
 
 <!--
@@ -146,7 +50,7 @@
 </svelte:head>
 
 <section class="w-full py-12 md:py-24 lg:py-32 xl:py-48">
-	<div bind:this={headerSection} class="container translate-y-10 px-4 opacity-0 md:px-6">
+	<div class="container px-4 md:px-6">
 		<div class="grid gap-6 lg:grid-cols-[1fr_500px] lg:gap-12 xl:grid-cols-[1fr_600px]">
 			<enhanced:img
 				src="../lib/images/hands.jpg"
@@ -158,44 +62,16 @@
 					<h1 class="whitespace-nowrap font-fancy text-3xl sm:text-5xl xl:text-6xl/none">
 						Charlotte &amp; Peter
 					</h1>
-					<p class="max-w-[600px] text-muted-foreground md:text-xl">{date}</p>
+					<p class="max-w-[600px] text-muted-foreground md:text-xl">{formattedDate}</p>
+					<p>{days} days, {hours} hours, {minutes} minutes and {seconds} seconds</p>
 				</div>
 			</div>
 		</div>
 	</div>
 </section>
+
 <section class="w-full bg-muted py-12 md:py-24 lg:py-32">
-	<div bind:this={weddingPartySection} class="container translate-y-10 px-4 opacity-0 md:px-6">
-		<div class="flex flex-col items-center justify-center space-y-4 text-center">
-			<div class="space-y-2">
-				<h2 id="wedding-party" class="font-fancy text-3xl sm:text-5xl">
-					{m.ourWeddingParty()}
-				</h2>
-				<p
-					class="max-w-[900px] text-muted-foreground md:text-xl/relaxed lg:text-base/relaxed xl:text-xl/relaxed"
-				>
-					{m.MeetThePeople()}
-				</p>
-			</div>
-			<div class="grid max-w-5xl grid-cols-2 gap-6 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5">
-				{#each people as person}
-					<div class="flex flex-col items-center gap-2">
-						<Avatar>
-							<AvatarImage class="not-prose" src={person.image()} alt={person.name} />
-							<AvatarFallback>{person.fallback}</AvatarFallback>
-						</Avatar>
-						<div class="text-center">
-							<p class="text-sm font-medium">{person.name}</p>
-							<p class="text-sm text-muted-foreground">{person.role}</p>
-						</div>
-					</div>
-				{/each}
-			</div>
-		</div>
-	</div>
-</section>
-<section class="w-full py-12 md:py-24 lg:py-32">
-	<div bind:this={registrySection} class="container translate-y-10 px-4 opacity-0 md:px-6">
+	<div class="container px-4 md:px-6">
 		<div class="flex flex-col items-center justify-center space-y-4 text-center">
 			<div class="space-y-2">
 				<h2 id="registry" class="font-fancy text-3xl sm:text-5xl">
@@ -224,8 +100,9 @@
 		</div>
 	</div>
 </section>
-<section class="w-full bg-muted py-12 md:py-24 lg:py-32">
-	<div bind:this={rsvpSection} class="container translate-y-10 px-4 opacity-0 md:px-6">
+
+<section class="w-full py-12 md:py-24 lg:py-32">
+	<div class="container px-4 md:px-6">
 		<div class="flex flex-col items-center justify-center space-y-4 text-center">
 			<div class="space-y-2">
 				<h2 id="rsvp" class="font-fancy text-3xl sm:text-5xl">
@@ -264,8 +141,9 @@
 		</div>
 	</div>
 </section>
-<section class="w-full py-12 md:py-24 lg:py-32">
-	<div bind:this={contactSection} class="container translate-y-10 px-4 opacity-0 md:px-6">
+
+<section class="w-full bg-muted py-12 md:py-24 lg:py-32">
+	<div class="container px-4 md:px-6">
 		<div class="flex flex-col items-center justify-center space-y-4 text-center">
 			<div class="space-y-2">
 				<h2 id="contact" class="font-fancy text-3xl sm:text-5xl">{m.contactUs()}</h2>
