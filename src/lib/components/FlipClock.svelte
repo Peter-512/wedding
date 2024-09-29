@@ -30,20 +30,21 @@
 	let display = $state(
 		new Array(
 			Number(showDays) + Number(showHours) + Number(showMinutes) + Number(showSeconds)
-		).fill({
-			top: '00',
-			bottom: '00',
-			transition: false
-		})
+		)
 	);
-
+	
 	let now = $state(new Date());
 	const diff = $derived(Math.abs(date.getTime() - now.getTime()));
-
+	
 	const days = $derived(Math.floor(diff / (1000 * 60 * 60 * 24)));
 	const hours = $derived(Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60)));
 	const minutes = $derived(Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60)));
 	const seconds = $derived(Math.floor((diff % (1000 * 60)) / 1000));
+	
+	if (showDays) display[0] = { top: days.toString().padStart(3, '0'), bottom: days.toString().padStart(3, '0'), transition: false };
+	if (showHours) display[showDays ? 1 : 0] = { top: hours.toString().padStart(2, '0'), bottom: hours.toString().padStart(2, '0'), transition: false };
+	if (showMinutes) display[showDays ? 2 : showHours ? 1 : 0] = { top: minutes.toString().padStart(2, '0'), bottom: minutes.toString().padStart(2, '0'), transition: false };
+	if (showSeconds) display[showDays ? 3 : showHours ? 2 : showMinutes ? 1 : 0] = { top: seconds.toString().padStart(2, '0'), bottom: seconds.toString().padStart(2, '0'), transition: false };
 
 	$effect(() => {
 		interval = setInterval(() => {
