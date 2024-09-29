@@ -36,7 +36,7 @@
 	<title>{m.ourWedding()}</title>
 </svelte:head>
 
-<section class="w-full py-12 md:py-24 lg:py-32 xl:py-48">
+<section class="w-full pt-8 md:pt-12 lg:pt-16 pb-12 md:pb-16 lg:pb-24">
 	<div class="container px-4 md:px-6">
 		<div class="grid gap-6 lg:grid-cols-[1fr_500px] lg:gap-12 xl:grid-cols-[1fr_600px]">
 			<enhanced:img
