@@ -44,7 +44,7 @@
 	<h3>General</h3>
 	<ul>
 		<li>Please make sure to bring your passport or ID card.</li>
-		<li>Paying by card is encouraged by almost all places and preffered to cash payments.</li>
+		<li>Paying by card is encouraged by almost all places and preferred to cash payments.</li>
 		<li>
 			If you have any questions or need help, don't hesitate to contact us via
 			<Button size="inline" variant="link" href="mailto:peter.buschenreiter+wedding@gmail.com"
@@ -53,7 +53,7 @@
 			<Button size="inline" variant="link" href="/#contact">form</Button>.
 		</li>
 		<li>
-			If you're planning to stay in Belgium for a little longerm we have collected some of our
+			If you're planning to stay in Belgium for a little longer we have collected some of our
 			favorite places to visit and activities to do in Antwerp which you can find
 			<Button size="inline" variant="link" href="/favorite-spots">here</Button>.
 		</li>
