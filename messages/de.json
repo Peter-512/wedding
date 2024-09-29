@@ -22,5 +22,9 @@
   "weddingParty": "Hochzeitsfeier",
   "yourEmail": "Deine E-Mail",
   "yourMessage": "Deine Nachricht",
-  "yourName": "Dein Name"
+  "yourName": "Dein Name",
+  "days": "Tage",
+  "hours": "Std",
+  "minutes": "Minuten",
+  "seconds": "Sekunden"
 }

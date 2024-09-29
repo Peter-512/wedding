@@ -1,4 +1,5 @@
 <script lang="ts">
+	import * as m from '$lib/paraglide/messages.js'
 	interface Props {
 		showDays?: boolean;
 		showHours?: boolean;
@@ -109,16 +110,16 @@
 	</div>
 	<div class='flex justify-between mt-5 text-center max-w-[calc(100%-20px)]'>
 		{#if showDays}
-			<span class='text-sm w-[74px]'>Days</span>
+			<span class='text-sm w-[74px]'>{m.days()}</span>
 		{/if}
 		{#if showHours}
-			<span class='text-sm w-[74px]'>Hours</span>
+			<span class='text-sm w-[74px]'>{m.hours()}</span>
 		{/if}
 		{#if showMinutes}
-			<span class='text-sm w-[74px]'>Minutes</span>
+			<span class='text-sm w-[74px]'>{m.minutes()}</span>
 		{/if}
 		{#if showSeconds}
-			<span class='text-sm w-[74px]'>Seconds</span>
+			<span class='text-sm w-[74px]'>{m.seconds()}</span>
 		{/if}
 	</div>
 </div>
