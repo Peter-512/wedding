@@ -32,6 +32,9 @@ importers:
       svelte-email:
         specifier: ^0.0.4
         version: 0.0.4
+      svelte-flip-clock:
+        specifier: ^0.0.2
+        version: 0.0.2
       sveltekit-superforms:
         specifier: ^2.17.0
         version: 2.17.0(@sveltejs/kit@2.5.21(@sveltejs/vite-plugin-svelte@3.1.1(svelte@5.0.0-next.216)(vite@5.4.0(@types/node@22.2.0)))(svelte@5.0.0-next.216)(vite@5.4.0(@types/node@22.2.0)))(svelte@5.0.0-next.216)
@@ -2384,6 +2387,9 @@ packages:
     peerDependenciesMeta:
       svelte:
         optional: true
+
+  svelte-flip-clock@0.0.2:
+    resolution: {integrity: sha512-bWdjS8Ym57ei8h89bdLsPsBJPiSWVAiB1iUwHXA8ElN77JFpqJHS30WaRPMTCopawcHzxGs9T0PI8ze4TixAlA==}
 
   svelte-hmr@0.16.0:
     resolution: {integrity: sha512-Gyc7cOS3VJzLlfj7wKS0ZnzDVdv3Pn2IuVeJPk9m2skfhcu5bq3wtIZyQGggr7/Iim5rH5cncyQft/kRLupcnA==}
@@ -4990,6 +4996,8 @@ snapshots:
       postcss-scss: 4.0.9(postcss@8.4.41)
     optionalDependencies:
       svelte: 5.0.0-next.216
+
+  svelte-flip-clock@0.0.2: {}
 
   svelte-hmr@0.16.0(svelte@5.0.0-next.216):
     dependencies:

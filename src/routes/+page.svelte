@@ -8,6 +8,7 @@
 	import { Input } from '$lib/components/ui/input';
 	import { FormFieldErrors, FormLabel } from '$lib/components/ui/form/index.js';
 	import { Textarea } from '$lib/components/ui/textarea';
+	import FlipClock from '$lib/components/FlipClock.svelte';
 
 	let { data }: SuperValidated<Infer<FormSchema>> = $props();
 
@@ -18,26 +19,12 @@
 
 	const { form: formData, enhance } = form;
 
-	const weddingDate = new Date('2025-08-03');
+	const weddingDate = new Date('2025-08-03T00:00:00');
 	const formattedDate = weddingDate.toLocaleDateString(languageTag(), {
 		year: 'numeric',
 		month: 'long',
 		day: 'numeric',
 		weekday: 'long'
-	});
-
-	let now = $state(new Date());
-	const diff = $derived(Math.abs(weddingDate.getTime() - now.getTime()));
-
-	const days = $derived(Math.floor(diff / (1000 * 60 * 60 * 24)));
-	const hours = $derived(Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60)));
-	const minutes = $derived(Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60)));
-	const seconds = $derived(Math.floor((diff % (1000 * 60)) / 1000));
-
-	$effect(() => {
-		setInterval(() => {
-			now = new Date();
-		}, 100);
 	});
 </script>
 
@@ -63,7 +50,7 @@
 						Charlotte &amp; Peter
 					</h1>
 					<p class="max-w-[600px] text-muted-foreground md:text-xl">{formattedDate}</p>
-					<p>{days} days, {hours} hours, {minutes} minutes and {seconds} seconds</p>
+					<FlipClock date={weddingDate} />
 				</div>
 			</div>
 		</div>
