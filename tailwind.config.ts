@@ -56,7 +56,7 @@ const config: Config = {
 			},
 			fontFamily: {
 				sans: [...fontFamily.serif],
-				fancy: ['Amsterdam', 'Borel']
+				fancy: ['Dancing Script','Sacramento', 'Amsterdam', 'Borel']
 			}
 		}
 	},

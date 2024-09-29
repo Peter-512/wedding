@@ -73,4 +73,18 @@
 		font-display: swap;
 		src: url('/fonts/amsterdam_4/Amsterdam.ttf');
 	}
+
+	@font-face {
+		font-family: 'Dancing Script';
+		font-style: normal;
+		font-display: swap;
+		src: url('/fonts/Dancing_Script/DancingScript-VariableFont_wght.ttf');
+	}
+
+	@font-face {
+		font-family: 'Sacramento';
+		font-style: normal;
+		font-display: swap;
+		src: url('/fonts/Sacramento/Sacramento-Regular.ttf');
+	}
 }

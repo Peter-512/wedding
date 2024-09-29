@@ -59,7 +59,7 @@
 			/>
 			<div class="flex flex-col justify-center space-y-4">
 				<div class="space-y-2">
-					<h1 class="whitespace-nowrap font-fancy text-3xl sm:text-5xl xl:text-6xl/none">
+					<h1 class="text-bold uppercase text-3xl sm:text-5xl xl:text-6xl/none">
 						Charlotte &amp; Peter
 					</h1>
 					<p class="max-w-[600px] text-muted-foreground md:text-xl">{formattedDate}</p>
