@@ -49,7 +49,7 @@
 					<h1 class="text-bold uppercase text-3xl sm:text-5xl xl:text-6xl/none">
 						Charlotte &amp; Peter
 					</h1>
-					<p class="max-w-[600px] text-muted-foreground md:text-xl">{formattedDate}</p>
+					<p class="max-w-[600px] text-muted-foreground md:text-3xl">{formattedDate}</p>
 					<FlipClock date={weddingDate} />
 				</div>
 			</div>
