@@ -55,6 +55,7 @@
 		<ul class="list-circle">
 			<li>A single ticket costs 2.40€ and is valid for 1 hour.</li>
 			<li>You can buy a day ticket for 7.50€.</li>
+			<li>There are also 10-ride tickets available for 17€ via the app.</li>
 		</ul>
 		<li>
 			<Button
@@ -62,7 +63,8 @@
 				size="inline"
 				variant="link"
 				href="https://www.belgiantrain.be/{languageTag()}">NMBS</Button
-			> for trains.
+			> for trains, including the international trains to nearby cities, such as Brussels, Mechelen,
+			Gent or the beach (Oostende is our favorite).
 		</li>
 	</ul>
 	<p>
@@ -76,6 +78,16 @@
 	<ul class="list-disc">
 		<li>Please make sure to bring your passport or ID card.</li>
 		<li>Paying by card is encouraged by almost all places and preferred to cash payments.</li>
+		<li>
+			There are a lot of bikers in Antwerp, like a lot. Please make sure you never walk on the bike
+			paths. You can recognize them because they are often marked red, or because there's a stripe
+			on the street between pedestrians and bike paths. When crossing the street, always check for
+			bikes before crossing.
+		</li>
+		<li>
+			The main language in Antwerp is Dutch, but most people also speak English. When you go more
+			south (to Brussels) you will hear more French as well.
+		</li>
 		<li>If you have any questions or need help, don't hesitate to contact us!</li>
 	</ul>
 	<p>
