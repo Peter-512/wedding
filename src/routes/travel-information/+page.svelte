@@ -1,4 +1,5 @@
 <script>
+	import { languageTag } from '$lib/paraglide/runtime.js';
 	import { Button } from '$lib/components/ui/button';
 </script>
 
@@ -6,7 +7,7 @@
 	<h2>Travel information</h2>
 
 	<p>
-		This page is four our dear internationals, traveling to Belgium. We hope this information is
+		This page is for our dear internationals, traveling to Belgium. We hope this information is
 		useful for you to easily find your way over here.
 	</p>
 	<h3>Flying</h3>
@@ -18,44 +19,68 @@
 		Austria).
 	</p>
 	<p>
-		A cheaper option is to fly to Eindhoven Airport in the Netherlands. From there you can take a
-		train to Antwerp. The train ride takes about 1 hour and 30 minutes. This option is especially
-		interesting if you're flying with Ryanair.
+		A cheaper option is to fly with Ryanair to either Eindhoven Airport (~1.5 hours to Antwerp) or
+		Charleroi South Airport (~2 hours to Antwerp). Alternatively, you could also take the NightJet
+		to Antwerp Central.
 	</p>
 	<h3>Hotels</h3>
 	<p>If you're looking for a place to stay in Antwerp, we recommend the following hotels:</p>
-	<ul>
+	<ul class="list-disc">
 		<li>
-			<Button size="inline" variant="link" href="https://www.colonie7.be/">Colonie 7</Button>: Right
-			across from the venue
+			<Button size="inline" variant="link" target="_blank" href="https://www.colonie7.be/"
+				>Colonie 7</Button
+			>: Right across from the venue.
 		</li>
-		<li><Button size="inline" variant="link" href="#">UNKNOWN</Button>: Close to our apartment</li>
+		<li>
+			<Button size="inline" variant="link" target="_blank" href="https://www.yust.com/antwerp/"
+				>Yust</Button
+			>: Close to our apartment and the city center.
+		</li>
+		<li>AirBnB and other options...</li>
 	</ul>
 	<h3>Transport</h3>
 	<p>
 		Antwerp has a decent public transport system, although it's best to calculate some extra time as
 		it can be a bit unreliable.
 	</p>
+	<ul class="list-disc">
+		<li>
+			<Button
+				target="_blank"
+				size="inline"
+				variant="link"
+				href="https://www.delijn.be/{languageTag()}">De Lijn</Button
+			> for Trams and Busses.
+		</li>
+		<ul class="list-circle">
+			<li>A single ticket costs 2.40€ and is valid for 1 hour.</li>
+			<li>You can buy a day ticket for 7.50€.</li>
+		</ul>
+		<li>
+			<Button
+				target="_blank"
+				size="inline"
+				variant="link"
+				href="https://www.belgiantrain.be/{languageTag()}">NMBS</Button
+			> for trains.
+		</li>
+	</ul>
 	<p>
 		Taxis are also a good option, you can call one at
 		<Button size="inline" variant="link" href="tel:+32 3 238 38 38">+32 3 238 38 38</Button>
-		or get an <Button size="inline" variant="link" href="https://m.uber.com">Uber</Button>.
+		or get an <Button size="inline" variant="link" target="_blank" href="https://m.uber.com"
+			>Uber</Button
+		>.
 	</p>
 	<h3>General</h3>
-	<ul>
+	<ul class="list-disc">
 		<li>Please make sure to bring your passport or ID card.</li>
 		<li>Paying by card is encouraged by almost all places and preferred to cash payments.</li>
-		<li>
-			If you have any questions or need help, don't hesitate to contact us via
-			<Button size="inline" variant="link" href="mailto:peter.buschenreiter+wedding@gmail.com"
-				>email</Button
-			> or this
-			<Button size="inline" variant="link" href="/#contact">form</Button>.
-		</li>
-		<li>
-			If you're planning to stay in Belgium for a little longer we have collected some of our
-			favorite places to visit and activities to do in Antwerp which you can find
-			<Button size="inline" variant="link" href="/favorite-spots">here</Button>.
-		</li>
+		<li>If you have any questions or need help, don't hesitate to contact us!</li>
 	</ul>
+	<p>
+		If you're planning to stay in Belgium for a little longer we have collected some of our favorite
+		places to visit and activities to do in Antwerp which you can find
+		<Button size="inline" variant="link" href="/favorite-spots">here</Button>.
+	</p>
 </section>

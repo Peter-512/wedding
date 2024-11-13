@@ -1,11 +1,16 @@
 import { fontFamily } from 'tailwindcss/defaultTheme';
 import type { Config } from 'tailwindcss';
+import { Circle } from 'lucide-svelte';
 
 const config: Config = {
 	darkMode: ['class'],
 	content: ['./src/**/*.{html,js,svelte,ts}'],
 	safelist: ['dark'],
 	theme: {
+		listStyleType: {
+			disc: 'disc',
+			circle: 'circle'
+		},
 		container: {
 			center: true,
 			padding: '2rem',
@@ -56,7 +61,7 @@ const config: Config = {
 			},
 			fontFamily: {
 				sans: [...fontFamily.serif],
-				fancy: ['Dancing Script','Sacramento', 'Amsterdam', 'Borel']
+				fancy: ['Dancing Script', 'Sacramento', 'Amsterdam', 'Borel']
 			}
 		}
 	},
