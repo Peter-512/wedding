@@ -1,60 +1,59 @@
 <script lang="ts">
-	import * as m from '$lib/paraglide/messages.js'
+	import * as m from '$lib/paraglide/messages.js';
 	interface Props {
-		showDays?: boolean;
-		showHours?: boolean;
-		showMinutes?: boolean;
-		showSeconds?: boolean;
 		size?: number;
 		textColor?: string;
 		backgroundColor?: string;
 		date: Date;
 	}
 
-	const {
-		showDays = true,
-		showHours = true,
-		showMinutes = true,
-		showSeconds = true,
-		size = 1,
-		textColor = 'white',
-		backgroundColor = '#383838',
-		date
-	}: Props = $props();
+	const { size = 1, textColor = 'white', backgroundColor = '#383838', date }: Props = $props();
 
-	const segmentsCount = $derived(
-		Number(showDays) + Number(showHours) + Number(showMinutes) + Number(showSeconds)
-	);
-
+	const segmentsCount = $derived(4);
 	let interval: ReturnType<typeof setInterval>;
-	let display = $state(
-		new Array(
-			Number(showDays) + Number(showHours) + Number(showMinutes) + Number(showSeconds)
-		)
-	);
-	
+
 	let now = $state(new Date());
 	const diff = $derived(Math.abs(date.getTime() - now.getTime()));
-	
+
 	const days = $derived(Math.floor(diff / (1000 * 60 * 60 * 24)));
 	const hours = $derived(Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60)));
 	const minutes = $derived(Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60)));
 	const seconds = $derived(Math.floor((diff % (1000 * 60)) / 1000));
-	
-	if (showDays) display[0] = { top: days.toString().padStart(3, '0'), bottom: days.toString().padStart(3, '0'), transition: false };
-	if (showHours) display[showDays ? 1 : 0] = { top: hours.toString().padStart(2, '0'), bottom: hours.toString().padStart(2, '0'), transition: false };
-	if (showMinutes) display[showDays ? 2 : showHours ? 1 : 0] = { top: minutes.toString().padStart(2, '0'), bottom: minutes.toString().padStart(2, '0'), transition: false };
-	if (showSeconds) display[showDays ? 3 : showHours ? 2 : showMinutes ? 1 : 0] = { top: seconds.toString().padStart(2, '0'), bottom: seconds.toString().padStart(2, '0'), transition: false };
+
+	/* eslint-disable svelte/valid-compile */
+	let display = $state([
+		{
+			top: days.toString().padStart(3, '0'),
+			bottom: days.toString().padStart(3, '0'),
+			transition: false
+		},
+		{
+			top: hours.toString().padStart(2, '0'),
+			bottom: hours.toString().padStart(2, '0'),
+			transition: false
+		},
+		{
+			top: minutes.toString().padStart(2, '0'),
+			bottom: minutes.toString().padStart(2, '0'),
+			transition: false
+		},
+		{
+			top: seconds.toString().padStart(2, '0'),
+			bottom: seconds.toString().padStart(2, '0'),
+			transition: false
+		}
+	]);
+	/* eslint-enable svelte/valid-compile */
 
 	$effect(() => {
 		interval = setInterval(() => {
 			now = new Date();
 			const newData: string[] = [];
 
-			if (showDays) newData.push(days.toString().padStart(2, '0'));
-			if (showHours) newData.push(hours.toString().padStart(2, '0'));
-			if (showMinutes) newData.push(minutes.toString().padStart(2, '0'));
-			if (showSeconds) newData.push(seconds.toString().padStart(2, '0'));
+			newData.push(days.toString().padStart(2, '0'));
+			newData.push(hours.toString().padStart(2, '0'));
+			newData.push(minutes.toString().padStart(2, '0'));
+			newData.push(seconds.toString().padStart(2, '0'));
 			display = display.map(({ bottom }, i) => ({
 				top: newData[i],
 				bottom,
@@ -109,19 +108,11 @@
 			</div>
 		{/each}
 	</div>
-	<div class='flex justify-between mt-5 text-center max-w-[calc(100%-20px)]'>
-		{#if showDays}
-			<span class='text-sm w-[74px]'>{m.days()}</span>
-		{/if}
-		{#if showHours}
-			<span class='text-sm w-[74px]'>{m.hours()}</span>
-		{/if}
-		{#if showMinutes}
-			<span class='text-sm w-[74px]'>{m.minutes()}</span>
-		{/if}
-		{#if showSeconds}
-			<span class='text-sm w-[74px]'>{m.seconds()}</span>
-		{/if}
+	<div class="mt-5 flex max-w-[calc(100%-20px)] justify-between text-center">
+		<span class="w-[74px] text-sm">{m.days()}</span>
+		<span class="w-[74px] text-sm">{m.hours()}</span>
+		<span class="w-[74px] text-sm">{m.minutes()}</span>
+		<span class="w-[74px] text-sm">{m.seconds()}</span>
 	</div>
 </div>
 
