@@ -11,18 +11,17 @@
 		useful for you to easily find your way over here.
 	</p>
 	<h3>Flying</h3>
-	<p>
-		When flying to Belgium, you will most likely want to land at Brussels Airport (Zaventem) and use
-		the train to get to Antwerp. The train station is located in the airport itself, and you can
-		take a direct train to Antwerp. The train ride takes about 30 minutes. For this option you will
-		most likely fly with either Brussels Airlines or Austrian Airlines (if you're joining us from
-		Austria).
-	</p>
-	<p>
-		A cheaper option is to fly with Ryanair to either Eindhoven Airport (~1.5 hours to Antwerp) or
-		Charleroi South Airport (~2 hours to Antwerp). Alternatively, you could also take the NightJet
-		to Antwerp Central.
-	</p>
+	<p>You have a few options to travel to Antwerp:</p>
+	<ul class="list-disc">
+		<li>
+			Brussels Airport: 30 mins by train to Antwerp City Center (Austrian Airlines & Brussels
+			Airlines)
+		</li>
+		<li>Eindhoven Airpot: 2 hours by bus & train to Antwerp City Center (Ryanair)</li>
+		<li>Charleroi Airport: 2,5 hours by bus & train to Antwerp City Center (Ryanair)</li>
+		<li>Train: NightJet to Brussels (35 min train ride to Antwerp)</li>
+		<li>Car: if you're more the road trip type, it's 1100km from Vienna to Antwerp ;)</li>
+	</ul>
 	<h3>Hotels</h3>
 	<p>If you're looking for a place to stay in Antwerp, we recommend the following hotels:</p>
 	<ul class="list-disc">
@@ -66,14 +65,14 @@
 			> for trains, including the international trains to nearby cities, such as Brussels, Mechelen,
 			Gent or the beach (Oostende is our favorite).
 		</li>
+		<li>
+			Taxis are also an option, you can call one at
+			<Button size="inline" variant="link" href="tel:+32 3 238 38 38">+32 3 238 38 38</Button>
+			or get an <Button size="inline" variant="link" target="_blank" href="https://m.uber.com"
+				>Uber</Button
+			>.
+		</li>
 	</ul>
-	<p>
-		Taxis are also a good option, you can call one at
-		<Button size="inline" variant="link" href="tel:+32 3 238 38 38">+32 3 238 38 38</Button>
-		or get an <Button size="inline" variant="link" target="_blank" href="https://m.uber.com"
-			>Uber</Button
-		>.
-	</p>
 	<h3>General</h3>
 	<ul class="list-disc">
 		<li>Please make sure to bring your passport or ID card.</li>
