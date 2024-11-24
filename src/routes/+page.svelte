@@ -36,7 +36,7 @@
 	<title>{m.ourWedding()}</title>
 </svelte:head>
 
-<section class="w-full pt-8 md:pt-12 lg:pt-16 pb-12 md:pb-16 lg:pb-24">
+<section class="w-full pb-12 pt-8 md:pb-16 md:pt-12 lg:pb-24 lg:pt-16">
 	<div class="container px-4 md:px-6">
 		<div class="grid gap-6 lg:grid-cols-[1fr_500px] lg:gap-12 xl:grid-cols-[1fr_600px]">
 			<enhanced:img
@@ -46,7 +46,7 @@
 			/>
 			<div class="flex flex-col justify-center space-y-4">
 				<div class="space-y-2">
-					<h1 class="text-bold uppercase text-3xl sm:text-5xl xl:text-6xl/none">
+					<h1 class="text-bold text-3xl uppercase sm:text-5xl xl:text-6xl/none">
 						Charlotte &amp; Peter
 					</h1>
 					<p class="max-w-[600px] text-muted-foreground md:text-3xl">{formattedDate}</p>
@@ -58,37 +58,6 @@
 </section>
 
 <section class="w-full bg-muted py-12 md:py-24 lg:py-32">
-	<div class="container px-4 md:px-6">
-		<div class="flex flex-col items-center justify-center space-y-4 text-center">
-			<div class="space-y-2">
-				<h2 id="registry" class="font-fancy text-3xl sm:text-5xl">
-					{m.ourWeddingRegistry()}
-				</h2>
-				<p
-					class="max-w-[900px] text-muted-foreground md:text-xl/relaxed lg:text-base/relaxed xl:text-xl/relaxed"
-				>
-					Help us celebrate our special day by contributing to our wedding registry.
-				</p>
-			</div>
-			<div class="flex flex-col gap-2 min-[400px]:flex-row">
-				<a
-					class="inline-flex h-10 items-center justify-center rounded-md bg-primary px-8 text-sm font-medium text-primary-foreground shadow transition-colors hover:bg-primary/90 focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:pointer-events-none disabled:opacity-50"
-					href="#"
-				>
-					View Registry
-				</a>
-				<a
-					class="inline-flex h-10 items-center justify-center rounded-md border border-input bg-background px-8 text-sm font-medium shadow-sm transition-colors hover:bg-accent hover:text-accent-foreground focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:pointer-events-none disabled:opacity-50"
-					href="#"
-				>
-					Gift Ideas
-				</a>
-			</div>
-		</div>
-	</div>
-</section>
-
-<section class="w-full py-12 md:py-24 lg:py-32">
 	<div class="container px-4 md:px-6">
 		<div class="flex flex-col items-center justify-center space-y-4 text-center">
 			<div class="space-y-2">
@@ -123,48 +92,6 @@
 					>
 						RSVP
 					</button>
-				</form>
-			</div>
-		</div>
-	</div>
-</section>
-
-<section class="w-full bg-muted py-12 md:py-24 lg:py-32">
-	<div class="container px-4 md:px-6">
-		<div class="flex flex-col items-center justify-center space-y-4 text-center">
-			<div class="space-y-2">
-				<h2 id="contact" class="font-fancy text-3xl sm:text-5xl">{m.contactUs()}</h2>
-				<p
-					class="max-w-[900px] text-muted-foreground md:text-xl/relaxed lg:text-base/relaxed xl:text-xl/relaxed"
-				>
-					Have a question or need more information? Get in touch with us.
-				</p>
-			</div>
-			<div class="w-full max-w-sm space-y-2">
-				<form use:enhance method="POST" action="?/contact">
-					<FormField {form} name="name">
-						<FormControl let:attrs>
-							<FormLabel class="sr-only">{m.name()}</FormLabel>
-							<Input {...attrs} placeholder={m.yourName()} bind:value={$formData.name} />
-						</FormControl>
-						<FormFieldErrors />
-					</FormField>
-					<FormField {form} name="email">
-						<FormControl let:attrs>
-							<FormLabel class="sr-only">{m.email()}</FormLabel>
-							<Input {...attrs} placeholder={m.yourEmail()} bind:value={$formData.email} />
-						</FormControl>
-						<FormFieldErrors />
-					</FormField>
-					<FormField {form} name="message">
-						<FormControl let:attrs>
-							<FormLabel class="sr-only">{m.message()}</FormLabel>
-							<Textarea {...attrs} placeholder={m.yourMessage()} bind:value={$formData.message}
-							></Textarea>
-						</FormControl>
-						<FormFieldErrors />
-					</FormField>
-					<FormButton class="h-10 w-full" type="submit">{m.sendMessage()}</FormButton>
 				</form>
 			</div>
 		</div>

@@ -50,7 +50,7 @@
 				size="inline"
 				variant="link"
 				href="https://www.delijn.be/{languageTag()}">De Lijn</Button
-			> for Trams and Busses.
+			> for trams and busses.
 		</li>
 		<ul class="list-circle">
 			<li>A single ticket costs 2.40€ and is valid for 1 hour.</li>

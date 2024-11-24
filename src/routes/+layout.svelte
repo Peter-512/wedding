@@ -39,11 +39,8 @@
 						</Button>
 						<Button class="text-lg" variant="link" href="/timeline">Timeline</Button>
 						<Button class="text-lg" variant="link" href="/favorite-spots">Favorite spots</Button>
-						<Button class="text-lg" variant="link" href="/rsvp">
+						<Button class="text-lg" variant="link" href="/#rsvp">
 							{m.rsvp()}
-						</Button>
-						<Button class="text-lg" variant="link" href="/#contact">
-							{m.contact()}
 						</Button>
 					{/snippet}
 					{#snippet notMatch()}
@@ -55,8 +52,7 @@
 								<Item href="/travel-information">Travel information</Item>
 								<Item href="/timeline">Timeline</Item>
 								<Item href="/favorite-spots">Favorite spots</Item>
-								<Item href="/rsvp">{m.rsvp()}</Item>
-								<Item href="#contact">{m.contact()}</Item>
+								<Item href="/#rsvp">{m.rsvp()}</Item>
 							</DropdownMenuContent>
 						</DropdownMenu>
 					{/snippet}
