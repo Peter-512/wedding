@@ -9,6 +9,9 @@
 	import { FormFieldErrors, FormLabel } from '$lib/components/ui/form/index.js';
 	import { Textarea } from '$lib/components/ui/textarea';
 	import FlipClock from '$lib/components/FlipClock.svelte';
+	import { Shine, Tilt } from 'svelte-ux';
+	import imgSrc from '$lib/images/hands.jpg';
+	import MediaQuery from '$lib/components/MediaQuery.svelte';
 
 	let { data }: SuperValidated<Infer<FormSchema>> = $props();
 
@@ -39,11 +42,33 @@
 <section class="w-full pb-12 pt-8 md:pb-16 md:pt-12 lg:pb-24 lg:pt-16">
 	<div class="container px-4 md:px-6">
 		<div class="grid gap-6 lg:grid-cols-[1fr_500px] lg:gap-12 xl:grid-cols-[1fr_600px]">
-			<enhanced:img
-				src="../lib/images/hands.jpg"
-				alt="Wedding Hero"
-				class="mx-auto aspect-video overflow-hidden rounded-xl object-cover sm:w-full lg:order-last lg:aspect-square"
-			/>
+			<MediaQuery size="isAboveMD">
+				{#snippet match()}
+					<Shine
+						depth={3}
+						lightColor="#E6E6FA"
+						specularExponent={60}
+						specularConstant={0.35}
+						surfaceScale={5}
+						lightRadius={250}
+					>
+						<Tilt class="transition duration-500 [perspective:1500px] hover:scale-105">
+							<img
+								src={imgSrc}
+								alt="Wedding Hero"
+								class="mx-auto aspect-square overflow-hidden rounded-xl object-cover transition ease-out sm:w-full lg:order-last"
+							/>
+						</Tilt>
+					</Shine>
+				{/snippet}
+				{#snippet notMatch()}
+					<enhanced:img
+						src="../lib/images/hands.jpg"
+						alt="holding hands"
+						class="mx-auto aspect-square overflow-hidden rounded-xl object-cover sm:w-full lg:order-last"
+					/>
+				{/snippet}
+			</MediaQuery>
 			<div class="flex flex-col justify-center space-y-4">
 				<div class="space-y-2">
 					<h1 class="text-bold text-3xl uppercase sm:text-5xl xl:text-6xl/none">
@@ -62,7 +87,7 @@
 		<div class="flex flex-col items-center justify-center space-y-4 text-center">
 			<div class="space-y-2">
 				<h2 id="rsvp" class="font-fancy text-3xl sm:text-5xl">
-					{m.rsvp()}
+					🚧 {m.rsvp()} 🚧
 				</h2>
 				<p
 					class="max-w-[900px] text-muted-foreground md:text-xl/relaxed lg:text-base/relaxed xl:text-xl/relaxed"
@@ -87,6 +112,7 @@
 						placeholder="RSVP Message"
 					></textarea>
 					<button
+						disabled
 						class="inline-flex h-10 items-center justify-center whitespace-nowrap rounded-md bg-primary px-4 py-2 text-sm font-medium text-primary-foreground ring-offset-background transition-colors hover:bg-primary/90 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50"
 						type="submit"
 					>

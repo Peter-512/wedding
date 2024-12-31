@@ -25,8 +25,4 @@
 	{@render match()}
 {:else if notMatch && !matches}
 	{@render notMatch()}
-{:else}
-	{console.error(
-		`MediaQuery requires either a \`match\` or \`notMatch\` prop but neither was provided. Match: ${match}, Not Match: ${notMatch}`
-	)}
 {/if}
