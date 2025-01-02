@@ -75,7 +75,7 @@
 
 <div
 	class="clock"
-	style:width="calc((3ch + 0.5em) * {segmentsCount} + 0.1em * {segmentsCount - 1})"
+	style:width="calc((3ch) * {segmentsCount} + 0.25em * {segmentsCount - 1})"
 	style:font-size="{size * 2}em"
 	style:--flip-clock-text-color={textColor}
 	style:--flip-clock-background-color={backgroundColor}
@@ -108,11 +108,11 @@
 			</div>
 		{/each}
 	</div>
-	<div class="mt-5 flex max-w-[calc(100%-20px)] justify-between text-center">
-		<span class="w-[74px] text-sm">{m.days()}</span>
-		<span class="w-[74px] text-sm">{m.hours()}</span>
-		<span class="w-[74px] text-sm">{m.minutes()}</span>
-		<span class="w-[74px] text-sm">{m.seconds()}</span>
+	<div class="mt-5 flex flex-grow gap-1 text-center">
+		<span class="w-[80px] text-sm">{m.days()}</span>
+		<span class="w-[80px] text-sm">{m.hours()}</span>
+		<span class="w-[80px] text-sm">{m.minutes()}</span>
+		<span class="w-[80px] text-sm">{m.seconds()}</span>
 	</div>
 </div>
 
@@ -124,7 +124,7 @@
 	.base,
 	.overlay {
 		display: flex;
-		gap: 0.1em;
+		gap: 0.25em;
 	}
 	.overlay {
 		position: absolute;
@@ -144,7 +144,7 @@
 		position: relative;
 		color: var(--flip-clock-text-color);
 		height: 1.51em;
-		width: calc(3ch + 0.5em);
+		width: calc(3ch);
 		p {
 			background: var(--flip-clock-background-color);
 			margin: 0;

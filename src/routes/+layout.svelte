@@ -49,10 +49,10 @@
 								<MenuIcon />
 							</Trigger>
 							<DropdownMenuContent>
-								<Item href="/travel-information">Travel information</Item>
-								<Item href="/timeline">Timeline</Item>
-								<Item href="/favorite-spots">Favorite spots</Item>
-								<Item href="/#rsvp">{m.rsvp()}</Item>
+								<Item><a href="/travel-information">Travel information</a></Item>
+								<Item><a href="/timeline">Timeline</a></Item>
+								<Item><a href="/favorite-spots">Favorite spots</a></Item>
+								<Item><a href="/#rsvp">{m.rsvp()}</a></Item>
 							</DropdownMenuContent>
 						</DropdownMenu>
 					{/snippet}
