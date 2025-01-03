@@ -3,7 +3,8 @@
 	import { Shine } from 'svelte-ux';
 	import type { Snippet } from 'svelte';
 
-	const { children }: { children: Snippet } = $props();
+	const { children, displayForMobile = false }: { children: Snippet; displayForMobile?: boolean } =
+		$props();
 </script>
 
 <MediaQuery size="isAboveMD">
@@ -18,5 +19,10 @@
 		>
 			{@render children()}
 		</Shine>
+	{/snippet}
+	{#snippet notMatch()}
+		{#if displayForMobile}
+			{@render children()}
+		{/if}
 	{/snippet}
 </MediaQuery>

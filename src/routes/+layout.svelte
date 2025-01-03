@@ -31,7 +31,7 @@
 				<span class="sr-only">{m.wedding()}</span>
 			</Button>
 
-			<nav class="ml-auto mt-2 flex items-center gap-4 sm:gap-6">
+			<nav class="ml-auto flex items-center gap-4 sm:gap-6">
 				<MediaQuery size="isAboveMD">
 					{#snippet match()}
 						<Button class="text-lg" variant="link" href="/travel-information">

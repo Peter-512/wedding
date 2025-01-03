@@ -167,7 +167,7 @@
 			</ul>
 		</div>
 	</div>
-	<p>
+	<p class="mx-auto max-w-3xl">
 		As our final tip, we recommend the <Button
 			variant="link"
 			size="inline"
@@ -180,7 +180,7 @@
 	</p>
 	<div class="flex justify-center">
 		<div class="w-96">
-			<Image>
+			<Image displayForMobile={true}>
 				<enhanced:img
 					alt="Edfteling"
 					src="../../lib/images/efteling.jpg"

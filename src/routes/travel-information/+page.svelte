@@ -19,7 +19,7 @@
 				class="not-prose overflow-hidden rounded-xl object-cover transition ease-out sm:w-full lg:order-last"
 			/>
 		</Image>
-		<div>
+		<div class="order-first col-span-2 md:order-last md:col-span-1">
 			<h3>Flying</h3>
 			<p>You have a few options to travel to Antwerp:</p>
 			<ul class="list-disc">
@@ -36,7 +36,7 @@
 	</div>
 
 	<div class="grid grid-cols-[1fr,300px] items-start gap-4">
-		<div>
+		<div class="col-span-2 md:col-span-1">
 			<h3>Hotels</h3>
 			<p>If you're looking for a place to stay in Antwerp, we recommend the following hotels:</p>
 			<ul class="list-disc">
@@ -69,7 +69,7 @@
 				class="my-12 overflow-hidden rounded-xl object-cover transition ease-out sm:w-full lg:order-last"
 			/>
 		</Image>
-		<div>
+		<div class="order-first col-span-2 md:order-last md:col-span-1">
 			<h3>Transport</h3>
 			<p>
 				Antwerp has a decent public transport system, although it's best to calculate some extra
