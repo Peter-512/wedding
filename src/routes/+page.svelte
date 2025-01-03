@@ -34,6 +34,10 @@
 -->
 <svelte:head>
 	<title>{m.ourWedding()}</title>
+	<meta content={imgSrc} property="og:image" />
+	<meta content="3.8.2025 ❤️" property="og:title" />
+	<meta content="Charlotte's and Peter's wedding | 3.8.2025 ❤️" property="og:description" />
+	<meta content="https://wedding-beta-sooty-68.vercel.app/" property="og:url" />
 </svelte:head>
 
 <section class="w-full pb-12 pt-8 md:pb-16 md:pt-12 lg:pb-24 lg:pt-16">
@@ -137,6 +141,7 @@
 					<Button
 						class="inline-flex h-10 items-center justify-center whitespace-nowrap rounded-md bg-primary px-4 py-2 text-sm font-medium text-primary-foreground ring-offset-background transition-colors hover:bg-primary/90 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50"
 						type="submit"
+						disabled
 					>
 						RSVP
 					</Button>
