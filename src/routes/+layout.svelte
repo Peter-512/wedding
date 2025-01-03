@@ -69,14 +69,6 @@
 			<p class="text-xs text-muted-foreground">
 				© 2024 Charlotte &amp; Peter. All rights reserved.
 			</p>
-			<nav class="flex gap-4 sm:ml-auto sm:gap-2">
-				<Button variant="link" class="text-xs underline-offset-4 hover:underline" href="#"
-					>Privacy</Button
-				>
-				<Button variant="link" class="text-xs underline-offset-4 hover:underline" href="#"
-					>Terms</Button
-				>
-			</nav>
 		</footer>
 	</div>
 </ParaglideJS>
