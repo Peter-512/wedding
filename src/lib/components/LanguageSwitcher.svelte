@@ -17,19 +17,22 @@
 	const langs = {
 		en: 'English',
 		de: 'Deutsch',
-		nl: 'Nederlands',
-	}
+		nl: 'Nederlands'
+	};
 </script>
 
-<DropdownMenu preventScroll={false}>
+<DropdownMenu>
 	<Trigger>
 		{flags[languageTag()]}
 		<span class="sr-only">{m.language()}</span>
 	</Trigger>
 	<Content>
 		{#each availableLanguageTags as lang}
-			<Item href={currentPathWithoutLanguage} hreflang={lang}>
-				{flags[lang]} {langs[lang]}
+			<Item>
+				<a href={currentPathWithoutLanguage} hreflang={lang}>
+					{flags[lang]}
+					{langs[lang]}
+				</a>
 			</Item>
 		{/each}
 	</Content>

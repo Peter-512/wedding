@@ -1,5 +1,6 @@
 import svelteUX from 'svelte-ux/plugins/tailwind.cjs';
 import { fontFamily } from 'tailwindcss/defaultTheme';
+import tailwindCssAnimate from 'tailwindcss-animate';
 import typography from '@tailwindcss/typography';
 import type { Config } from 'tailwindcss';
 import colors from 'tailwindcss/colors';
@@ -19,6 +20,25 @@ const config: Config = {
 			screens: {
 				'2xl': '1400px'
 			}
+		},
+		keyframes: {
+			'accordion-down': {
+				from: { height: '0' },
+				to: { height: 'var(--bits-accordion-content-height)' }
+			},
+			'accordion-up': {
+				from: { height: 'var(--bits-accordion-content-height)' },
+				to: { height: '0' }
+			},
+			'caret-blink': {
+				'0%,70%,100%': { opacity: '1' },
+				'20%,50%': { opacity: '0' }
+			}
+		},
+		animation: {
+			'accordion-down': 'accordion-down 0.2s ease-out',
+			'accordion-up': 'accordion-up 0.2s ease-out',
+			'caret-blink': 'caret-blink 1.25s ease-out infinite'
 		},
 		extend: {
 			colors: {
@@ -67,7 +87,7 @@ const config: Config = {
 			}
 		}
 	},
-	plugins: [typography, svelteUX],
+	plugins: [typography, svelteUX, tailwindCssAnimate],
 	ux: {
 		themes: {
 			light: {

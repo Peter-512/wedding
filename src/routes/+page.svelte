@@ -1,22 +1,19 @@
 <script lang="ts">
 	import * as m from '$lib/paraglide/messages.js';
 	import { languageTag } from '$lib/paraglide/runtime';
-	import { formSchema, type FormSchema } from './contactSchema';
-	import { type SuperValidated, type Infer, superForm } from 'sveltekit-superforms';
+	import { formSchema } from './contactSchema';
+	import { superForm } from 'sveltekit-superforms';
 	import { zodClient } from 'sveltekit-superforms/adapters';
-	import { FormButton, FormField, FormControl } from '$lib/components/ui/form';
+	import { FormField, FormControl, FormFieldErrors, Button } from '$lib/components/ui/form';
 	import { Input } from '$lib/components/ui/input';
-	import { FormFieldErrors, FormLabel } from '$lib/components/ui/form/index.js';
-	import { Textarea } from '$lib/components/ui/textarea';
 	import FlipClock from '$lib/components/FlipClock.svelte';
 	import { Shine, Tilt } from 'svelte-ux';
 	import imgSrc from '$lib/images/hands.jpg';
 	import MediaQuery from '$lib/components/MediaQuery.svelte';
 
-	let { data }: SuperValidated<Infer<FormSchema>> = $props();
+	let { data } = $props();
 
-	const form = superForm(data, {
-		dataType: 'json',
+	const form = superForm(data.form, {
 		validators: zodClient(formSchema)
 	});
 
@@ -37,6 +34,10 @@
 -->
 <svelte:head>
 	<title>{m.ourWedding()}</title>
+	<meta content={imgSrc} property="og:image" />
+	<meta content="3.8.2025 ❤️" property="og:title" />
+	<meta content="Charlotte's and Peter's wedding | 3.8.2025 ❤️" property="og:description" />
+	<meta content="https://wedding-beta-sooty-68.vercel.app/" property="og:url" />
 </svelte:head>
 
 <section class="w-full pb-12 pt-8 md:pb-16 md:pt-12 lg:pb-24 lg:pt-16">
@@ -92,32 +93,58 @@
 				<p
 					class="max-w-[900px] text-muted-foreground md:text-xl/relaxed lg:text-base/relaxed xl:text-xl/relaxed"
 				>
-					Let us know if you'll be joining us on our special day.
+					Please let us know if you'll be joining us on our special day.
 				</p>
 			</div>
 			<div class="mx-auto w-full max-w-sm space-y-2">
-				<form class="flex flex-col gap-2">
-					<input
-						class="flex h-10 w-full max-w-lg flex-1 rounded-md border border-input bg-background px-3 py-2 text-sm ring-offset-background file:border-0 file:bg-transparent file:text-sm file:font-medium placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50"
-						type="text"
-						placeholder="Your Name"
-					/>
-					<input
-						class="flex h-10 w-full max-w-lg flex-1 rounded-md border border-input bg-background px-3 py-2 text-sm ring-offset-background file:border-0 file:bg-transparent file:text-sm file:font-medium placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50"
-						type="email"
-						placeholder="Your Email"
-					/>
-					<textarea
-						class="flex min-h-[80px] w-full max-w-lg flex-1 rounded-md border border-input bg-background px-3 py-2 text-sm ring-offset-background placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50"
-						placeholder="RSVP Message"
-					></textarea>
-					<button
-						disabled
+				<form method="POST" use:enhance class="flex flex-col gap-2">
+					<FormField {form} name="name">
+						<FormControl>
+							{#snippet children({ props })}
+								<Input
+									{...props}
+									class="flex h-10 w-full max-w-lg flex-1 rounded-md border border-input bg-background px-3 py-2 text-sm ring-offset-background file:border-0 file:bg-transparent file:text-sm file:font-medium placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50"
+									placeholder="Your Name"
+									bind:value={$formData.name}
+								/>
+							{/snippet}
+						</FormControl>
+						<FormFieldErrors />
+					</FormField>
+					<FormField {form} name="email">
+						<FormControl>
+							{#snippet children({ props })}
+								<Input
+									{...props}
+									class="flex h-10 w-full max-w-lg flex-1 rounded-md border border-input bg-background px-3 py-2 text-sm ring-offset-background file:border-0 file:bg-transparent file:text-sm file:font-medium placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50"
+									placeholder="Your Email"
+									bind:value={$formData.email}
+								/>
+							{/snippet}
+						</FormControl>
+						<FormFieldErrors />
+					</FormField>
+					<FormField {form} name="message">
+						<FormControl>
+							{#snippet children({ props })}
+								<Input
+									class="flex h-10 w-full max-w-lg flex-1 rounded-md border border-input bg-background px-3 py-2 text-sm ring-offset-background file:border-0 file:bg-transparent file:text-sm file:font-medium placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50"
+									placeholder="Any extra information, dietary restrictions, etc."
+									{...props}
+									bind:value={$formData.message}
+								></Input>
+							{/snippet}
+						</FormControl>
+						<FormFieldErrors />
+					</FormField>
+
+					<Button
 						class="inline-flex h-10 items-center justify-center whitespace-nowrap rounded-md bg-primary px-4 py-2 text-sm font-medium text-primary-foreground ring-offset-background transition-colors hover:bg-primary/90 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50"
 						type="submit"
+						disabled
 					>
 						RSVP
-					</button>
+					</Button>
 				</form>
 			</div>
 		</div>
