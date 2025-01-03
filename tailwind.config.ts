@@ -1,6 +1,5 @@
 import svelteUX from 'svelte-ux/plugins/tailwind.cjs';
 import { fontFamily } from 'tailwindcss/defaultTheme';
-import typography from '@tailwindcss/typography';
 import tailwindCssAnimate from 'tailwindcss-animate';
 import typography from '@tailwindcss/typography';
 import type { Config } from 'tailwindcss';
