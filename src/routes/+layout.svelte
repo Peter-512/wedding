@@ -21,7 +21,7 @@
 
 <ParaglideJS {i18n}>
 	<div class="prose-xl flex min-h-[100dvh] flex-col">
-		<header class="flex px-4 lg:px-6">
+		<header class="mt-3 flex px-4 lg:px-6">
 			<Button
 				variant="link"
 				class="self-center"
