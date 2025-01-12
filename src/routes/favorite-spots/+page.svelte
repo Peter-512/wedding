@@ -2,8 +2,7 @@
 	import { Button } from '$lib/components/ui/button';
 	import { languageTag } from '$lib/paraglide/runtime.js';
 	import Image from '$lib/components/Image.svelte';
-	import { Tilt } from 'svelte-ux';
-	import repasse from '$lib/images/repasse.jpg';
+	import * as m from '$lib/paraglide/messages.js';
 
 	const fallbackToEnglishWhenGermanNotAvailable = () => {
 		if (languageTag() === 'de') {
@@ -14,27 +13,26 @@
 </script>
 
 <section class="container">
-	<h2>Favorite spots</h2>
+	<h2>{m.fave_spots()}</h2>
 	<div class="grid grid-cols-[1fr,300px] items-start gap-4">
 		<div class="col-span-2 md:col-span-1">
-			<h3>Restaurants</h3>
+			<h3>{m.restaurants()}</h3>
 
 			<ul class="list-disc">
 				<li>
 					<Button target="_blank" href="https://www.repasse.be/" variant="link" size="inline"
 						>Repasse</Button
-					>: Classic Belgian dishes, of which a few are offered "en repasse", which means you can
-					get a second round if you're still hungry!
+					>: {m.alert_simple_gadfly_race()}
 				</li>
 				<li>
 					<Button target="_blank" href="https://www.brasseriewoods.be/" variant="link" size="inline"
 						>Brasserie Woods
-					</Button>: Cozy, with a big menu, located in the woods!
+					</Button>: {m.tame_fun_beaver_dart()}
 				</li>
 				<li>
 					<Button target="_blank" href="https://www.depottekijker.be/" variant="link" size="inline"
 						>De Pottekijker
-					</Button>: In the city center, small and cozy and with big portions and tasty dishes.
+					</Button>: {m.soft_ideal_camel_absorb()}
 				</li>
 				<li>
 					<Button
@@ -43,40 +41,35 @@
 						target="_blank"
 						href="https://www.holyguacamoly.be/nl/"
 						>Holy Guacamoly 🌱
-					</Button>: For more on the go, burrito bowls, taco's and all the good stuff.
+					</Button>: {m.vivid_keen_herring_rise()}
 				</li>
 				<li>
 					<Button variant="link" size="inline" target="_blank" href="https://brasseriedepelgrim.be/"
 						>De Pelgrim</Button
-					>: Across from the Brewery right around our corner. Especially a tip for those that like
-					beer
+					>: {m.proof_crisp_ox_dash()}
 				</li>
 				<li>
 					<Button variant="link" size="inline" target="_blank" href="https://poulepoulette.com/"
 						>Poule & Poulette 🌱</Button
-					>: Really good chicken with plenty of vegan options.
+					>: {m.sad_free_flamingo_ripple()}
 				</li>
 				<li>
 					<Button variant="link" size="inline" target="_blank" href="https://seoulclubhouse.com/"
 						>Seoul Club House</Button
-					>: Recently opened, Korean food and drinks with Karaoke and Pool tables upstairs.
+					>: {m.gray_antsy_grebe_hurl()}
 				</li>
 				<li>
 					<Button variant="link" size="inline" target="_blank" href="https://frituurlescluze.be/"
 						>Frituur Lescluze 🌱</Button
-					>: You can't visit Belgium and not go to a "Frituur". It's like getting Schnitzel in
-					Austria. Frituurs sell fries and meat (or vegan) dishes to go with the fries. They also
-					have a bunch of sauces to go along with it. Our recommendations are frieten met
-					satekruiden, mini lucifers, kippets and some stoofvleessaus and onions on the side. Also
-					try the curryworst (special), viandel, bitterballen and kippenvleugeltjes.
+					>: {m.smart_sleek_tapir_care()}
 				</li>
 				<li>
 					<Button variant="link" size="inline" target="_blank" href="http://www.frieterij.be/"
 						>De Friterij 🌱</Button
-					>: Homemade Frituur, less options but really good quality.
+					>: {m.drab_brave_chipmunk_walk()}
 				</li>
 			</ul>
-			🌱 = offers vegan options
+			🌱 = {m.topical_left_martin_grow()}
 		</div>
 		<div class="flex h-full flex-col justify-evenly">
 			<Image>
@@ -114,7 +107,7 @@
 			</Image>
 		</div>
 		<div class="col-span-2 md:col-span-1">
-			<h3>Activities</h3>
+			<h3>{m.activities()}</h3>
 			<ul class="list-disc">
 				<li>
 					<Button variant="link" size="inline" target="_blank" href="https://kraakfabriek.be/"
@@ -138,7 +131,7 @@
 					>
 						MAS - Museum aan de Stroom
 					</Button>
-					(first place we ever visited together!)
+					({m.whole_knotty_giraffe_tear()})
 				</li>
 				<li>
 					<Button
@@ -151,8 +144,8 @@
 					</Button>
 					- Koninklijk Museum voor Schone Kunsten Antwerpen
 				</li>
-				<li>Antwerp Central Station: The most beautiful train station in the world.</li>
-				<li>Meir (for shopping)</li>
+				<li>{m.noisy_teal_loris_win()}</li>
+				<li>Meir ({m.warm_large_angelfish_hush()})</li>
 				<li>
 					<Button
 						variant="link"
@@ -162,21 +155,21 @@
 					>
 						Vreemdelingenmarkt on Theaterplein
 					</Button>
-					(Saturday and Sunday)
+					({m.heavy_cute_dingo_zip()})
 				</li>
 			</ul>
 		</div>
 	</div>
 	<p class="mx-auto max-w-3xl">
-		As our final tip, we recommend the <Button
+		{m.smug_maroon_starfish_charm()}
+		<Button
 			variant="link"
 			size="inline"
 			target="_blank"
 			href="https://www.efteling.com/{languageTag()}"
 		>
 			Efteling
-		</Button>, a fairytale theme park in the Netherlands. It's about a one hour drive from Antwerp
-		and is a magical place for all and really a must-visit if you get the chance.
+		</Button>, {m.due_mean_cuckoo_greet()}
 	</p>
 	<div class="flex justify-center">
 		<div class="w-96">
