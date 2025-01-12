@@ -36,7 +36,7 @@
 	<title>{m.ourWedding()}</title>
 	<meta content={imgSrc} property="og:image" />
 	<meta content="3.8.2025 ❤️" property="og:title" />
-	<meta content="Charlotte's and Peter's wedding | 3.8.2025 ❤️" property="og:description" />
+	<meta content="Charlotte's and Peter's wedding" property="og:description" />
 	<meta content="https://wedding-beta-sooty-68.vercel.app/" property="og:url" />
 </svelte:head>
 
