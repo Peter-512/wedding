@@ -2,14 +2,14 @@
 	import { languageTag } from '$lib/paraglide/runtime.js';
 	import { Button } from '$lib/components/ui/button';
 	import Image from '$lib/components/Image.svelte';
+	import * as m from '$lib/paraglide/messages';
 </script>
 
 <section class="container">
-	<h2>Travel information</h2>
+	<h2>{m.travel_information()}</h2>
 
 	<p>
-		This page is for our dear internationals, traveling to Belgium. We hope this information is
-		useful for you to easily find your way over here.
+		{m.this_muddy_spider_surge()}
 	</p>
 	<div class="grid grid-cols-[300px,1fr] items-start gap-4">
 		<Image>
@@ -20,37 +20,36 @@
 			/>
 		</Image>
 		<div class="order-first col-span-2 md:order-last md:col-span-1">
-			<h3>Flying</h3>
-			<p>You have a few options to travel to Antwerp:</p>
+			<h3>{m.flying()}</h3>
+			<p>{m.small_even_halibut_aid()}</p>
 			<ul class="list-disc">
 				<li>
-					Brussels Airport: 30 mins by train to Antwerp City Center (Austrian Airlines & Brussels
-					Airlines)
+					{m.broad_loved_gull_gleam()}
 				</li>
-				<li>Eindhoven Airpot: 2 hours by bus & train to Antwerp City Center (Ryanair)</li>
-				<li>Charleroi Airport: 2,5 hours by bus & train to Antwerp City Center (Ryanair)</li>
-				<li>Train: NightJet to Brussels (35 min train ride to Antwerp)</li>
-				<li>Car: if you're more the road trip type, it's 1100km from Vienna to Antwerp ;)</li>
+				<li>{m.quaint_safe_parakeet_dash()}</li>
+				<li>{m.sea_major_cockroach_spur()}</li>
+				<li>{m.such_bad_okapi_nudge()}</li>
+				<li>{m.patient_cozy_slug_smile()}</li>
 			</ul>
 		</div>
 	</div>
 
 	<div class="grid grid-cols-[1fr,300px] items-start gap-4">
 		<div class="col-span-2 md:col-span-1">
-			<h3>Hotels</h3>
-			<p>If you're looking for a place to stay in Antwerp, we recommend the following hotels:</p>
+			<h3>{m.hotels()}</h3>
+			<p>{m.spicy_sunny_jaguar_accept()}</p>
 			<ul class="list-disc">
 				<li>
 					<Button size="inline" variant="link" target="_blank" href="https://www.colonie7.be/"
 						>Colonie 7</Button
-					>: Right across from the venue.
+					>: {m.round_alive_marlin_agree()}
 				</li>
 				<li>
 					<Button size="inline" variant="link" target="_blank" href="https://www.yust.com/antwerp/"
 						>Yust</Button
-					>: Close to our apartment and the city center.
+					>: {m.steep_each_quail_boost()}
 				</li>
-				<li>AirBnB and other hotels</li>
+				<li>{m.teary_east_lemming_achieve()}</li>
 			</ul>
 		</div>
 		<Image>
@@ -70,10 +69,9 @@
 			/>
 		</Image>
 		<div class="order-first col-span-2 md:order-last md:col-span-1">
-			<h3>Transport</h3>
+			<h3>{m.transport()}</h3>
 			<p>
-				Antwerp has a decent public transport system, although it's best to calculate some extra
-				time as it can be a bit unreliable.
+				{m.busy_knotty_grizzly_belong()}
 			</p>
 			<ul class="list-disc">
 				<li>
@@ -82,12 +80,13 @@
 						size="inline"
 						variant="link"
 						href="https://www.delijn.be/{languageTag()}">De Lijn</Button
-					> for trams and busses.
+					>
+					{m.red_deft_eel_spark()}
 				</li>
 				<ul class="list-circle">
-					<li>A single ticket costs 2.40€ and is valid for 1 hour.</li>
-					<li>You can buy a day ticket for 7.50€.</li>
-					<li>There are also 10-ride tickets available for 17€ via the app.</li>
+					<li>{m.merry_empty_swallow_gasp()}</li>
+					<li>{m.patchy_front_horse_bake()}</li>
+					<li>{m.major_novel_marmot_zap()}</li>
 				</ul>
 				<li>
 					<Button
@@ -95,38 +94,34 @@
 						size="inline"
 						variant="link"
 						href="https://www.belgiantrain.be/{languageTag()}">NMBS</Button
-					> for trains, including the international trains to nearby cities, such as Brussels, Mechelen,
-					Gent or the beach (Oostende is our favorite).
+					>
+					{m.antsy_super_jellyfish_stir()}
 				</li>
 				<li>
-					Taxis are also an option, you can call one at
-					<Button size="inline" variant="link" href="tel:+32 3 238 38 38">+32 3 238 38 38</Button>
-					or get an <Button size="inline" variant="link" target="_blank" href="https://m.uber.com"
+					{m.true_cuddly_deer_accept()}
+					<Button size="inline" variant="link" href="tel:+32 3 238 38 38">+32 3 238 38 38</Button>.
+					{m.crazy_vexed_panda_tickle()}
+					<Button size="inline" variant="link" target="_blank" href="https://m.uber.com"
 						>Uber</Button
 					>.
 				</li>
 			</ul>
 		</div>
 	</div>
-	<h3>General</h3>
+	<h3>{m.general()}</h3>
 	<ul class="list-disc">
-		<li>Please make sure to bring your passport or ID card.</li>
-		<li>Paying by card is encouraged by almost all places and preferred to cash payments.</li>
+		<li>{m.topical_cute_seal_cheer()}</li>
+		<li>{m.nimble_left_oryx_enrich()}</li>
 		<li>
-			There are a lot of bikers in Antwerp, like a lot. Please make sure you never walk on the bike
-			paths. You can recognize them because they are often marked red, or because there's a stripe
-			on the street between pedestrians and bike paths. When crossing the street, always check for
-			bikes before crossing.
+			{m.cozy_gross_jay_aid()}
 		</li>
 		<li>
-			The main language in Antwerp is Dutch, but most people also speak English. When you go more
-			south (to Brussels) you will hear more French as well.
+			{m.arable_hour_coyote_feel()}
 		</li>
-		<li>If you have any questions or need help, don't hesitate to contact us!</li>
+		<li>{m.white_actual_squid_pat()}</li>
 	</ul>
 	<p>
-		If you're planning to stay in Belgium for a little longer we have collected some of our favorite
-		places to visit and activities to do in Antwerp which you can find
+		{m.proud_mad_scallop_pave()}
 		<Button size="inline" variant="link" href="/favorite-spots">here</Button>.
 	</p>
 </section>
