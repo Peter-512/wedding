@@ -1,5 +1,6 @@
 <script lang="ts">
 	import { cls, Timeline, TimelineEvent } from 'svelte-ux';
+	import * as m from '$lib/paraglide/messages';
 	import {
 		mdiSilverwareForkKnife,
 		mdiPartyPopper,
@@ -18,32 +19,32 @@
 	const data: TimelineEntry[] = [
 		{
 			time: '14:30',
-			title: 'Doors open',
-			description: 'And so it begins...',
+			title: m.doors_open_title(),
+			description: m.doors_open(),
 			icon: mdiDoorOpen
 		},
 		{
 			time: '15:00',
-			title: 'Ceremony',
-			description: "We gettin' married!!!",
+			title: m.ceremony_title(),
+			description: m.ceremony(),
 			icon: mdiRing
 		},
 		{
 			time: '16:00',
-			title: 'Reception',
-			description: 'Some snacks and chilling out.',
+			title: m.reception_title(),
+			description: m.reception(),
 			icon: mdiGlassCocktail
 		},
 		{
 			time: '18:30',
-			title: 'Dinner',
-			description: 'Fooooooood',
+			title: m.dinner_title(),
+			description: m.dinner(),
 			icon: mdiSilverwareForkKnife
 		},
 		{
 			time: '21:00',
-			title: 'Party',
-			description: 'Paaarteeeyyyy',
+			title: m.party_title(),
+			description: m.party(),
 			icon: mdiPartyPopper
 		}
 	];
