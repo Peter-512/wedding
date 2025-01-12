@@ -1,6 +1,5 @@
 <script lang="ts">
 	import * as m from '$lib/paraglide/messages.js';
-	import { languageTag } from '$lib/paraglide/runtime';
 
 	import {
 		DropdownMenuContent,
@@ -22,11 +21,7 @@
 <ParaglideJS {i18n}>
 	<div class="prose-xl flex min-h-[100dvh] flex-col">
 		<header class="mt-3 flex px-4 lg:px-6">
-			<Button
-				variant="link"
-				class="self-center"
-				href="/{languageTag() === 'en' ? '' : languageTag()}"
-			>
+			<Button variant="link" class="self-center" href="/">
 				<Heart />
 				<span class="sr-only">{m.wedding()}</span>
 			</Button>
