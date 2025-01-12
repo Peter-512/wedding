@@ -17,7 +17,7 @@
 
 	const data: TimelineEntry[] = [
 		{
-			time: '14:00',
+			time: '14:30',
 			title: 'Doors open',
 			description: 'And so it begins...',
 			icon: mdiDoorOpen
@@ -35,13 +35,13 @@
 			icon: mdiGlassCocktail
 		},
 		{
-			time: '18:00',
+			time: '18:30',
 			title: 'Dinner',
 			description: 'Fooooooood',
 			icon: mdiSilverwareForkKnife
 		},
 		{
-			time: '20:00',
+			time: '21:00',
 			title: 'Party',
 			description: 'Paaarteeeyyyy',
 			icon: mdiPartyPopper
