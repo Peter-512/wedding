@@ -98,9 +98,10 @@
 					{m.antsy_super_jellyfish_stir()}
 				</li>
 				<li>
+					<Button size="inline" variant="link" href="tel:+32 3 238 38 38"
+						>Taxis (+32 3 238 38 38)</Button
+					>
 					{m.true_cuddly_deer_accept()}
-					<Button size="inline" variant="link" href="tel:+32 3 238 38 38">+32 3 238 38 38</Button>.
-					{m.crazy_vexed_panda_tickle()}
 					<Button size="inline" variant="link" target="_blank" href="https://m.uber.com"
 						>Uber</Button
 					>.
@@ -121,7 +122,6 @@
 		<li>{m.white_actual_squid_pat()}</li>
 	</ul>
 	<p>
-		{m.proud_mad_scallop_pave()}
-		<Button size="inline" variant="link" href="/favorite-spots">here</Button>.
+		{@html m.proud_mad_scallop_pave({ favorites: m.favorites() })}
 	</p>
 </section>
