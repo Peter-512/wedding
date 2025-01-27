@@ -44,10 +44,22 @@
 								<MenuIcon />
 							</Trigger>
 							<DropdownMenuContent>
-								<Item><a href="/travel-information">{m.travel_information()}</a></Item>
-								<Item><a href="/timeline">{m.timeline()}</a></Item>
-								<Item><a href="/favorite-spots">{m.fave_spots()}</a></Item>
-								<Item><a href="/#rsvp">{m.rsvp()}</a></Item>
+								<Item
+									><Button class="text-lg" variant="link" href="/travel-information"
+										>{m.travel_information()}</Button
+									></Item
+								>
+								<Item
+									><Button class="text-lg" variant="link" href="/timeline">{m.timeline()}</Button
+									></Item
+								>
+								<Item
+									><Button class="text-lg" variant="link" href="/favorite-spots"
+										>{m.fave_spots()}</Button
+									></Item
+								>
+								<Item><Button class="text-lg" variant="link" href="/#rsvp">{m.rsvp()}</Button></Item
+								>
 							</DropdownMenuContent>
 						</DropdownMenu>
 					{/snippet}
