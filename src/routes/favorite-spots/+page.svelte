@@ -142,7 +142,7 @@
 					>
 						KMSK
 					</Button>
-					- Koninklijk Museum voor Schone Kunsten Antwerpen
+					- {m.kmsk()}
 				</li>
 				<li>{m.noisy_teal_loris_win()}</li>
 				<li>Meir ({m.warm_large_angelfish_hush()})</li>
@@ -153,7 +153,7 @@
 						target="_blank"
 						href="https://maps.app.goo.gl/48269UYHjt5kh8Z69"
 					>
-						Vreemdelingenmarkt on Theaterplein
+						Vreemdelingenmarkt Theaterplein
 					</Button>
 					({m.heavy_cute_dingo_zip()})
 				</li>
@@ -161,15 +161,8 @@
 		</div>
 	</div>
 	<p class="mx-auto max-w-3xl">
-		{m.smug_maroon_starfish_charm()}
-		<Button
-			variant="link"
-			size="inline"
-			target="_blank"
-			href="https://www.efteling.com/{languageTag()}"
-		>
-			Efteling
-		</Button>, {m.due_mean_cuckoo_greet()}
+		<!-- eslint-disable-next-line svelte/no-at-html-tags -->
+		{@html m.due_mean_cuckoo_greet({ url: `https://www.efteling.com/${languageTag()}` })}
 	</p>
 	<div class="flex justify-center">
 		<div class="w-96">
