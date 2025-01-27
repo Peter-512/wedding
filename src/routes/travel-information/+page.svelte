@@ -122,6 +122,7 @@
 		<li>{m.white_actual_squid_pat()}</li>
 	</ul>
 	<p>
+		<!-- eslint-disable-next-line svelte/no-at-html-tags -->
 		{@html m.proud_mad_scallop_pave({ favorites: m.favorites() })}
 	</p>
 </section>
