@@ -93,7 +93,7 @@
 				<p
 					class="max-w-[900px] text-muted-foreground md:text-xl/relaxed lg:text-base/relaxed xl:text-xl/relaxed"
 				>
-					Please let us know if you'll be joining us on our special day.
+					Please let us know if you'll be joining us on our special day
 				</p>
 			</div>
 			<div class="mx-auto w-full max-w-sm space-y-2">
