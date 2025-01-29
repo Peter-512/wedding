@@ -46,14 +46,16 @@
 			<MediaQuery size="isAboveMD">
 				{#snippet match()}
 					<Shine
-						depth={3}
-						lightColor="#E6E6FA"
-						specularExponent={60}
-						specularConstant={0.35}
-						surfaceScale={5}
-						lightRadius={250}
+						depth={10}
+						lightColor="#D3D3FF"
+						specularExponent={80}
+						specularConstant={0.2}
+						lightRadius={120}
 					>
-						<Tilt class="transition duration-500 [perspective:1500px] hover:scale-105">
+						<Tilt
+							maxRotation={5}
+							class="transition duration-500 [perspective:1500px] hover:scale-[1.02]"
+						>
 							<img
 								src={imgSrc}
 								alt="Wedding Hero"
