@@ -103,3 +103,9 @@
 		</div>
 	</div>
 </section>
+
+<section class="w-full pb-12 pt-8 md:pb-16 md:pt-12 lg:pb-24 lg:pt-16">
+	<div class="container px-4 md:px-6">
+		<h2 class="text-center font-fancy text-3xl sm:text-5xl">Guestbook</h2>
+	</div>
+</section>
