@@ -1,23 +1,11 @@
 <script lang="ts">
 	import * as m from '$lib/paraglide/messages.js';
 	import { languageTag } from '$lib/paraglide/runtime';
-	import { formSchema } from './contactSchema';
-	import { superForm } from 'sveltekit-superforms';
-	import { zodClient } from 'sveltekit-superforms/adapters';
-	import { FormField, FormControl, FormFieldErrors, Button } from '$lib/components/ui/form';
-	import { Input } from '$lib/components/ui/input';
+	import { Button } from '$lib/components/ui/button';
 	import FlipClock from '$lib/components/FlipClock.svelte';
 	import { Shine, Tilt } from 'svelte-ux';
 	import imgSrc from '$lib/images/hands.jpg';
 	import MediaQuery from '$lib/components/MediaQuery.svelte';
-
-	let { data } = $props();
-
-	const form = superForm(data.form, {
-		validators: zodClient(formSchema)
-	});
-
-	const { form: formData, enhance } = form;
 
 	const weddingDate = new Date('2025-08-03T00:00:00');
 	const formattedDate = weddingDate.toLocaleDateString(languageTag(), {
@@ -90,65 +78,28 @@
 		<div class="flex flex-col items-center justify-center space-y-4 text-center">
 			<div class="space-y-2">
 				<h2 id="rsvp" class="font-fancy text-3xl sm:text-5xl">
-					🚧 {m.rsvp()} 🚧
+					{m.rsvp()}
 				</h2>
 				<p
 					class="max-w-[900px] text-muted-foreground md:text-xl/relaxed lg:text-base/relaxed xl:text-xl/relaxed"
 				>
-					Please let us know if you'll be joining us on our special day.
+					{m.rsvp_description()}
 				</p>
 			</div>
-			<div class="mx-auto w-full max-w-sm space-y-2">
-				<form method="POST" use:enhance class="flex flex-col gap-2">
-					<FormField {form} name="name">
-						<FormControl>
-							{#snippet children({ props })}
-								<Input
-									{...props}
-									class="flex h-10 w-full max-w-lg flex-1 rounded-md border border-input bg-background px-3 py-2 text-sm ring-offset-background file:border-0 file:bg-transparent file:text-sm file:font-medium placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50"
-									placeholder="Your Name"
-									bind:value={$formData.name}
-								/>
-							{/snippet}
-						</FormControl>
-						<FormFieldErrors />
-					</FormField>
-					<FormField {form} name="email">
-						<FormControl>
-							{#snippet children({ props })}
-								<Input
-									{...props}
-									class="flex h-10 w-full max-w-lg flex-1 rounded-md border border-input bg-background px-3 py-2 text-sm ring-offset-background file:border-0 file:bg-transparent file:text-sm file:font-medium placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50"
-									placeholder="Your Email"
-									bind:value={$formData.email}
-								/>
-							{/snippet}
-						</FormControl>
-						<FormFieldErrors />
-					</FormField>
-					<FormField {form} name="message">
-						<FormControl>
-							{#snippet children({ props })}
-								<Input
-									class="flex h-10 w-full max-w-lg flex-1 rounded-md border border-input bg-background px-3 py-2 text-sm ring-offset-background file:border-0 file:bg-transparent file:text-sm file:font-medium placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50"
-									placeholder="Any extra information, dietary restrictions, etc."
-									{...props}
-									bind:value={$formData.message}
-								></Input>
-							{/snippet}
-						</FormControl>
-						<FormFieldErrors />
-					</FormField>
-
-					<Button
-						class="inline-flex h-10 items-center justify-center whitespace-nowrap rounded-md bg-primary px-4 py-2 text-sm font-medium text-primary-foreground ring-offset-background transition-colors hover:bg-primary/90 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50"
-						type="submit"
-						disabled
-					>
-						RSVP
-					</Button>
-				</form>
-			</div>
+			<Button
+				variant="cta"
+				target="_blank"
+				href="https://www.icloud.com/invites/07d2A65KIyUtlH36b4JE5xCLQ"
+			>
+				{m.rsvp_cta()}
+			</Button>
+			<Button
+				variant="link"
+				target="_blank"
+				href="https://apps.apple.com/be/app/apple-invites/id6472498645"
+			>
+				{m.rsvp_download_app()}
+			</Button>
 		</div>
 	</div>
 </section>
