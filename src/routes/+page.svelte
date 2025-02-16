@@ -6,6 +6,17 @@
 	import { Shine, Tilt } from 'svelte-ux';
 	import imgSrc from '$lib/images/hands.jpg';
 	import MediaQuery from '$lib/components/MediaQuery.svelte';
+	import { Textarea } from '$lib/components/ui/textarea';
+	import { Input } from '$lib/components/ui/input';
+	import { formatDistanceToNow } from 'date-fns';
+	import { de, enUS, nlBE } from 'date-fns/locale';
+	import { PUBLIC_SUPABASE_URL, PUBLIC_SUPABASE_ANON_KEY } from '$env/static/public';
+	import { createClient } from '@supabase/supabase-js';
+	import { error } from '@sveltejs/kit';
+
+	const locale = languageTag() === 'en' ? enUS : languageTag() === 'de' ? de : nlBE;
+
+	const supabase = createClient(PUBLIC_SUPABASE_URL, PUBLIC_SUPABASE_ANON_KEY);
 
 	const weddingDate = new Date('2025-08-03T00:00:00');
 	const formattedDate = weddingDate.toLocaleDateString(languageTag(), {
@@ -14,6 +25,32 @@
 		day: 'numeric',
 		weekday: 'long'
 	});
+
+	type Entry = {
+		name: string;
+		message: string;
+		timestamp: number;
+	};
+
+	let { data } = $props();
+
+	let entries = $state<Entry[]>(data.guestbook);
+	let name = $state('');
+	let message = $state('');
+
+	const addEntry = async () => {
+		if (name.trim() && message.trim()) {
+			const timestamp = Date.now();
+			entries.unshift({ name, message, timestamp });
+			const { error: supaError } = await supabase
+				.from('guestbook')
+				.insert({ name, message, timestamp: new Date(timestamp) });
+			if (supaError) return error(500, `Something went wrong`);
+
+			name = '';
+			message = '';
+		}
+	};
 </script>
 
 <!--
@@ -105,7 +142,31 @@
 </section>
 
 <section class="w-full pb-12 pt-8 md:pb-16 md:pt-12 lg:pb-24 lg:pt-16">
-	<div class="container px-4 md:px-6">
-		<h2 class="text-center font-fancy text-3xl sm:text-5xl">Guestbook</h2>
+	<div class="container max-w-3xl px-4 md:px-6">
+		<h2 class="text-center font-fancy text-3xl sm:text-5xl">{m.guestbook()}</h2>
+		<div class="mx-auto max-w-lg space-y-2">
+			<Input placeholder={m.yourName()} bind:value={name} class="w-full rounded-lg border p-2" />
+			<Textarea
+				placeholder={m.yourMessage()}
+				bind:value={message}
+				class="w-full rounded-lg border p-2"
+			/>
+			<Button onclick={addEntry} class="w-full">{m.sign_guestbook()}</Button>
+		</div>
+		<div class="not-prose mt-6 space-y-4 rounded-lg p-4">
+			{#each entries as { name, message, timestamp }}
+				<div class="border-b pb-2 last:border-b-0">
+					<p class="text-xl font-semibold">{name}</p>
+					<p class="text-base text-gray-700">{message}</p>
+					<p class="text-xs text-gray-500">
+						{formatDistanceToNow(timestamp, {
+							addSuffix: true,
+							includeSeconds: true,
+							locale: locale
+						})}
+					</p>
+				</div>
+			{/each}
+		</div>
 	</div>
 </section>
