@@ -9,12 +9,12 @@
 	import { Textarea } from '$lib/components/ui/textarea';
 	import { Input } from '$lib/components/ui/input';
 	import { formatDistanceToNow } from 'date-fns';
-	import { de, enUS, nlBE } from 'date-fns/locale';
 	import { PUBLIC_SUPABASE_URL, PUBLIC_SUPABASE_ANON_KEY } from '$env/static/public';
 	import { createClient } from '@supabase/supabase-js';
 	import { error } from '@sveltejs/kit';
+	import { getCurrentLocale } from '$lib/utils';
 
-	const locale = languageTag() === 'en' ? enUS : languageTag() === 'de' ? de : nlBE;
+	let locale = getCurrentLocale();
 
 	const supabase = createClient(PUBLIC_SUPABASE_URL, PUBLIC_SUPABASE_ANON_KEY);
 
