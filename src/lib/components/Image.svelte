@@ -10,12 +10,12 @@
 <MediaQuery size="isAboveMD">
 	{#snippet match()}
 		<Shine
-			depth={3}
-			lightColor="#E6E6FA"
-			specularExponent={60}
-			specularConstant={0.35}
+			depth={10}
+			lightColor="#D3D3FF"
+			specularExponent={80}
+			specularConstant={0.2}
 			surfaceScale={5}
-			lightRadius={250}
+			lightRadius={120}
 		>
 			{@render children()}
 		</Shine>

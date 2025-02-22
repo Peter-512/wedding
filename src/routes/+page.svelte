@@ -75,6 +75,7 @@
 						lightColor="#D3D3FF"
 						specularExponent={80}
 						specularConstant={0.2}
+						surfaceScale={5}
 						lightRadius={120}
 					>
 						<Tilt
