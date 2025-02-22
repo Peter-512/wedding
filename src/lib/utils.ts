@@ -1,4 +1,6 @@
 import type { TransitionConfig } from 'svelte/transition';
+import { languageTag } from '$lib/paraglide/runtime';
+import { de, enUS, nlBE } from 'date-fns/locale';
 import { type ClassValue, clsx } from 'clsx';
 import { twMerge } from 'tailwind-merge';
 import { cubicOut } from 'svelte/easing';
@@ -54,3 +56,16 @@ export const flyAndScale = (
 		easing: cubicOut
 	};
 };
+
+export function getCurrentLocale() {
+	switch (languageTag()) {
+		case 'en':
+			return enUS;
+		case 'de':
+			return de;
+		case 'nl':
+			return nlBE;
+		default:
+			return enUS;
+	}
+}

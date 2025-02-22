@@ -3,10 +3,10 @@
 	import { Content, Item, DropdownMenu, Trigger } from '$lib/components/ui/dropdown-menu/index';
 	import { i18n } from '$lib/i18n';
 	import { languageTag } from '$lib/paraglide/runtime.js';
-	import { page } from '$app/stores';
+	import { page } from '$app/state';
 	import * as m from '$lib/paraglide/messages.js';
 
-	const currentPathWithoutLanguage = $derived.by(() => i18n.route($page.url.pathname));
+	const currentPathWithoutLanguage = $derived.by(() => i18n.route(page.url.pathname));
 
 	const flags = {
 		en: '🇺🇸',
@@ -28,12 +28,12 @@
 	</Trigger>
 	<Content>
 		{#each availableLanguageTags as lang}
-			<Item>
-				<a href={currentPathWithoutLanguage} hreflang={lang}>
+			<a href={currentPathWithoutLanguage} hreflang={lang}>
+				<Item>
 					{flags[lang]}
 					{langs[lang]}
-				</a>
-			</Item>
+				</Item>
+			</a>
 		{/each}
 	</Content>
 </DropdownMenu>

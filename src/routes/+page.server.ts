@@ -1,35 +1,16 @@
-import { UPSTASH_REDIS_REST_TOKEN, UPSTASH_REDIS_REST_URL } from '$env/static/private';
-import { superValidate } from 'sveltekit-superforms/server';
-import { zod } from 'sveltekit-superforms/adapters';
-import type { PageServerLoad } from './$types.js';
-import { formSchema } from './contactSchema';
-import type { Actions } from './$types';
-import { Redis } from '@upstash/redis';
-import { fail } from '@sveltejs/kit';
-
-const redis = new Redis({
-	url: UPSTASH_REDIS_REST_URL,
-	token: UPSTASH_REDIS_REST_TOKEN
-});
+import { PUBLIC_SUPABASE_URL, PUBLIC_SUPABASE_ANON_KEY } from '$env/static/public';
+import { createClient } from '@supabase/supabase-js';
+import type { PageServerLoad } from './$types';
+import { error } from '@sveltejs/kit';
 
 export const load: PageServerLoad = async () => {
-	return {
-		form: await superValidate(zod(formSchema))
-	};
+	const supabase = createClient(PUBLIC_SUPABASE_URL, PUBLIC_SUPABASE_ANON_KEY);
+
+	const { data: guestbook, error: supaError } = await supabase
+		.from('guestbook')
+		.select('timestamp, name, message')
+		.order('timestamp', { ascending: false });
+	if (supaError) return error(500, 'Something went wrong');
+
+	return { guestbook };
 };
-
-export const actions = {
-	default: async (event) => {
-		const form = await superValidate(event, zod(formSchema));
-		if (!form.valid) {
-			return fail(400, { form });
-		}
-
-		const { name, email, message } = form.data;
-
-		await redis.set(name, { email, message });
-		const keys = await redis.keys('');
-		console.log(keys);
-		return { form };
-	}
-} satisfies Actions;
