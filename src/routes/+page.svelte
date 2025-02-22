@@ -114,7 +114,7 @@
 	<div class="container px-4 md:px-6">
 		<div class="flex flex-col items-center justify-center space-y-4 text-center">
 			<div class="space-y-2">
-				<h2 id="rsvp" class="text-3xl uppercase sm:text-5xl">
+				<h2 id="rsvp" class="mt-0 text-3xl uppercase sm:text-5xl">
 					{m.rsvp()}
 				</h2>
 				<p
@@ -134,9 +134,9 @@
 	</div>
 </section>
 
-<section class="w-full pb-12 pt-8 md:pb-16 md:pt-12 lg:pb-24 lg:pt-16">
+<section class="w-full pb-12 pt-12 md:pb-16 md:pt-24 lg:pb-24 lg:pt-32">
 	<div class="container max-w-3xl px-4 md:px-6">
-		<h2 class="text-center text-3xl uppercase sm:text-5xl">{m.guestbook()}</h2>
+		<h2 class="mt-0 text-center text-3xl uppercase sm:text-5xl">{m.guestbook()}</h2>
 		<div class="mx-auto max-w-lg space-y-2">
 			<Input placeholder={m.yourName()} bind:value={name} class="w-full rounded-lg border p-2" />
 			<Textarea
