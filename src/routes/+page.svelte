@@ -130,13 +130,6 @@
 			>
 				{m.rsvp_cta()}
 			</Button>
-			<Button
-				variant="link"
-				target="_blank"
-				href="https://apps.apple.com/be/app/apple-invites/id6472498645"
-			>
-				{m.rsvp_download_app()}
-			</Button>
 		</div>
 	</div>
 </section>
