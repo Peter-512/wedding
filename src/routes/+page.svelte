@@ -6,6 +6,17 @@
 	import { Shine, Tilt } from 'svelte-ux';
 	import imgSrc from '$lib/images/hands.jpg';
 	import MediaQuery from '$lib/components/MediaQuery.svelte';
+	import { Textarea } from '$lib/components/ui/textarea';
+	import { Input } from '$lib/components/ui/input';
+	import { formatDistanceToNow } from 'date-fns';
+	import { PUBLIC_SUPABASE_URL, PUBLIC_SUPABASE_ANON_KEY } from '$env/static/public';
+	import { createClient } from '@supabase/supabase-js';
+	import { error } from '@sveltejs/kit';
+	import { getCurrentLocale } from '$lib/utils';
+
+	let locale = getCurrentLocale();
+
+	const supabase = createClient(PUBLIC_SUPABASE_URL, PUBLIC_SUPABASE_ANON_KEY);
 
 	const weddingDate = new Date('2025-08-03T00:00:00');
 	const formattedDate = weddingDate.toLocaleDateString(languageTag(), {
@@ -14,6 +25,32 @@
 		day: 'numeric',
 		weekday: 'long'
 	});
+
+	type Entry = {
+		name: string;
+		message: string;
+		timestamp: number;
+	};
+
+	let { data } = $props();
+
+	let entries = $state<Entry[]>(data.guestbook);
+	let name = $state('');
+	let message = $state('');
+
+	const addEntry = async () => {
+		if (name.trim() && message.trim()) {
+			const timestamp = Date.now();
+			entries.unshift({ name, message, timestamp });
+			const { error: supaError } = await supabase
+				.from('guestbook')
+				.insert({ name, message, timestamp: new Date(timestamp) });
+			if (supaError) return error(500, `Something went wrong`);
+
+			name = '';
+			message = '';
+		}
+	};
 </script>
 
 <!--
@@ -38,6 +75,7 @@
 						lightColor="#D3D3FF"
 						specularExponent={80}
 						specularConstant={0.2}
+						surfaceScale={5}
 						lightRadius={120}
 					>
 						<Tilt
@@ -77,7 +115,7 @@
 	<div class="container px-4 md:px-6">
 		<div class="flex flex-col items-center justify-center space-y-4 text-center">
 			<div class="space-y-2">
-				<h2 id="rsvp" class="font-fancy text-3xl sm:text-5xl">
+				<h2 id="rsvp" class="mt-0 text-3xl uppercase sm:text-5xl">
 					{m.rsvp()}
 				</h2>
 				<p
@@ -93,13 +131,36 @@
 			>
 				{m.rsvp_cta()}
 			</Button>
-			<Button
-				variant="link"
-				target="_blank"
-				href="https://apps.apple.com/be/app/apple-invites/id6472498645"
-			>
-				{m.rsvp_download_app()}
-			</Button>
+		</div>
+	</div>
+</section>
+
+<section class="w-full pb-12 pt-12 md:pb-16 md:pt-24 lg:pb-24 lg:pt-32">
+	<div class="container max-w-3xl px-4 md:px-6">
+		<h2 class="mt-0 text-center text-3xl uppercase sm:text-5xl">{m.guestbook()}</h2>
+		<div class="mx-auto max-w-lg space-y-2">
+			<Input placeholder={m.yourName()} bind:value={name} class="w-full rounded-lg border p-2" />
+			<Textarea
+				placeholder={m.yourMessage()}
+				bind:value={message}
+				class="w-full rounded-lg border p-2"
+			/>
+			<Button onclick={addEntry} class="w-full">{m.sign_guestbook()}</Button>
+		</div>
+		<div class="not-prose mt-6 space-y-4 rounded-lg p-4">
+			{#each entries as { name, message, timestamp }}
+				<div class="border-b pb-2 last:border-b-0">
+					<p class="text-xl font-semibold">{name}</p>
+					<p class="text-base text-gray-700">{message}</p>
+					<p class="text-xs text-gray-500">
+						{formatDistanceToNow(timestamp, {
+							addSuffix: true,
+							includeSeconds: true,
+							locale: locale
+						})}
+					</p>
+				</div>
+			{/each}
 		</div>
 	</div>
 </section>
