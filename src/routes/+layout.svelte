@@ -1,20 +1,25 @@
 <script lang="ts">
 	import * as m from '$lib/paraglide/messages.js';
-
 	import {
-		DropdownMenuContent,
-		DropdownMenu,
 		Trigger,
-		Item
-	} from '$lib/components/ui/dropdown-menu';
+		Drawer,
+		Content,
+		Header,
+		Title,
+		Close
+	} from '$lib/components/ui/drawer/index.js';
 	import { Separator } from '$lib/components/ui/separator';
 	import '../app.css';
 	import { Button } from '$lib/components/ui/button';
 	import { ParaglideJS } from '@inlang/paraglide-sveltekit';
 	import { i18n } from '$lib/i18n';
-	import LanguageSwitcher from '$lib/components/LanguageSwitcher.svelte';
+	import LanguageSwitcher, { langs, flags } from '$lib/components/LanguageSwitcher.svelte';
 	import { Heart, MenuIcon } from 'lucide-svelte';
 	import MediaQuery from '$lib/components/MediaQuery.svelte';
+	import { availableLanguageTags } from '$lib/paraglide/runtime';
+	import { page } from '$app/state';
+
+	const currentPathWithoutLanguage = $derived.by(() => i18n.route(page.url.pathname));
 
 	let { children } = $props();
 </script>
@@ -45,34 +50,54 @@
 						<Button class="text-lg no-underline" variant="link" href="/#rsvp">
 							{m.rsvp()}
 						</Button>
+						<LanguageSwitcher />
 					{/snippet}
 					{#snippet notMatch()}
-						<DropdownMenu>
+						<Drawer>
 							<Trigger>
 								<MenuIcon />
 							</Trigger>
-							<DropdownMenuContent>
-								<Item
-									><Button class="text-lg" variant="link" href="/travel-information"
-										>{m.travel_information()}</Button
-									></Item
-								>
-								<Item
-									><Button class="text-lg" variant="link" href="/timeline">{m.timeline()}</Button
-									></Item
-								>
-								<Item
-									><Button class="text-lg" variant="link" href="/favorite-spots"
-										>{m.fave_spots()}</Button
-									></Item
-								>
-								<Item><Button class="text-lg" variant="link" href="/#rsvp">{m.rsvp()}</Button></Item
-								>
-							</DropdownMenuContent>
-						</DropdownMenu>
+							<Content>
+								<Header>
+									<Title>Navigation</Title>
+								</Header>
+								<div class="container my-4 flex flex-col justify-center gap-2">
+									<Close>
+										<Button class="text-lg" variant="link" href="/travel-information"
+											>{m.travel_information()}</Button
+										>
+									</Close>
+									<Close>
+										<Button class="text-lg" variant="link" href="/timeline">{m.timeline()}</Button>
+									</Close>
+									<Close>
+										<Button class="text-lg" variant="link" href="/favorite-spots"
+											>{m.fave_spots()}</Button
+										>
+									</Close>
+									<Close>
+										<Button
+											class="text-lg"
+											variant="cta"
+											target="_blank"
+											href="https://www.icloud.com/invites/07d2A65KIyUtlH36b4JE5xCLQ"
+											>{m.rsvp()}</Button
+										>
+									</Close>
+									<Separator class="mt-4" />
+									{#each availableLanguageTags as lang}
+										<Close>
+											<Button variant="ghost" href={currentPathWithoutLanguage} hreflang={lang}>
+												{flags[lang]}
+												{langs[lang]}
+											</Button>
+										</Close>
+									{/each}
+								</div>
+							</Content>
+						</Drawer>
 					{/snippet}
 				</MediaQuery>
-				<LanguageSwitcher />
 			</nav>
 		</header>
 		<main class="flex-1">
