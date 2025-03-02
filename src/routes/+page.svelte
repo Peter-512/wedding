@@ -148,16 +148,16 @@
 	<div class="container max-w-3xl px-4 md:px-6">
 		<h2 class="mt-0 text-center text-3xl uppercase sm:text-5xl">{m.guestbook()}</h2>
 		<div class="mx-auto max-w-lg space-y-2">
-			<Input placeholder={m.yourName()} bind:value={name} class="w-full rounded-lg border p-2" />
+			<Input placeholder={m.yourName()} bind:value={name} class="w-full rounded-sm border p-2" />
 			<Textarea
 				placeholder={m.yourMessage()}
 				bind:value={message}
-				class="w-full rounded-lg border p-2"
+				class="w-full rounded-sm border p-2"
 			/>
 			<Canvas bind:this={canvas} {setImgUrl} />
-			<Button onclick={addEntry} class="w-full">{m.sign_guestbook()}</Button>
+			<Button onclick={addEntry} class="w-full rounded-sm">{m.sign_guestbook()}</Button>
 		</div>
-		<div class="not-prose mt-6 space-y-4 rounded-lg p-4">
+		<div class="not-prose mt-6 space-y-4 py-4">
 			{#each entries as { name, message, timestamp, image }}
 				<div class="border-b pb-2 last:border-b-0">
 					<div class="flex flex-col sm:flex-row sm:items-center">
