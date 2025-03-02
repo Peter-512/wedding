@@ -41,6 +41,14 @@
 		return { x, y };
 	}
 
+	export function reset() {
+		history = {
+			entries: [],
+			currentIndex: -1
+		};
+		clearCanvas();
+	}
+
 	function startDrawing(event: MouseEvent | TouchEvent) {
 		event.preventDefault();
 		isDrawing = true;
@@ -60,8 +68,6 @@
 		lastX = x;
 		lastY = y;
 	}
-
-	$inspect(history);
 
 	function addHistoryEntry(newState: string) {
 		// If we've undone some steps, remove any forward history:
@@ -178,10 +184,3 @@
 		</Button>
 	</div>
 </div>
-
-<!--<style>-->
-<!--	/* Prevent default touch actions on canvas for smoother drawing */-->
-<!--	canvas {-->
-<!--		touch-action: none;-->
-<!--	}-->
-<!--</style>-->

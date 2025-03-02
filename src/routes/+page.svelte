@@ -13,7 +13,7 @@
 	import { createClient } from '@supabase/supabase-js';
 	import { error } from '@sveltejs/kit';
 	import { getCurrentLocale } from '$lib/utils';
-	import Signing from './Signing.svelte';
+	import Canvas from './Canvas.svelte';
 	import type { ComponentProps } from 'svelte';
 
 	let locale = getCurrentLocale();
@@ -41,8 +41,9 @@
 	let name = $state('');
 	let message = $state('');
 	let imageUrl: string | null = $state(null);
+	let canvas = $state<Canvas>();
 
-	const setImgUrl: ComponentProps<typeof Signing>['setImgUrl'] = (url) => (imageUrl = url);
+	const setImgUrl: ComponentProps<typeof Canvas>['setImgUrl'] = (url) => (imageUrl = url);
 
 	const addEntry = async () => {
 		if (name.trim() && message.trim()) {
@@ -56,6 +57,7 @@
 			imageUrl = null;
 			name = '';
 			message = '';
+			canvas?.reset();
 		}
 	};
 </script>
@@ -152,7 +154,7 @@
 				bind:value={message}
 				class="w-full rounded-lg border p-2"
 			/>
-			<Signing {setImgUrl} />
+			<Canvas bind:this={canvas} {setImgUrl} />
 			<Button onclick={addEntry} class="w-full">{m.sign_guestbook()}</Button>
 		</div>
 		<div class="not-prose mt-6 space-y-4 rounded-lg p-4">
