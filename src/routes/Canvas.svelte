@@ -3,6 +3,7 @@
 	import { Ellipsis, Redo, Trash2, Undo, X } from 'lucide-svelte';
 	import { trapFocus } from './actions.svelte';
 	import { Slider } from '$lib/components/ui/slider';
+	import * as m from '$lib/paraglide/messages';
 
 	type Props = {
 		setImgUrl: (url: string | null) => void;
@@ -242,7 +243,7 @@
 					</div>
 
 					<label class="gap-4">
-						small
+						{m.small()}
 						<Slider
 							{size}
 							type="single"
@@ -252,7 +253,7 @@
 							step={1}
 							class="max-w-[70%]"
 						/>
-						large
+						{m.large()}
 					</label>
 				</div>
 			</div>
