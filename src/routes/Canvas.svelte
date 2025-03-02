@@ -1,6 +1,6 @@
 <script lang="ts">
 	import { Button } from '$lib/components/ui/button';
-	import { Redo, Trash2, Undo } from 'lucide-svelte';
+	import { Menu, Redo, Trash2, Undo } from 'lucide-svelte';
 
 	type Props = {
 		setImgUrl: (url: string | null) => void;
@@ -96,7 +96,9 @@
 		setImgUrl(null);
 	}
 
-	function clear() {
+	function clear(e: MouseEvent | TouchEvent) {
+		e.preventDefault();
+		e.stopPropagation();
 		if (!canvas) return;
 		clearCanvas();
 		const img = canvas.toDataURL();
@@ -116,7 +118,9 @@
 	}
 
 	// Undo: go back one step if possible
-	function undo() {
+	function undo(e: MouseEvent | TouchEvent) {
+		e.preventDefault();
+		e.stopPropagation();
 		if (history.currentIndex === 0) {
 			history.currentIndex--;
 			clearCanvas();
@@ -127,7 +131,9 @@
 	}
 
 	// Redo: go forward one step if possible
-	function redo() {
+	function redo(e: MouseEvent | TouchEvent) {
+		e.preventDefault();
+		e.stopPropagation();
 		if (history.currentIndex < history.entries.length - 1) {
 			history.currentIndex++;
 			loadHistoryState(currentHistoryEntry);
@@ -162,6 +168,7 @@
 			ontouchmove={draw}
 			ontouchend={stopDrawing}
 		></canvas>
+
 		<Button
 			variant="icon"
 			onclick={undo}
@@ -170,6 +177,7 @@
 		>
 			<Undo />
 		</Button>
+
 		<Button
 			variant="icon"
 			onclick={redo}
@@ -178,9 +186,19 @@
 		>
 			<Redo />
 		</Button>
-		<!-- Clear button positioned in the bottom right, using an icon -->
+
+		<Button variant="icon">
+			<Menu />
+		</Button>
+
 		<Button variant="icon" onclick={clear} class="absolute bottom-2 right-2">
 			<Trash2 />
 		</Button>
 	</div>
 </div>
+
+<style>
+	:global(*) {
+		touch-action: manipulation;
+	}
+</style>
