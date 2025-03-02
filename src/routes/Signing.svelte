@@ -3,7 +3,7 @@
 	import { Redo, Trash2, Undo } from 'lucide-svelte';
 
 	type Props = {
-		setImgUrl: (url: string) => void;
+		setImgUrl: (url: string | null) => void;
 	};
 	type History = {
 		entries: string[];
@@ -61,13 +61,9 @@
 		lastY = y;
 	}
 
-	function stopDrawing() {
-		if (!isDrawing || !canvas) return;
-		isDrawing = false;
-		// Optionally update the signature image data after drawing ends
-		const newState = canvas.toDataURL();
-		setImgUrl(newState);
+	$inspect(history);
 
+	function addHistoryEntry(newState: string) {
 		// If we've undone some steps, remove any forward history:
 		if (history.currentIndex < history.entries.length - 1) {
 			history.entries = history.entries.slice(0, history.currentIndex + 1);
@@ -79,10 +75,26 @@
 		}
 	}
 
+	function stopDrawing() {
+		if (!isDrawing || !canvas) return;
+		isDrawing = false;
+		// Optionally update the signature image data after drawing ends
+		const newState = canvas.toDataURL();
+		setImgUrl(newState);
+		addHistoryEntry(newState);
+	}
+
 	function clearCanvas() {
 		if (!canvas || !context) return;
 		context.clearRect(0, 0, canvas.width, canvas.height);
-		setImgUrl('');
+		setImgUrl(null);
+	}
+
+	function clear() {
+		if (!canvas) return;
+		clearCanvas();
+		const img = canvas.toDataURL();
+		addHistoryEntry(img);
 	}
 
 	// Load a state from history onto the canvas
@@ -125,10 +137,6 @@
 		context.strokeStyle = '#000';
 		context.lineWidth = 2;
 		context.lineCap = 'round';
-		// const img = canvas.toDataURL();
-		// setImgUrl(img);
-		// history.entries.push(img);
-		// history.currentIndex = 0;
 	});
 </script>
 
@@ -164,7 +172,7 @@
 			<Redo />
 		</Button>
 		<!-- Clear button positioned in the bottom right, using an icon -->
-		<Button variant="icon" onclick={clearCanvas} class="absolute bottom-2 right-2">
+		<Button variant="icon" onclick={clear} class="absolute bottom-2 right-2">
 			<Trash2 />
 		</Button>
 	</div>

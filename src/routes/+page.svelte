@@ -14,6 +14,7 @@
 	import { error } from '@sveltejs/kit';
 	import { getCurrentLocale } from '$lib/utils';
 	import Signing from './Signing.svelte';
+	import type { ComponentProps } from 'svelte';
 
 	let locale = getCurrentLocale();
 
@@ -41,7 +42,7 @@
 	let message = $state('');
 	let imageUrl: string | null = $state(null);
 
-	const setImgUrl = (url: string) => (imageUrl = url);
+	const setImgUrl: ComponentProps<typeof Signing>['setImgUrl'] = (url) => (imageUrl = url);
 
 	const addEntry = async () => {
 		if (name.trim() && message.trim()) {
