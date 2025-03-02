@@ -170,9 +170,9 @@
 	</div>
 </div>
 
-<style>
-	/* Prevent default touch actions on canvas for smoother drawing */
-	canvas {
-		touch-action: none;
-	}
-</style>
+<!--<style>-->
+<!--	/* Prevent default touch actions on canvas for smoother drawing */-->
+<!--	canvas {-->
+<!--		touch-action: none;-->
+<!--	}-->
+<!--</style>-->
