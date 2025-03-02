@@ -41,17 +41,10 @@
 	let size = $state(2);
 
 	// Helper function to get the mouse or touch coordinates relative to the canvas
-	function getOffset(event: MouseEvent | TouchEvent) {
+	function getOffset(event: PointerEvent) {
 		if (!canvas) return { x: 0, y: 0 };
 		const rect = canvas.getBoundingClientRect();
-		let clientX: number, clientY: number;
-		if (event instanceof MouseEvent) {
-			clientX = event.clientX;
-			clientY = event.clientY;
-		} else {
-			clientX = event.touches[0].clientX;
-			clientY = event.touches[0].clientY;
-		}
+		const { clientY, clientX } = event;
 		// Scale coordinates to the canvas coordinate system
 		const x = (clientX - rect.left) * (canvas.width / rect.width);
 		const y = (clientY - rect.top) * (canvas.height / rect.height);
@@ -66,7 +59,7 @@
 		clearCanvas();
 	}
 
-	function startDrawing(event: MouseEvent | TouchEvent) {
+	function startDrawing(event: PointerEvent) {
 		event.preventDefault();
 		isDrawing = true;
 		const { x, y } = getOffset(event);
@@ -74,7 +67,7 @@
 		lastY = y;
 	}
 
-	function draw(event: MouseEvent | TouchEvent) {
+	function draw(event: PointerEvent) {
 		event.preventDefault();
 		if (!isDrawing || !context) return;
 		const { x, y } = getOffset(event);
@@ -113,7 +106,7 @@
 		setImgUrl(null);
 	}
 
-	function clear(e: MouseEvent | TouchEvent) {
+	function clear(e: MouseEvent) {
 		e.preventDefault();
 		e.stopPropagation();
 		if (!canvas) return;
@@ -135,7 +128,7 @@
 	}
 
 	// Undo: go back one step if possible
-	function undo(e: MouseEvent | TouchEvent) {
+	function undo(e: MouseEvent) {
 		e.preventDefault();
 		e.stopPropagation();
 		if (history.currentIndex === 0) {
@@ -148,7 +141,7 @@
 	}
 
 	// Redo: go forward one step if possible
-	function redo(e: MouseEvent | TouchEvent) {
+	function redo(e: MouseEvent) {
 		e.preventDefault();
 		e.stopPropagation();
 		if (history.currentIndex < history.entries.length - 1) {
@@ -177,13 +170,11 @@
 			width="400"
 			height="200"
 			class="h-full w-full touch-none"
-			onmousedown={startDrawing}
-			onmousemove={draw}
-			onmouseup={stopDrawing}
-			onmouseleave={stopDrawing}
-			ontouchstart={startDrawing}
-			ontouchmove={draw}
-			ontouchend={stopDrawing}
+			onpointerdown={startDrawing}
+			onpointermove={draw}
+			onpointerup={stopDrawing}
+			onpointercancel={stopDrawing}
+			onpointerleave={stopDrawing}
 		></canvas>
 
 		<Button
@@ -239,7 +230,7 @@
 					<div class="colors">
 						{#each colors as color}
 							<button
-								class="color"
+								class={['color', selectedColor === color ? 'ring-4 ring-offset-2' : '']}
 								aria-label={color}
 								aria-current={selectedColor === color}
 								style="--color: {color}"
@@ -252,7 +243,15 @@
 
 					<label class="gap-4">
 						small
-						<Slider type="single" bind:value={size} min={1} max={50} step={1} class="max-w-[70%]" />
+						<Slider
+							{size}
+							type="single"
+							bind:value={size}
+							min={1}
+							max={50}
+							step={1}
+							class="max-w-[70%]"
+						/>
 						large
 					</label>
 				</div>
@@ -305,11 +304,11 @@
 		transition: all 0.1s;
 	}
 
-	.color[aria-current='true'] {
-		transform: translate(1px, 1px);
-		filter: none;
-		box-shadow: inset 3px 3px 4px rgba(0, 0, 0, 0.2);
-	}
+	/*.color[aria-current='true'] {*/
+	/*	transform: translate(1px, 1px);*/
+	/*	filter: none;*/
+	/*	box-shadow: inset 3px 3px 4px rgba(0, 0, 0, 0.2);*/
+	/*}*/
 
 	.menu label {
 		display: flex;
