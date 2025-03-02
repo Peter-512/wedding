@@ -153,6 +153,7 @@
 			onmouseup={stopDrawing}
 			onmouseleave={stopDrawing}
 			ontouchstart={startDrawing}
+			ontouchmove={draw}
 			ontouchend={stopDrawing}
 		></canvas>
 		<Button
