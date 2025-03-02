@@ -170,7 +170,7 @@
 				<enhanced:img
 					alt="Edfteling"
 					src="../../lib/images/efteling.jpg"
-					class="not-prose mb-8 aspect-square w-96 overflow-hidden rounded-xl object-cover transition ease-out sm:w-full lg:order-last"
+					class="not-prose mb-8 aspect-square w-96 overflow-hidden rounded-xl object-cover object-top transition ease-out sm:w-full lg:order-last"
 				/>
 			</Image>
 		</div>
