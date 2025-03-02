@@ -13,7 +13,8 @@
 				outline: 'border-input bg-background hover:bg-accent hover:text-accent-foreground border',
 				secondary: 'bg-secondary text-secondary-foreground hover:bg-secondary/80',
 				ghost: 'hover:bg-accent hover:text-accent-foreground',
-				link: 'text-accent transition-all'
+				link: 'text-accent transition-all',
+				icon: 'bg-transparent border border-gray-200 h-10 w-10 hover:shadow rounded-md'
 			},
 			size: {
 				default: 'h-10 px-4 py-2',

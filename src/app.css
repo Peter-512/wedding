@@ -23,7 +23,7 @@
 		--border: 289 13% 44%; /* Muted purple */
 		--input: 289 13% 44%; /* Muted purple */
 		--ring: 285 20% 80%; /* Lavender */
-		--radius: 0rem;
+		--radius: 0.5rem;
 	}
 }
 

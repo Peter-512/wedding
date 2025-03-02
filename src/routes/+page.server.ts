@@ -8,7 +8,7 @@ export const load: PageServerLoad = async () => {
 
 	const { data: guestbook, error: supaError } = await supabase
 		.from('guestbook')
-		.select('timestamp, name, message')
+		.select('timestamp, name, message, image')
 		.order('timestamp', { ascending: false });
 	if (supaError) return error(500, 'Something went wrong');
 

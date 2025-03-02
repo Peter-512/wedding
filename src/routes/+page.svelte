@@ -13,6 +13,7 @@
 	import { createClient } from '@supabase/supabase-js';
 	import { error } from '@sveltejs/kit';
 	import { getCurrentLocale } from '$lib/utils';
+	import Signing from './Signing.svelte';
 
 	let locale = getCurrentLocale();
 
@@ -30,6 +31,7 @@
 		name: string;
 		message: string;
 		timestamp: number;
+		image: string | null;
 	};
 
 	let { data } = $props();
@@ -37,16 +39,20 @@
 	let entries = $state<Entry[]>(data.guestbook);
 	let name = $state('');
 	let message = $state('');
+	let imageUrl: string | null = $state(null);
+
+	const setImgUrl = (url: string) => (imageUrl = url);
 
 	const addEntry = async () => {
 		if (name.trim() && message.trim()) {
 			const timestamp = Date.now();
-			entries.unshift({ name, message, timestamp });
+			entries.unshift({ name, message, timestamp, image: imageUrl });
 			const { error: supaError } = await supabase
 				.from('guestbook')
-				.insert({ name, message, timestamp: new Date(timestamp) });
+				.insert({ name, message, timestamp: new Date(timestamp), image: imageUrl });
 			if (supaError) return error(500, `Something went wrong`);
 
+			imageUrl = null;
 			name = '';
 			message = '';
 		}
@@ -145,20 +151,34 @@
 				bind:value={message}
 				class="w-full rounded-lg border p-2"
 			/>
+			<Signing {setImgUrl} />
 			<Button onclick={addEntry} class="w-full">{m.sign_guestbook()}</Button>
 		</div>
 		<div class="not-prose mt-6 space-y-4 rounded-lg p-4">
-			{#each entries as { name, message, timestamp }}
+			{#each entries as { name, message, timestamp, image }}
 				<div class="border-b pb-2 last:border-b-0">
-					<p class="text-xl font-semibold">{name}</p>
-					<p class="text-base text-gray-700">{message}</p>
-					<p class="text-xs text-gray-500">
-						{formatDistanceToNow(timestamp, {
-							addSuffix: true,
-							includeSeconds: true,
-							locale: locale
-						})}
-					</p>
+					<div class="flex flex-col sm:flex-row sm:items-center">
+						<div class="flex-1">
+							<p class="text-xl font-semibold">{name}</p>
+							<p class="text-base text-gray-700">{message}</p>
+							<p class="text-xs text-gray-500">
+								{formatDistanceToNow(timestamp, {
+									addSuffix: true,
+									includeSeconds: true,
+									locale: locale
+								})}
+							</p>
+						</div>
+						{#if image}
+							<div class="mt-4 sm:ml-4 sm:mt-0">
+								<img
+									src={image}
+									alt="Signature of {name}"
+									class="h-auto max-h-24 max-w-full object-contain"
+								/>
+							</div>
+						{/if}
+					</div>
 				</div>
 			{/each}
 		</div>
