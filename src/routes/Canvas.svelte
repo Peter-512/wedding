@@ -305,12 +305,6 @@
 		transition: all 0.1s;
 	}
 
-	/*.color[aria-current='true'] {*/
-	/*	transform: translate(1px, 1px);*/
-	/*	filter: none;*/
-	/*	box-shadow: inset 3px 3px 4px rgba(0, 0, 0, 0.2);*/
-	/*}*/
-
 	.menu label {
 		display: flex;
 		width: 100%;
