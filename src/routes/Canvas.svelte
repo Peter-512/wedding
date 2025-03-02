@@ -1,6 +1,8 @@
 <script lang="ts">
 	import { Button } from '$lib/components/ui/button';
-	import { Menu, Redo, Trash2, Undo } from 'lucide-svelte';
+	import { Ellipsis, Redo, Trash2, Undo, X } from 'lucide-svelte';
+	import { trapFocus } from './actions.svelte';
+	import { Slider } from '$lib/components/ui/slider';
 
 	type Props = {
 		setImgUrl: (url: string | null) => void;
@@ -22,6 +24,21 @@
 		currentIndex: -1
 	});
 	const currentHistoryEntry = $derived(history.entries[history.currentIndex] ?? null);
+	let showMenu = $state(false);
+
+	const colors = [
+		'red',
+		'orange',
+		'yellow',
+		'green',
+		'blue',
+		'indigo',
+		'violet',
+		'white',
+		'black'
+	] as const;
+	let selectedColor = $state<(typeof colors)[number]>('black');
+	let size = $state(2);
 
 	// Helper function to get the mouse or touch coordinates relative to the canvas
 	function getOffset(event: MouseEvent | TouchEvent) {
@@ -146,8 +163,8 @@
 		context = canvas.getContext('2d');
 		if (!context) return;
 		// Set drawing properties (you can adjust these as needed)
-		context.strokeStyle = '#000';
-		context.lineWidth = 2;
+		context.strokeStyle = selectedColor;
+		context.lineWidth = size;
 		context.lineCap = 'round';
 	});
 </script>
@@ -187,18 +204,116 @@
 			<Redo />
 		</Button>
 
-		<Button variant="icon">
-			<Menu />
+		<Button
+			variant="icon"
+			onclick={() => (showMenu = !showMenu)}
+			class="absolute bottom-2 right-14"
+		>
+			{#if showMenu}
+				<X />
+			{:else}
+				<Ellipsis />
+			{/if}
 		</Button>
 
 		<Button variant="icon" onclick={clear} class="absolute bottom-2 right-2">
 			<Trash2 />
 		</Button>
+
+		{#if showMenu}
+			<div
+				role="presentation"
+				class="modal-background"
+				onclick={(event) => {
+					if (event.target === event.currentTarget) {
+						showMenu = false;
+					}
+				}}
+				onkeydown={(e) => {
+					if (e.key === 'Escape') {
+						showMenu = false;
+					}
+				}}
+			>
+				<div class="menu" use:trapFocus>
+					<div class="colors">
+						{#each colors as color}
+							<button
+								class="color"
+								aria-label={color}
+								aria-current={selectedColor === color}
+								style="--color: {color}"
+								onclick={() => {
+									selectedColor = color;
+								}}
+							></button>
+						{/each}
+					</div>
+
+					<label class="gap-4">
+						small
+						<Slider type="single" bind:value={size} min={1} max={50} step={1} class="max-w-[70%]" />
+						large
+					</label>
+				</div>
+			</div>
+		{/if}
 	</div>
 </div>
 
 <style>
 	:global(*) {
 		touch-action: manipulation;
+	}
+
+	.modal-background {
+		position: fixed;
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		left: 0;
+		top: 0;
+		width: 100%;
+		height: 100%;
+		backdrop-filter: blur(20px);
+	}
+
+	.menu {
+		position: relative;
+		background: var(--bg-2);
+		width: calc(100% - 2em);
+		max-width: 28em;
+		padding: 1em 1em 0.5em 1em;
+		border-radius: 1em;
+		box-sizing: border-box;
+		user-select: none;
+	}
+
+	.colors {
+		display: grid;
+		align-items: center;
+		grid-template-columns: repeat(9, 1fr);
+		grid-gap: 0.5em;
+	}
+
+	.color {
+		aspect-ratio: 1;
+		border-radius: 50%;
+		background: var(--color, #fff);
+		transform: none;
+		filter: drop-shadow(2px 2px 3px rgba(0, 0, 0, 0.2));
+		transition: all 0.1s;
+	}
+
+	.color[aria-current='true'] {
+		transform: translate(1px, 1px);
+		filter: none;
+		box-shadow: inset 3px 3px 4px rgba(0, 0, 0, 0.2);
+	}
+
+	.menu label {
+		display: flex;
+		width: 100%;
+		margin: 1em 0 0 0;
 	}
 </style>
