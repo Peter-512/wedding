@@ -1,3 +1,17 @@
+<script module>
+	export const flags = {
+		en: '🇺🇸',
+		de: '🇦🇹',
+		nl: '🇧🇪'
+	};
+
+	export const langs = {
+		en: 'English',
+		de: 'Deutsch',
+		nl: 'Nederlands'
+	};
+</script>
+
 <script>
 	import { availableLanguageTags } from '$lib/paraglide/runtime.js';
 	import { Content, Item, DropdownMenu, Trigger } from '$lib/components/ui/dropdown-menu/index';
@@ -7,18 +21,6 @@
 	import * as m from '$lib/paraglide/messages.js';
 
 	const currentPathWithoutLanguage = $derived.by(() => i18n.route(page.url.pathname));
-
-	const flags = {
-		en: '🇺🇸',
-		de: '🇦🇹',
-		nl: '🇧🇪'
-	};
-
-	const langs = {
-		en: 'English',
-		de: 'Deutsch',
-		nl: 'Nederlands'
-	};
 </script>
 
 <DropdownMenu>
