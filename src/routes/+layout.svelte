@@ -63,34 +63,53 @@
 								</Header>
 								<div class="container my-4 flex flex-col justify-center gap-2">
 									<Close>
-										<Button class="text-lg" variant="link" href="/travel-information"
-											>{m.travel_information()}</Button
-										>
+										{#snippet child({ props })}
+											<Button {...props} class="text-lg" href="/travel-information" variant="link">
+												{m.travel_information()}
+											</Button>
+										{/snippet}
 									</Close>
 									<Close>
-										<Button class="text-lg" variant="link" href="/timeline">{m.timeline()}</Button>
+										{#snippet child({ props })}
+											<Button {...props} class="text-lg" variant="link" href="/timeline">
+												{m.timeline()}
+											</Button>
+										{/snippet}
 									</Close>
 									<Close>
-										<Button class="text-lg" variant="link" href="/favorite-spots"
-											>{m.fave_spots()}</Button
-										>
+										{#snippet child({ props })}
+											<Button {...props} class="text-lg" variant="link" href="/favorite-spots">
+												{m.fave_spots()}
+											</Button>
+										{/snippet}
 									</Close>
 									<Close>
-										<Button
-											class="text-lg"
-											variant="cta"
-											target="_blank"
-											href="https://www.icloud.com/invites/07d2A65KIyUtlH36b4JE5xCLQ"
-											>{m.rsvp()}</Button
-										>
+										{#snippet child({ props })}
+											<Button
+												{...props}
+												class="text-lg"
+												variant="cta"
+												target="_blank"
+												href="https://www.icloud.com/invites/07d2A65KIyUtlH36b4JE5xCLQ"
+											>
+												{m.rsvp()}
+											</Button>
+										{/snippet}
 									</Close>
 									<Separator class="mt-4" />
 									{#each availableLanguageTags as lang}
 										<Close>
-											<Button variant="ghost" href={currentPathWithoutLanguage} hreflang={lang}>
-												{flags[lang]}
-												{langs[lang]}
-											</Button>
+											{#snippet child({ props })}
+												<Button
+													{...props}
+													variant="ghost"
+													href={currentPathWithoutLanguage}
+													hreflang={lang}
+												>
+													{flags[lang]}
+													{langs[lang]}
+												</Button>
+											{/snippet}
 										</Close>
 									{/each}
 								</div>
