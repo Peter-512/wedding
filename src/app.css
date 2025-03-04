@@ -67,3 +67,8 @@
 		src: url('/fonts/Sacramento/Sacramento-Regular.ttf');
 	}
 }
+
+::selection {
+	background: hsl(285 20% 80%);
+	color: black;
+}
