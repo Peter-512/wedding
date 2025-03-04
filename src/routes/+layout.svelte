@@ -1,13 +1,20 @@
 <script lang="ts">
 	import * as m from '$lib/paraglide/messages.js';
-	import { Trigger, Drawer, Content, Header, Title } from '$lib/components/ui/drawer/index.js';
+	import {
+		Trigger,
+		Drawer,
+		Content,
+		Header,
+		Title,
+		Close
+	} from '$lib/components/ui/drawer/index.js';
 	import { Separator } from '$lib/components/ui/separator';
 	import '../app.css';
 	import { Button } from '$lib/components/ui/button';
 	import { ParaglideJS } from '@inlang/paraglide-sveltekit';
 	import { i18n } from '$lib/i18n';
 	import LanguageSwitcher, { langs, flags } from '$lib/components/LanguageSwitcher.svelte';
-	import { Heart, MenuIcon } from 'lucide-svelte';
+	import { Heart, MenuIcon, Signpost } from 'lucide-svelte';
 	import MediaQuery from '$lib/components/MediaQuery.svelte';
 	import { availableLanguageTags } from '$lib/paraglide/runtime';
 	import { page } from '$app/state';
@@ -52,32 +59,58 @@
 							</Trigger>
 							<Content>
 								<Header>
-									<Title>Navigation</Title>
+									<Title><Signpost class="m-auto" /></Title>
 								</Header>
 								<div class="container my-4 flex flex-col justify-center gap-2">
-									<Button class="text-lg" href="/travel-information" variant="link">
-										{m.travel_information()}
-									</Button>
-									<Button class="text-lg" variant="link" href="/timeline">
-										{m.timeline()}
-									</Button>
-									<Button class="text-lg" variant="link" href="/favorite-spots">
-										{m.fave_spots()}
-									</Button>
-									<Button
-										class="text-lg"
-										variant="cta"
-										target="_blank"
-										href="https://www.icloud.com/invites/07d2A65KIyUtlH36b4JE5xCLQ"
-									>
-										{m.rsvp()}
-									</Button>
+									<Close>
+										{#snippet child({ props })}
+											<Button {...props} class="text-lg" href="/travel-information" variant="link">
+												{m.travel_information()}
+											</Button>
+										{/snippet}
+									</Close>
+									<Close>
+										{#snippet child({ props })}
+											<Button {...props} class="text-lg" variant="link" href="/timeline">
+												{m.timeline()}
+											</Button>
+										{/snippet}
+									</Close>
+									<Close>
+										{#snippet child({ props })}
+											<Button {...props} class="text-lg" variant="link" href="/favorite-spots">
+												{m.fave_spots()}
+											</Button>
+										{/snippet}
+									</Close>
+									<Close>
+										{#snippet child({ props })}
+											<Button
+												{...props}
+												class="text-lg"
+												variant="cta"
+												target="_blank"
+												href="https://www.icloud.com/invites/07d2A65KIyUtlH36b4JE5xCLQ"
+											>
+												{m.rsvp()}
+											</Button>
+										{/snippet}
+									</Close>
 									<Separator class="mt-4" />
 									{#each availableLanguageTags as lang}
-										<Button variant="ghost" href={currentPathWithoutLanguage} hreflang={lang}>
-											{flags[lang]}
-											{langs[lang]}
-										</Button>
+										<Close>
+											{#snippet child({ props })}
+												<Button
+													{...props}
+													variant="ghost"
+													href={currentPathWithoutLanguage}
+													hreflang={lang}
+												>
+													{flags[lang]}
+													{langs[lang]}
+												</Button>
+											{/snippet}
+										</Close>
 									{/each}
 								</div>
 							</Content>
