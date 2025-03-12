@@ -2,6 +2,7 @@
 	import { cls, Timeline, TimelineEvent } from 'svelte-ux';
 	import * as m from '$lib/paraglide/messages';
 	import Autoplay from 'embla-carousel-autoplay';
+	import { MediaQuery } from 'svelte/reactivity';
 	import {
 		mdiSilverwareForkKnife,
 		mdiPartyPopper,
@@ -11,6 +12,22 @@
 	} from '@mdi/js';
 	import { Carousel, Content, Item, Previous, Next } from '$lib/components/ui/carousel/index.js';
 	import CarouselItem from './Carouseltem.svelte';
+	import type { CarouselAPI } from '$lib/components/ui/carousel/context';
+
+	const isDesktop = new MediaQuery('(min-width: 768px)');
+
+	let api = $state<CarouselAPI>();
+	let current = $state(0);
+	const count = $derived(api ? api.scrollSnapList().length : 0);
+
+	$effect(() => {
+		if (api) {
+			current = api.selectedScrollSnap() + 1;
+			api.on('select', () => {
+				current = api!.selectedScrollSnap() + 1;
+			});
+		}
+	});
 
 	type TimelineEntry = {
 		time: `${number}:${number}`;
@@ -54,7 +71,7 @@
 </script>
 
 <div
-	class="container flex flex-col items-center gap-4 px-16 md:flex-row md:items-center md:justify-center md:gap-8"
+	class="container flex flex-col items-center gap-4 md:flex-row md:items-center md:justify-center md:gap-8 md:pr-16"
 >
 	<Timeline vertical snapPoint>
 		{#each data as { icon, title, time, description }, i}
@@ -78,6 +95,7 @@
 		{/each}
 	</Timeline>
 	<Carousel
+		setApi={(emblaApi) => (api = emblaApi)}
 		plugins={[
 			Autoplay({
 				delay: 3500
@@ -86,7 +104,6 @@
 		opts={{ loop: true }}
 		class="w-full max-w-sm"
 	>
-		<Previous />
 		<Content class="not-prose -ml-1">
 			<CarouselItem>
 				<enhanced:img class="rounded-lg" src="../../lib/images/black-and-white.jpg" />
@@ -101,6 +118,18 @@
 				<enhanced:img class="rounded-lg" src="../../lib/images/hands.jpg" />
 			</CarouselItem>
 		</Content>
-		<Next />
+		{#if isDesktop.current}
+			<Previous />
+			<Next />
+		{/if}
+		<div class="flex justify-center gap-1">
+			{#each { length: count } as _, i}
+				<button
+					aria-label="Go to slide {i + 1}"
+					class="h-2 w-2 rounded-full bg-accent {current === i + 1 ? 'opacity-100' : 'opacity-50'}"
+					onclick={() => api?.scrollTo(i)}
+				></button>
+			{/each}
+		</div>
 	</Carousel>
 </div>
