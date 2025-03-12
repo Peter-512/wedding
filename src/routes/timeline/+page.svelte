@@ -22,9 +22,9 @@
 
 	$effect(() => {
 		if (api) {
-			current = api.selectedScrollSnap() + 1;
+			current = api.selectedScrollSnap();
 			api.on('select', () => {
-				current = api!.selectedScrollSnap() + 1;
+				current = api!.selectedScrollSnap();
 			});
 		}
 	});
@@ -126,7 +126,7 @@
 			{#each { length: count } as _, i}
 				<button
 					aria-label="Go to slide {i + 1}"
-					class="h-2 w-2 rounded-full bg-accent {current === i + 1 ? 'opacity-100' : 'opacity-50'}"
+					class="h-2 w-2 rounded-full bg-accent {current === i ? 'opacity-100' : 'opacity-50'}"
 					onclick={() => api?.scrollTo(i)}
 				></button>
 			{/each}
