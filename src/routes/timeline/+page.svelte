@@ -115,7 +115,16 @@
 				<enhanced:img class="rounded-lg" src="../../lib/images/sweet.jpg" />
 			</CarouselItem>
 			<CarouselItem>
-				<enhanced:img class="rounded-lg" src="../../lib/images/hands.jpg" />
+				<enhanced:img class="rounded-lg" src="../../lib/images/hands2.jpg" />
+			</CarouselItem>
+			<CarouselItem>
+				<enhanced:img class="rounded-lg" src="../../lib/images/in-love.jpg" />
+			</CarouselItem>
+			<CarouselItem>
+				<enhanced:img class="rounded-lg" src="../../lib/images/looking-at-each-other.jpg" />
+			</CarouselItem>
+			<CarouselItem>
+				<enhanced:img class="rounded-lg" src="../../lib/images/ring.jpg" />
 			</CarouselItem>
 		</Content>
 		{#if isDesktop.current}
