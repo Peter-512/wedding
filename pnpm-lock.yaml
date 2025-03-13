@@ -127,8 +127,8 @@ importers:
         specifier: ^8.0.0
         version: 8.0.1(eslint@9.9.0(jiti@1.21.6))(typescript@5.5.4)
       vaul-svelte:
-        specifier: 1.0.0-next.1
-        version: 1.0.0-next.1(svelte@5.23.0)
+        specifier: 1.0.0-next.0
+        version: 1.0.0-next.0(svelte@5.23.0)
       vite:
         specifier: ^6.0.6
         version: 6.0.7(@types/node@22.2.0)(jiti@1.21.6)(yaml@2.5.0)
@@ -1422,8 +1422,8 @@ packages:
   bindings@1.5.0:
     resolution: {integrity: sha512-p2q/t/mhvuOj/UeLlV6566GD/guowlr0hHxClI0W9m7MWYkL1F0hLo+0Aexs9HSPCtR1SXQ0TD3MMKrXZajbiQ==}
 
-  bits-ui@1.0.0-next.28:
-    resolution: {integrity: sha512-mA2gf79xVLmq2mY0tAzC6ZBB8hUJunxb20/04kOVIN1UL+d75BvA3hdSdEgSj0TrEWU1GmlJr1HWKW4+Q1JIhA==}
+  bits-ui@1.0.0-next.15:
+    resolution: {integrity: sha512-RjjNO00BFsqWfFQmjGGYSBXD2LoDFZrjWcswS/QqaSIzf0MDoNl7pTRLu9+2nh1BrSIQQgNG3LJjwSjRa21Msg==}
     engines: {node: '>=18', pnpm: '>=8.7.0'}
     peerDependencies:
       svelte: ^5.0.0-next.1
@@ -3090,11 +3090,11 @@ packages:
     resolution: {integrity: sha512-c1Q0mCiPlgdTVVVIJIrBuxNicYE+t/7oKeI9MWLj3fh/uq2Pxh/3eeWbVZ4OcGW1TUf53At0njHw5SMdA3tmMg==}
     engines: {node: '>= 0.10'}
 
-  vaul-svelte@1.0.0-next.1:
-    resolution: {integrity: sha512-HdKT5ha0FG1ZpJTtl9LjkwHhhdDlgoAr86lPQbiS1PfrjmrXwWG/hXXk/RMJWDJfAcy1lI9wdo+jt2l6hJ6asA==}
+  vaul-svelte@1.0.0-next.0:
+    resolution: {integrity: sha512-SG4auOEwrEgmqTBsGEWdIL4ZioXVGSiIja0YKWB/dRzIrVBNMbiJ6p4YlhDzU9o5ggs45HtX9ifXql5xZX5FYQ==}
     engines: {node: '>=18', pnpm: '>=8.7.0'}
     peerDependencies:
-      svelte: ^5.0.0
+      svelte: 5.0.0-next.1
 
   vite-imagetools@7.0.5:
     resolution: {integrity: sha512-OOvVnaBTqJJ2J7X1cM1qpH4pj9jsfTxia1VSuWeyXtf+OnP8d0YI1LHpv8y2NT47wg+n7XiTgh3BvcSffuBWrw==}
@@ -4567,7 +4567,7 @@ snapshots:
     dependencies:
       file-uri-to-path: 1.0.0
 
-  bits-ui@1.0.0-next.28(svelte@5.23.0):
+  bits-ui@1.0.0-next.15(svelte@5.23.0):
     dependencies:
       '@floating-ui/core': 1.6.9
       '@floating-ui/dom': 1.6.13
@@ -6230,9 +6230,9 @@ snapshots:
   validator@13.12.0:
     optional: true
 
-  vaul-svelte@1.0.0-next.1(svelte@5.23.0):
+  vaul-svelte@1.0.0-next.0(svelte@5.23.0):
     dependencies:
-      bits-ui: 1.0.0-next.28(svelte@5.23.0)
+      bits-ui: 1.0.0-next.15(svelte@5.23.0)
       svelte: 5.23.0
       svelte-toolbelt: 0.4.6(svelte@5.23.0)
 
