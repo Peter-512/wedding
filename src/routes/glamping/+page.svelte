@@ -225,11 +225,6 @@
 					<Table.Cell>{notes}</Table.Cell>
 				</Table.Row>
 			{/each}
-			<Table.Row>
-				<Table.Cell>{totals.what}</Table.Cell>
-				<Table.Cell class="text-right">{totals.price}</Table.Cell>
-				<Table.Cell>{totals.notes}</Table.Cell>
-			</Table.Row>
 		</Table.Body>
 		<Table.Footer>
 			<Table.Row>
