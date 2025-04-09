@@ -82,8 +82,11 @@ const config: Config = {
 				sm: 'calc(var(--radius) - 4px)'
 			},
 			fontFamily: {
-				sans: [...fontFamily.serif],
-				fancy: ['Dancing Script', 'Sacramento', 'Amsterdam', 'Borel']
+				sans: [...fontFamily.sans],
+				serif: [...fontFamily.serif],
+				freeserif: ['Free Serif', 'serif'],
+				arimo: ['Arimo', 'sans-serif'],
+				scandilover: ['Scandilover', 'sans-serif']
 			}
 		}
 	},

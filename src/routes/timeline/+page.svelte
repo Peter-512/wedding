@@ -73,6 +73,7 @@
 <div
 	class="container flex flex-col items-center gap-4 md:flex-row md:items-center md:justify-center md:gap-8 md:pr-16"
 >
+	<h2>{m.timeline()}</h2>
 	<Timeline vertical snapPoint>
 		{#each data as { icon, title, time, description }, i}
 			<TimelineEvent

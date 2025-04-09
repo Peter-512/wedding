@@ -24,7 +24,7 @@
 	<Trigger>
 		<MenuIcon />
 	</Trigger>
-	<Content>
+	<Content class="font-freeserif uppercase">
 		<Header>
 			<Title><Signpost class="m-auto" /></Title>
 		</Header>
@@ -32,7 +32,7 @@
 			<Close>
 				{#snippet child({ props })}
 					<Button {...props} class="text-lg" href="/travel-information" variant="link">
-						{m.travel_information()}
+						{@html m.travel_information()}
 					</Button>
 				{/snippet}
 			</Close>
@@ -46,7 +46,7 @@
 			<Close>
 				{#snippet child({ props })}
 					<Button {...props} class="text-lg" variant="link" href="/favorite-spots">
-						{m.fave_spots()}
+						{@html m.fave_spots()}
 					</Button>
 				{/snippet}
 			</Close>
@@ -67,7 +67,13 @@
 			{#each availableLanguageTags as lang (lang)}
 				<Close>
 					{#snippet child({ props })}
-						<Button {...props} variant="ghost" href={currentPathWithoutLanguage} hreflang={lang}>
+						<Button
+							{...props}
+							class="text-lg"
+							variant="ghost"
+							href={currentPathWithoutLanguage}
+							hreflang={lang}
+						>
 							{flags[lang]}
 							{langs[lang]}
 						</Button>

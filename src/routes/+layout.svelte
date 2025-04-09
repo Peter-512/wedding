@@ -6,45 +6,43 @@
 	import { ParaglideJS } from '@inlang/paraglide-sveltekit';
 	import { i18n } from '$lib/i18n';
 	import LanguageSwitcher from '$lib/components/LanguageSwitcher.svelte';
-	import { Heart } from 'lucide-svelte';
-	import MediaQuery from '$lib/components/MediaQuery.svelte';
 	import Drawer from './Drawer.svelte';
+	import { MediaQuery } from 'svelte/reactivity';
 
 	let { children } = $props();
+
+	const match = new MediaQuery('(min-width: 900px)');
 </script>
 
 <ParaglideJS {i18n}>
-	<div class="prose-xl flex min-h-[100dvh] flex-col">
+	<div
+		class="prose-h3:font-freeserif prose-h1:font-freeserif prose-h2:font-scandilover prose-li:font-freeserif prose-p:font-freeserif prose-xl flex min-h-[100dvh] flex-col prose-h2:text-6xl prose-h3:font-bold prose-h3:uppercase prose-h3:tracking-widest prose-p:tracking-widest prose-li:tracking-wide md:prose-li:tracking-wider"
+	>
 		<header class="mt-3 flex px-4 lg:px-6">
-			<Button variant="link" class="heart-button self-center" href="/">
-				<Heart class="heart" />
+			<Button variant="link" class="heart-button self-center px-0" href="/">
+				<img src="/logo.svg" alt="Charlotte & Peter" class="h-12 w-12 rounded-full object-cover" />
 				<span class="sr-only">{m.wedding()}</span>
 			</Button>
 
-			<nav class="ml-auto flex items-center gap-4 sm:gap-6">
-				<MediaQuery size="isAboveMD">
-					{#snippet match()}
-						<Button class="text-lg no-underline" variant="link" href="/travel-information">
-							{m.travel_information()}
-						</Button>
-						<Separator orientation="vertical" />
-						<Button class="text-lg no-underline" variant="link" href="/timeline"
-							>{m.timeline()}</Button
-						>
-						<Separator orientation="vertical" />
-						<Button class="text-lg no-underline" variant="link" href="/favorite-spots"
-							>{m.fave_spots()}</Button
-						>
-						<Separator orientation="vertical" />
-						<Button class="text-lg no-underline" variant="link" href="/#rsvp">
-							{m.rsvp()}
-						</Button>
-						<LanguageSwitcher />
-					{/snippet}
-					{#snippet notMatch()}
-						<Drawer />
-					{/snippet}
-				</MediaQuery>
+			<nav class="font-freeserif text-md ml-auto flex items-center gap-4 uppercase sm:gap-6">
+				{#if match.current}
+					<Button class="no-underline" variant="link" href="/travel-information">
+						{@html m.travel_information()}
+					</Button>
+					<Separator orientation="vertical" />
+					<Button class="no-underline" variant="link" href="/timeline">{m.timeline()}</Button>
+					<Separator orientation="vertical" />
+					<Button class="no-underline" variant="link" href="/favorite-spots"
+						>{@html m.fave_spots()}</Button
+					>
+					<Separator orientation="vertical" />
+					<Button class="no-underline" variant="link" href="/#rsvp">
+						{m.rsvp()}
+					</Button>
+					<LanguageSwitcher />
+				{:else}
+					<Drawer />
+				{/if}
 			</nav>
 		</header>
 		<main class="flex-1">
@@ -57,34 +55,3 @@
 		</footer>
 	</div>
 </ParaglideJS>
-
-<style>
-	:global(.heart) {
-		transition: transform 0.3s ease-in-out;
-	}
-
-	:global(.heart-button:hover .heart) {
-		animation: pulse 1.2s infinite;
-	}
-
-	@keyframes pulse {
-		0% {
-			transform: scale(1);
-		}
-		15% {
-			transform: scale(1.3);
-		}
-		30% {
-			transform: scale(1);
-		}
-		45% {
-			transform: scale(1.2);
-		}
-		60% {
-			transform: scale(1);
-		}
-		100% {
-			transform: scale(1);
-		}
-	}
-</style>

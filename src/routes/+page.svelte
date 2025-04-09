@@ -109,10 +109,15 @@
 			</MediaQuery>
 			<div class="flex flex-col justify-center space-y-4">
 				<div class="space-y-2">
-					<h1 class="text-bold text-3xl uppercase sm:text-5xl xl:text-6xl/none">
-						Charlotte &amp; Peter
+					<h1 class="text-bold text-3xl uppercase tracking-widest sm:text-5xl xl:text-6xl/none">
+						Charlotte <div class="font-scandilover lowercase tracking-normal">{m.and()}</div>
+						Peter
 					</h1>
-					<p class="max-w-[600px] text-muted-foreground md:text-3xl">{formattedDate}</p>
+					<p
+						class="font-arimo max-w-[600px] font-thin uppercase tracking-widest text-muted-foreground md:text-2xl"
+					>
+						{formattedDate}
+					</p>
 					<FlipClock date={weddingDate} />
 				</div>
 			</div>
@@ -124,7 +129,7 @@
 	<div class="container px-4 md:px-6">
 		<div class="flex flex-col items-center justify-center space-y-4 text-center">
 			<div class="space-y-2">
-				<h2 id="rsvp" class="mt-0 text-3xl uppercase sm:text-5xl">
+				<h2 id="rsvp" class="mt-0 text-3xl sm:text-5xl">
 					{m.rsvp()}
 				</h2>
 				<p
@@ -135,6 +140,7 @@
 			</div>
 			<Button
 				variant="cta"
+				class="font-arimo"
 				target="_blank"
 				href="https://www.icloud.com/invites/07d2A65KIyUtlH36b4JE5xCLQ"
 			>
@@ -146,29 +152,29 @@
 
 <section class="w-full pb-12 pt-12 md:pb-16 md:pt-24 lg:pb-24 lg:pt-32">
 	<div class="container max-w-3xl px-4 md:px-6">
-		<h2 class="mt-0 text-center text-3xl uppercase sm:text-5xl">{m.guestbook()}</h2>
+		<h2 class="mt-0 text-center text-2xl md:text-5xl">{m.guestbook()}</h2>
 		<div class="mx-auto max-w-lg space-y-2">
 			<Input
 				placeholder={m.yourName()}
 				bind:value={name}
-				class="w-full rounded-sm border p-2 placeholder:text-stone-500"
+				class="font-arimo w-full rounded-sm border p-2 placeholder:text-stone-500"
 			/>
 			<Textarea
 				placeholder={m.yourMessage()}
 				bind:value={message}
-				class="w-full rounded-sm border p-2 placeholder:text-stone-500"
+				class="font-arimo w-full rounded-sm border p-2 placeholder:text-stone-500"
 			/>
 			<Canvas bind:this={canvas} {setImgUrl} />
-			<Button onclick={addEntry} class="w-full rounded-sm">{m.sign_guestbook()}</Button>
+			<Button onclick={addEntry} class="font-arimo w-full rounded-sm">{m.sign_guestbook()}</Button>
 		</div>
-		<div class="not-prose mt-6 space-y-4 py-4">
+		<div class="mt-6 space-y-4 py-4">
 			{#each entries as { name, message, timestamp, image }}
 				<div class="border-b pb-2 last:border-b-0">
 					<div class="flex flex-col sm:flex-row sm:items-center">
 						<div class="flex-1">
-							<p class="text-xl font-semibold">{name}</p>
-							<p class="text-base text-gray-700">{message}</p>
-							<p class="text-xs text-gray-500">
+							<p class="m-0 text-xl font-semibold">{name}</p>
+							<p class="m-0 text-base text-gray-700">{message}</p>
+							<p class="m-0 text-xs text-gray-500">
 								{formatDistanceToNow(timestamp, {
 									addSuffix: true,
 									includeSeconds: true,
@@ -181,7 +187,7 @@
 								<img
 									src={image}
 									alt="Signature of {name}"
-									class="h-auto max-h-24 max-w-full object-contain"
+									class="m-0 h-auto max-h-24 max-w-full object-contain"
 								/>
 							</div>
 						{/if}
@@ -191,3 +197,11 @@
 		</div>
 	</div>
 </section>
+
+<style>
+	@media (max-width: 380px) {
+		h2 {
+			@apply text-5xl;
+		}
+	}
+</style>
