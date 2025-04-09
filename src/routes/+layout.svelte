@@ -36,8 +36,8 @@
 						>{@html m.fave_spots()}</Button
 					>
 					<Separator orientation="vertical" />
-					<Button class="no-underline" variant="link" href="/#rsvp">
-						{m.rsvp()}
+					<Button class="no-underline" variant="link" href="/glamping">
+						{m.glamping()}
 					</Button>
 					<LanguageSwitcher />
 				{:else}

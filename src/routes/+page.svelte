@@ -142,7 +142,7 @@
 				variant="cta"
 				class="font-arimo"
 				target="_blank"
-				href="https://www.icloud.com/invites/07d2A65KIyUtlH36b4JE5xCLQ"
+				href="https://forms.gle/8xuTPidmhvNfdTKh6"
 			>
 				{m.rsvp_cta()}
 			</Button>

@@ -53,6 +53,7 @@
 				</li>
 				<li>{m.teary_east_lemming_achieve()}</li>
 			</ul>
+			<p>{@html m.glamping_info()}</p>
 		</div>
 		<Image>
 			<enhanced:img

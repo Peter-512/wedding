@@ -52,6 +52,13 @@
 			</Close>
 			<Close>
 				{#snippet child({ props })}
+					<Button {...props} class="text-lg" variant="link" href="/glamping">
+						{m.glamping()}
+					</Button>
+				{/snippet}
+			</Close>
+			<Close>
+				{#snippet child({ props })}
 					<Button
 						{...props}
 						class="text-lg"
