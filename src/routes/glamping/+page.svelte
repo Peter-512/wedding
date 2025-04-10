@@ -186,7 +186,8 @@
 
 <section class="container">
 	<h2>{m.glamping()}</h2>
-	<p>PLACEHOLDER TEXT</p>
+	<p>{m.glamping_intro()}</p>
+	<p>{m.glamping_below()}</p>
 
 	<Table.Root class="font-freeserif mb-20 tracking-widest">
 		<Table.Caption>{m.overview_caption()}</Table.Caption>
