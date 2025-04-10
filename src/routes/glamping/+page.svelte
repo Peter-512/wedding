@@ -190,7 +190,7 @@
 
 	<Table.Root class="font-freeserif mb-20 tracking-widest">
 		<Table.Caption>{m.overview_caption()}</Table.Caption>
-		<Table.Header class="bg-primary/80">
+		<Table.Header class="not-prose bg-primary/80">
 			<Table.Row>
 				<Table.Head>{m.what()}</Table.Head>
 				<Table.Head class="text-right">{m.price()}</Table.Head>
@@ -210,7 +210,7 @@
 
 	<Table.Root class="font-freeserif tracking-widest">
 		<Table.Caption>{m.example_caption()}</Table.Caption>
-		<Table.Header class="bg-primary/80">
+		<Table.Header class="not-prose bg-primary/80">
 			<Table.Row>
 				<Table.Head>{m.what()}</Table.Head>
 				<Table.Head class="text-right">{m.price()}</Table.Head>

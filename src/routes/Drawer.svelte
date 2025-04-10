@@ -66,7 +66,7 @@
 						target="_blank"
 						href="https://forms.gle/8xuTPidmhvNfdTKh6"
 					>
-						{m.rsvp()}
+						{m.rsvp()}?
 					</Button>
 				{/snippet}
 			</Close>
