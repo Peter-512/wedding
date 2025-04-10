@@ -20,7 +20,13 @@
 	>
 		<header class="mt-3 flex px-4 lg:px-6">
 			<Button variant="link" class="heart-button self-center px-0" href="/">
-				<img src="/logo.svg" alt="Charlotte & Peter" class="h-12 w-12 rounded-full object-cover" />
+				<img
+					src="/logo.svg"
+					alt="Charlotte & Peter"
+					height="48px"
+					width="48px"
+					class="rounded-full object-cover"
+				/>
 				<span class="sr-only">{m.wedding()}</span>
 			</Button>
 
