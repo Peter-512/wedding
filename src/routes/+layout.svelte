@@ -8,6 +8,7 @@
 	import LanguageSwitcher from '$lib/components/LanguageSwitcher.svelte';
 	import Drawer from './Drawer.svelte';
 	import { MediaQuery } from 'svelte/reactivity';
+	import Logo from './Logo.svelte';
 
 	let { children } = $props();
 
@@ -20,13 +21,7 @@
 	>
 		<header class="mt-3 flex px-4 lg:px-6">
 			<Button variant="link" class="heart-button self-center px-0" href="/">
-				<img
-					src="/logo.svg"
-					alt="Charlotte & Peter"
-					height="48px"
-					width="48px"
-					class="rounded-full object-cover"
-				/>
+				<Logo class="h-12 w-12" />
 				<span class="sr-only">{m.wedding()}</span>
 			</Button>
 
