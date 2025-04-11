@@ -3,6 +3,8 @@
 	import * as m from '$lib/paraglide/messages';
 	import Autoplay from 'embla-carousel-autoplay';
 	import { MediaQuery } from 'svelte/reactivity';
+	import type { Component } from 'svelte';
+	import SpotifyLink from './SpotifyLink.svelte';
 	import {
 		mdiSilverwareForkKnife,
 		mdiPartyPopper,
@@ -33,6 +35,7 @@
 	type TimelineEntry = {
 		time: `${number}:${number}`;
 		title: string;
+		Extra?: Component | string;
 		icon: string;
 	};
 
@@ -60,6 +63,7 @@
 		{
 			time: '20:00',
 			title: m.party_title(),
+			Extra: SpotifyLink,
 			icon: mdiPartyPopper
 		},
 		{
@@ -76,7 +80,7 @@
 		class="flex flex-col items-center gap-4 md:flex-row md:items-center md:justify-center md:gap-8 md:pr-16"
 	>
 		<Timeline vertical snapPoint>
-			{#each data as { icon, title, time }, i}
+			{#each data as { icon, title, time, Extra }, i}
 				<TimelineEvent
 					{icon}
 					start={i % 2 === 0}
@@ -89,6 +93,11 @@
 					<div class="mx-2 -mt-1 mb-10">
 						<time class="font-mono italic">{time}</time>
 						<div class="font-freeserif text-lg tracking-widest">{title}</div>
+						{#if typeof Extra === 'string'}
+							<p class="text-sm">{Extra}</p>
+						{:else if Extra}
+							<Extra />
+						{/if}
 					</div>
 				</TimelineEvent>
 			{/each}
