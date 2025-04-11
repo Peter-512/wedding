@@ -13,7 +13,7 @@
 </script>
 
 <section class="container">
-	<h2>{m.fave_spots()}</h2>
+	<h2>{@html m.fave_spots()}</h2>
 	<div class="grid grid-cols-[1fr,300px] items-start gap-4">
 		<div class="col-span-2 md:col-span-1">
 			<h3>{m.restaurants()}</h3>
@@ -69,9 +69,11 @@
 					>: {m.drab_brave_chipmunk_walk()}
 				</li>
 			</ul>
-			🌱 = {m.topical_left_martin_grow()}
+			<p>
+				🌱 = {m.topical_left_martin_grow()}
+			</p>
 		</div>
-		<div class="flex h-full flex-col justify-evenly">
+		<div class="hidden h-full flex-col justify-evenly md:flex">
 			<Image>
 				<enhanced:img
 					alt="Dinner at Repasse"
@@ -90,7 +92,7 @@
 	</div>
 
 	<div class="grid grid-cols-[300px,1fr] items-start gap-4">
-		<div class="mt-12 flex flex-col gap-8">
+		<div class="mt-12 hidden flex-col gap-8 md:flex">
 			<Image>
 				<enhanced:img
 					alt="Escape room"

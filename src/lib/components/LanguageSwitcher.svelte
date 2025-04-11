@@ -19,6 +19,7 @@
 	import { languageTag } from '$lib/paraglide/runtime.js';
 	import { page } from '$app/state';
 	import * as m from '$lib/paraglide/messages.js';
+	import { Button } from '$lib/components/ui/button';
 
 	const currentPathWithoutLanguage = $derived.by(() => i18n.route(page.url.pathname));
 </script>
@@ -30,12 +31,20 @@
 	</Trigger>
 	<Content>
 		{#each availableLanguageTags as lang}
-			<a href={currentPathWithoutLanguage} hreflang={lang}>
-				<Item>
-					{flags[lang]}
-					{langs[lang]}
-				</Item>
-			</a>
+			<Item class="font-freeserif uppercase">
+				{#snippet child({ props })}
+					<Button
+						variant="ghost"
+						{...props}
+						href={currentPathWithoutLanguage}
+						hreflang={lang}
+						class="font-arimo flex justify-between"
+					>
+						<span>{langs[lang]}</span>
+						<span>{flags[lang]}</span>
+					</Button>
+				{/snippet}
+			</Item>
 		{/each}
 	</Content>
 </DropdownMenu>

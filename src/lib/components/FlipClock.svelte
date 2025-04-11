@@ -74,7 +74,7 @@
 </script>
 
 <div
-	class="clock"
+	class="clock not-prose font-arimo"
 	style:width="calc((3ch) * {segmentsCount} + 0.25em * {segmentsCount - 1})"
 	style:font-size="{size * 2}em"
 	style:--flip-clock-text-color={textColor}

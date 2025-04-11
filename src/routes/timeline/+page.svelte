@@ -3,12 +3,15 @@
 	import * as m from '$lib/paraglide/messages';
 	import Autoplay from 'embla-carousel-autoplay';
 	import { MediaQuery } from 'svelte/reactivity';
+	import type { Component } from 'svelte';
+	import SpotifyLink from './SpotifyLink.svelte';
 	import {
 		mdiSilverwareForkKnife,
 		mdiPartyPopper,
 		mdiRing,
 		mdiGlassCocktail,
-		mdiDoorOpen
+		mdiDoorOpen,
+		mdiTent
 	} from '@mdi/js';
 	import { Carousel, Content, Item, Previous, Next } from '$lib/components/ui/carousel/index.js';
 	import CarouselItem from './Carouseltem.svelte';
@@ -32,7 +35,7 @@
 	type TimelineEntry = {
 		time: `${number}:${number}`;
 		title: string;
-		description: string;
+		Extra?: Component | string;
 		icon: string;
 	};
 
@@ -40,105 +43,111 @@
 		{
 			time: '14:30',
 			title: m.doors_open_title(),
-			description: m.doors_open(),
 			icon: mdiDoorOpen
 		},
 		{
 			time: '15:00',
 			title: m.ceremony_title(),
-			description: m.ceremony(),
 			icon: mdiRing
 		},
 		{
 			time: '16:00',
 			title: m.reception_title(),
-			description: m.reception(),
 			icon: mdiGlassCocktail
 		},
 		{
-			time: '18:30',
+			time: '18:00',
 			title: m.dinner_title(),
-			description: m.dinner(),
 			icon: mdiSilverwareForkKnife
 		},
 		{
-			time: '21:00',
+			time: '20:00',
 			title: m.party_title(),
-			description: m.party(),
+			Extra: SpotifyLink,
 			icon: mdiPartyPopper
+		},
+		{
+			time: '02:00',
+			title: m.end(),
+			icon: mdiTent
 		}
 	];
 </script>
 
-<div
-	class="container flex flex-col items-center gap-4 md:flex-row md:items-center md:justify-center md:gap-8 md:pr-16"
->
-	<Timeline vertical snapPoint>
-		{#each data as { icon, title, time, description }, i}
-			<TimelineEvent
-				{icon}
-				start={i % 2 === 0}
-				end={i % 2 !== 0}
-				classes={{
-					root: cls(i % 2 === 0 && 'text-end', 'not-prose'),
-					icon: 'size-5'
-				}}
-			>
-				<div class="mx-2 mb-10 mt-0.5">
-					<time class="font-mono italic">{time}</time>
-					<div class="text-lg font-black">{title}</div>
-					<div class="text-sm text-muted-foreground">
-						{description}
-					</div>
-				</div>
-			</TimelineEvent>
-		{/each}
-	</Timeline>
-	<Carousel
-		setApi={(emblaApi) => (api = emblaApi)}
-		plugins={[
-			Autoplay({
-				delay: 3500
-			})
-		]}
-		opts={{ loop: true }}
-		class="w-full max-w-sm"
+<section class="container">
+	<h2>{m.timeline()}</h2>
+	<div
+		class="flex flex-col items-center gap-4 md:flex-row md:items-center md:justify-center md:gap-8 md:pr-16"
 	>
-		<Content class="not-prose -ml-1">
-			<CarouselItem>
-				<enhanced:img class="rounded-lg" src="../../lib/images/black-and-white.jpg" />
-			</CarouselItem>
-			<CarouselItem>
-				<enhanced:img class="rounded-lg" src="../../lib/images/cool.jpg" />
-			</CarouselItem>
-			<CarouselItem>
-				<enhanced:img class="rounded-lg" src="../../lib/images/sweet.jpg" />
-			</CarouselItem>
-			<CarouselItem>
-				<enhanced:img class="rounded-lg" src="../../lib/images/hands2.jpg" />
-			</CarouselItem>
-			<CarouselItem>
-				<enhanced:img class="rounded-lg" src="../../lib/images/in-love.jpg" />
-			</CarouselItem>
-			<CarouselItem>
-				<enhanced:img class="rounded-lg" src="../../lib/images/looking-at-each-other.jpg" />
-			</CarouselItem>
-			<CarouselItem>
-				<enhanced:img class="rounded-lg" src="../../lib/images/ring.jpg" />
-			</CarouselItem>
-		</Content>
-		{#if isDesktop.current}
-			<Previous />
-			<Next />
-		{/if}
-		<div class="flex justify-center gap-1">
-			{#each { length: count } as _, i}
-				<button
-					aria-label="Go to slide {i + 1}"
-					class="h-2 w-2 rounded-full bg-accent {current === i ? 'opacity-100' : 'opacity-50'}"
-					onclick={() => api?.scrollTo(i)}
-				></button>
+		<Timeline vertical snapPoint>
+			{#each data as { icon, title, time, Extra }, i}
+				<TimelineEvent
+					{icon}
+					start={i % 2 === 0}
+					end={i % 2 !== 0}
+					classes={{
+						root: cls(i % 2 === 0 && 'text-end', 'not-prose'),
+						icon: 'size-5'
+					}}
+				>
+					<div class="mx-2 -mt-1 mb-10">
+						<time class="font-mono italic">{time}</time>
+						<div class="font-freeserif text-lg tracking-widest">{title}</div>
+						{#if typeof Extra === 'string'}
+							<p class="text-sm">{Extra}</p>
+						{:else if Extra}
+							<Extra />
+						{/if}
+					</div>
+				</TimelineEvent>
 			{/each}
-		</div>
-	</Carousel>
-</div>
+		</Timeline>
+		<Carousel
+			setApi={(emblaApi) => (api = emblaApi)}
+			plugins={[
+				Autoplay({
+					delay: 3500
+				})
+			]}
+			opts={{ loop: true }}
+			class="w-full max-w-sm"
+		>
+			<Content class="not-prose -ml-1">
+				<CarouselItem>
+					<enhanced:img class="rounded-lg" src="../../lib/images/black-and-white.jpg" />
+				</CarouselItem>
+				<CarouselItem>
+					<enhanced:img class="rounded-lg" src="../../lib/images/cool.jpg" />
+				</CarouselItem>
+				<CarouselItem>
+					<enhanced:img class="rounded-lg" src="../../lib/images/sweet.jpg" />
+				</CarouselItem>
+				<CarouselItem>
+					<enhanced:img class="rounded-lg" src="../../lib/images/hands2.jpg" />
+				</CarouselItem>
+				<CarouselItem>
+					<enhanced:img class="rounded-lg" src="../../lib/images/in-love.jpg" />
+				</CarouselItem>
+				<CarouselItem>
+					<enhanced:img class="rounded-lg" src="../../lib/images/looking-at-each-other.jpg" />
+				</CarouselItem>
+				<CarouselItem>
+					<enhanced:img class="rounded-lg" src="../../lib/images/ring.jpg" />
+				</CarouselItem>
+			</Content>
+			{#if isDesktop.current}
+				<Previous />
+				<Next />
+			{/if}
+			<div class="flex justify-center gap-1">
+				{#each { length: count } as _, i}
+					<button
+						aria-label="Go to slide {i + 1}"
+						class="h-2 w-2 rounded-full bg-accent {current === i ? 'opacity-100' : 'opacity-50'}"
+						onclick={() => api?.scrollTo(i)}
+					></button>
+				{/each}
+			</div>
+		</Carousel>
+	</div>
+</section>

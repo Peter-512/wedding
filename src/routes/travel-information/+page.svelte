@@ -6,9 +6,11 @@
 </script>
 
 <section class="container">
-	<h2>{m.travel_information()}</h2>
+	<h2>
+		{@html m.travel_information()}
+	</h2>
 
-	<p>
+	<p class="font-arimo font-thin md:tracking-widest">
 		{m.this_muddy_spider_surge()}
 	</p>
 	<div class="grid grid-cols-[300px,1fr] items-start gap-4">
@@ -51,6 +53,7 @@
 				</li>
 				<li>{m.teary_east_lemming_achieve()}</li>
 			</ul>
+			<p>{@html m.glamping_info()}</p>
 		</div>
 		<Image>
 			<enhanced:img
@@ -122,7 +125,14 @@
 		<li>{m.white_actual_squid_pat()}</li>
 	</ul>
 	<p>
-		<!-- eslint-disable-next-line svelte/no-at-html-tags -->
 		{@html m.proud_mad_scallop_pave({ favorites: m.favorites() })}
 	</p>
 </section>
+
+<style>
+	@media (max-width: 380px) {
+		h2 {
+			@apply text-5xl;
+		}
+	}
+</style>

@@ -38,33 +38,24 @@
 
 @layer base {
 	@font-face {
-		font-family: 'Borel';
+		font-family: 'Arimo';
 		font-style: normal;
-		font-weight: 400;
 		font-display: swap;
-		src: url('/fonts/Borel/Borel-Regular.ttf');
+		src: url('/fonts/Arimo/Arimo-VariableFont_wght.ttf');
 	}
 
 	@font-face {
-		font-family: 'Amsterdam';
+		font-family: 'Free Serif';
 		font-style: normal;
-		font-weight: 400;
 		font-display: swap;
-		src: url('/fonts/amsterdam_4/Amsterdam.ttf');
+		src: url('/fonts/freeserif-font/FreeSerif-4aeK.ttf');
 	}
 
 	@font-face {
-		font-family: 'Dancing Script';
+		font-family: 'Scandilover';
 		font-style: normal;
 		font-display: swap;
-		src: url('/fonts/Dancing_Script/DancingScript-VariableFont_wght.ttf');
-	}
-
-	@font-face {
-		font-family: 'Sacramento';
-		font-style: normal;
-		font-display: swap;
-		src: url('/fonts/Sacramento/Sacramento-Regular.ttf');
+		src: url('/fonts/scandilover_script/Scandilover Script.ttf');
 	}
 }
 
