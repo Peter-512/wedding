@@ -15,6 +15,7 @@
 	import { getCurrentLocale } from '$lib/utils';
 	import Canvas from './Canvas.svelte';
 	import type { ComponentProps } from 'svelte';
+	import { toast } from 'svelte-sonner';
 
 	let locale = getCurrentLocale();
 
@@ -52,7 +53,11 @@
 			const { error: supaError } = await supabase
 				.from('guestbook')
 				.insert({ name, message, timestamp: new Date(timestamp), image: imageUrl });
-			if (supaError) return error(500, `Something went wrong`);
+			if (supaError) {
+				toast.error(m.error_adding_entry());
+				return;
+			}
+			toast.success(m.entry_added());
 
 			imageUrl = null;
 			name = '';
@@ -165,7 +170,11 @@
 				class="font-arimo w-full rounded-sm border p-2 placeholder:text-stone-500"
 			/>
 			<Canvas bind:this={canvas} {setImgUrl} />
-			<Button onclick={addEntry} class="font-arimo w-full rounded-sm">{m.sign_guestbook()}</Button>
+			<Button
+				onclick={addEntry}
+				disabled={name === '' || message === ''}
+				class="font-arimo w-full rounded-sm">{m.sign_guestbook()}</Button
+			>
 		</div>
 		<div class="mt-6 space-y-4 py-4">
 			{#each entries as { name, message, timestamp, image }}

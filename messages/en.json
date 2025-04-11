@@ -20,6 +20,8 @@
 	"due_mean_cuckoo_greet": "As our final tip, we recommend the <a class=\"ring-offset-background focus-visible:ring-ring items-center justify-center gap-2 whitespace-nowrap rounded-md font-medium focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 [&amp;_svg]:pointer-events-none [&amp;_svg]:shrink-0 text-accent transition-all h-10 text-[20px] inline\" href={url} target=\"_blank\">Efteling</a>, a fairytale theme park in the Netherlands. It's about a one hour drive from Antwerp\n\t\tand is a magical place for all and really a must-visit if you get the chance.",
 	"email": "Email",
 	"end": "End",
+	"entry_added": "Your entry has been added to the guestbook!",
+	"error_adding_entry": "Something went wrong while adding your entry. Make sure you filled in your name and message.",
 	"example_caption": "Example for a Guest tipi for 2 people incl. linen and breakfast",
 	"fave_spots": "Favorite spots",
 	"favorites": "favorite spots",

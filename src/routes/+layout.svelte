@@ -9,6 +9,7 @@
 	import Drawer from './Drawer.svelte';
 	import { MediaQuery } from 'svelte/reactivity';
 	import Logo from './Logo.svelte';
+	import { Toaster } from '$lib/components/ui/sonner/index.js';
 
 	let { children } = $props();
 
@@ -55,4 +56,5 @@
 			</p>
 		</footer>
 	</div>
+	<Toaster />
 </ParaglideJS>

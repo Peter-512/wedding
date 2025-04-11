@@ -20,6 +20,8 @@
 	"due_mean_cuckoo_greet": "Als laatste tip raden we je de <a class=\"ring-offset-background focus-visible:ring-ring items-center justify-center gap-2 whitespace-nowrap rounded-md font-medium focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 [&amp;_svg]:pointer-events-none [&amp;_svg]:shrink-0 text-accent transition-all h-10 text-[20px] inline\" href={url} target=\"_blank\">Efteling</a> aan, een sprookjesachtig pretpark in Nederland. Het ligt op ongeveer een uur rijden van Antwerpen en is een magische plek voor iedereen – echt een must als je de kans hebt.",
 	"email": "E-mail",
 	"end": "Einde",
+	"entry_added": "Je bericht is toegevoegd aan het gastenboek!",
+	"error_adding_entry": "Er is iets misgegaan bij het toevoegen van je bericht. Zorg ervoor dat je je naam en bericht hebt ingevuld.",
 	"example_caption": "Voorbeeld van een gasten tipi voor 2 personen incl. beddengoed en ontbijt",
 	"fave_spots": "Favoriete plekken",
 	"favorites": "favorite plekken",
