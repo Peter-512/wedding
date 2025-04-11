@@ -73,7 +73,7 @@
 				🌱 = {m.topical_left_martin_grow()}
 			</p>
 		</div>
-		<div class="flex h-full flex-col justify-evenly">
+		<div class="hidden h-full flex-col justify-evenly md:flex">
 			<Image>
 				<enhanced:img
 					alt="Dinner at Repasse"
@@ -92,7 +92,7 @@
 	</div>
 
 	<div class="grid grid-cols-[300px,1fr] items-start gap-4">
-		<div class="mt-12 flex flex-col gap-8">
+		<div class="mt-12 hidden flex-col gap-8 md:flex">
 			<Image>
 				<enhanced:img
 					alt="Escape room"
