@@ -165,7 +165,11 @@
 				class="font-arimo w-full rounded-sm border p-2 placeholder:text-stone-500"
 			/>
 			<Canvas bind:this={canvas} {setImgUrl} />
-			<Button onclick={addEntry} class="font-arimo w-full rounded-sm">{m.sign_guestbook()}</Button>
+			<Button
+				onclick={addEntry}
+				disabled={name === '' || message === ''}
+				class="font-arimo w-full rounded-sm">{m.sign_guestbook()}</Button
+			>
 		</div>
 		<div class="mt-6 space-y-4 py-4">
 			{#each entries as { name, message, timestamp, image }}
