@@ -20,6 +20,8 @@
 	"due_mean_cuckoo_greet": "Als letzten Tipp empfehlen wir euch das <a class=\"ring-offset-background focus-visible:ring-ring items-center justify-center gap-2 whitespace-nowrap rounded-md font-medium focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 [&amp;_svg]:pointer-events-none [&amp;_svg]:shrink-0 text-accent transition-all h-10 text-[20px] inline\" href={url} target=\"_blank\">Efteling</a>, einen märchenhaften Vergnügungspark in den Niederlanden. Er liegt etwa eine Autostunde von Antwerpen entfernt und ist ein magischer Ort für alle – wirklich ein Muss, wenn ihr die Gelegenheit dazu habt.",
 	"email": "E-Mail",
 	"end": "Ende",
+	"entry_added": "Dein Eintrag wurde dem Gästebuch hinzugefügt!",
+	"error_adding_entry": "Beim Hinzufügen deines Eintrags ist ein Fehler aufgetreten. Stelle sicher, dass du deinen Namen und deine Nachricht ausgefüllt hast.",
 	"example_caption": "Beispiel für ein Gästetipi für 2 Personen inkl. Bettwäsche und Frühstück",
 	"fave_spots": "Lieblings<wbr>orte",
 	"favorites": "Lieblingsorte",
