@@ -1,6 +1,6 @@
 <script lang="ts">
 	import { Button } from '$lib/components/ui/button';
-	import { Ellipsis, Redo, Trash2, Undo, X } from 'lucide-svelte';
+	import { Ellipsis, Redo, Trash2, Undo, X } from '@lucide/svelte';
 	import { trapFocus } from './actions.svelte';
 	import { Slider } from '$lib/components/ui/slider';
 	import * as m from '$lib/paraglide/messages';
@@ -215,7 +215,7 @@
 		{#if showMenu}
 			<div
 				role="presentation"
-				class="modal-background"
+				class="modal-background z-10"
 				onclick={(event) => {
 					if (event.target === event.currentTarget) {
 						showMenu = false;
