@@ -9,17 +9,13 @@
 	import { Textarea } from '$lib/components/ui/textarea';
 	import { Input } from '$lib/components/ui/input';
 	import { formatDistanceToNow } from 'date-fns';
-	import { PUBLIC_SUPABASE_URL, PUBLIC_SUPABASE_ANON_KEY } from '$env/static/public';
-	import { createClient } from '@supabase/supabase-js';
-	import { error } from '@sveltejs/kit';
+	import { supabase } from '$lib/db/supabase';
 	import { getCurrentLocale } from '$lib/utils';
 	import Canvas from './Canvas.svelte';
 	import type { ComponentProps } from 'svelte';
 	import { toast } from 'svelte-sonner';
 
 	let locale = getCurrentLocale();
-
-	const supabase = createClient(PUBLIC_SUPABASE_URL, PUBLIC_SUPABASE_ANON_KEY);
 
 	const weddingDate = new Date('2025-08-03T00:00:00');
 	const formattedDate = weddingDate.toLocaleDateString(languageTag(), {
@@ -119,7 +115,7 @@
 						Peter
 					</h1>
 					<p
-						class="font-arimo max-w-[600px] font-thin uppercase tracking-widest text-muted-foreground md:text-2xl"
+						class="max-w-[600px] font-arimo font-thin uppercase tracking-widest text-muted-foreground md:text-2xl"
 					>
 						{formattedDate}
 					</p>
@@ -162,18 +158,18 @@
 			<Input
 				placeholder={m.yourName()}
 				bind:value={name}
-				class="font-arimo w-full rounded-sm border p-2 placeholder:text-stone-500"
+				class="w-full rounded-sm border p-2 font-arimo placeholder:text-stone-500"
 			/>
 			<Textarea
 				placeholder={m.yourMessage()}
 				bind:value={message}
-				class="font-arimo w-full rounded-sm border p-2 placeholder:text-stone-500"
+				class="w-full rounded-sm border p-2 font-arimo placeholder:text-stone-500"
 			/>
 			<Canvas bind:this={canvas} {setImgUrl} />
 			<Button
 				onclick={addEntry}
 				disabled={name === '' || message === ''}
-				class="font-arimo w-full rounded-sm">{m.sign_guestbook()}</Button
+				class="w-full rounded-sm font-arimo">{m.sign_guestbook()}</Button
 			>
 		</div>
 		<div class="mt-6 space-y-4 py-4">

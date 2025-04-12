@@ -22,7 +22,7 @@
 
 <Drawer>
 	<Trigger>
-		<MenuIcon />
+		<MenuIcon class="mr-2" />
 	</Trigger>
 	<Content class="font-freeserif uppercase">
 		<Header>

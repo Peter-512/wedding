@@ -10,23 +10,20 @@
 	import { MediaQuery } from 'svelte/reactivity';
 	import Logo from './Logo.svelte';
 	import { Toaster } from '$lib/components/ui/sonner/index.js';
+	import Home from './Home.svelte';
 
 	let { children } = $props();
 
-	const match = new MediaQuery('(min-width: 900px)');
+	const match = new MediaQuery('(min-width: 950px)');
 </script>
 
 <ParaglideJS {i18n}>
 	<div
-		class="prose-h3:font-freeserif prose-h1:font-freeserif prose-h2:font-scandilover prose-li:font-freeserif prose-p:font-freeserif prose-xl flex min-h-[100dvh] flex-col prose-h2:text-6xl prose-h3:font-bold prose-h3:uppercase prose-h3:tracking-widest prose-p:tracking-widest prose-li:tracking-wide md:prose-li:tracking-wider"
+		class="prose-xl flex min-h-[100dvh] flex-col prose-h1:font-freeserif prose-h2:font-scandilover prose-h2:text-6xl prose-h3:font-freeserif prose-h3:font-bold prose-h3:uppercase prose-h3:tracking-widest prose-p:font-freeserif prose-p:tracking-widest prose-li:font-freeserif prose-li:tracking-wide md:prose-li:tracking-wider"
 	>
 		<header class="mt-3 flex px-4 lg:px-6">
-			<Button variant="link" class="heart-button self-center px-0" href="/">
-				<Logo class="h-12 w-12" />
-				<span class="sr-only">{m.wedding()}</span>
-			</Button>
-
-			<nav class="font-freeserif text-md ml-auto flex items-center gap-4 uppercase sm:gap-6">
+			<Home />
+			<nav class="text-md ml-auto flex items-center gap-2 font-freeserif uppercase">
 				{#if match.current}
 					<Button class="no-underline" variant="link" href="/travel-information">
 						{@html m.travel_information()}
