@@ -130,7 +130,7 @@
 </section>
 
 <style>
-	@media (max-width: 380px) {
+	@media (max-width: 430px) {
 		h2 {
 			@apply text-5xl;
 		}
