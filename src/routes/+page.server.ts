@@ -7,7 +7,7 @@ export const load: PageServerLoad = async () => {
 		.from('guestbook')
 		.select('timestamp, name, message, image')
 		.order('timestamp', { ascending: false });
-	if (supaError) return error(500, 'Something went wrong');
+	if (supaError) return error(412, 'Something went wrong');
 
 	return { guestbook };
 };

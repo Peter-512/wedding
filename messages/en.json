@@ -21,6 +21,7 @@
 	"email": "Email",
 	"end": "End",
 	"entry_added": "Your entry has been added to the guestbook!",
+	"error": "Something went wrong",
 	"error_adding_entry": "Something went wrong while adding your entry. Make sure you filled in your name and message.",
 	"example_caption": "Example for a Guest tipi for 2 people incl. linen and breakfast",
 	"fave_spots": "Favorite spots",
