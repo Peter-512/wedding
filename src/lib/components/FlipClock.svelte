@@ -9,7 +9,7 @@
 
 	const { size = 1, textColor = 'white', backgroundColor = '#383838', date }: Props = $props();
 
-	const segmentsCount = $derived(4);
+	const segmentsCount = 4;
 	let interval: ReturnType<typeof setInterval>;
 
 	let now = $state(new Date());
@@ -20,8 +20,7 @@
 	const minutes = $derived(Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60)));
 	const seconds = $derived(Math.floor((diff % (1000 * 60)) / 1000));
 
-	/* eslint-disable svelte/valid-compile */
-	let display = $state([
+	let display = $derived([
 		{
 			top: days.toString().padStart(3, '0'),
 			bottom: days.toString().padStart(3, '0'),
@@ -43,7 +42,6 @@
 			transition: false
 		}
 	]);
-	/* eslint-enable svelte/valid-compile */
 
 	$effect(() => {
 		interval = setInterval(() => {
