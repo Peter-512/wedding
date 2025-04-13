@@ -17,7 +17,7 @@
 
 	let locale = getCurrentLocale();
 
-	const weddingDate = new Date('2025-08-03T00:00:00');
+	const weddingDate = new Date('2025-08-03T15:00:00');
 	const formattedDate = weddingDate.toLocaleDateString(languageTag(), {
 		year: 'numeric',
 		month: 'long',
