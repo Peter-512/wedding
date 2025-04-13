@@ -16,6 +16,7 @@
 	"devDependencies": {
 		"@inlang/cli": "^2.18.1",
 		"@inlang/paraglide-js": "1.11.2",
+		"@lucide/svelte": "^0.487.0",
 		"@sveltejs/adapter-vercel": "^5.6.3",
 		"@sveltejs/enhanced-img": "^0.3.3",
 		"@sveltejs/kit": "^2.18.0",
@@ -31,7 +32,6 @@
 		"eslint-plugin-svelte": "^3.0.2",
 		"formsnap": "^2.0.0",
 		"globals": "^15.0.0",
-		"lucide-svelte": "^0.477.0",
 		"mode-watcher": "^0.5.1",
 		"prettier": "^3.1.1",
 		"prettier-plugin-sort-imports": "^1.8.6",

@@ -13,7 +13,7 @@
 	import { Button } from '$lib/components/ui/button';
 	import { i18n } from '$lib/i18n';
 	import { langs, flags } from '$lib/components/LanguageSwitcher.svelte';
-	import { MenuIcon, Signpost } from 'lucide-svelte';
+	import { MenuIcon, Signpost } from '@lucide/svelte';
 	import { availableLanguageTags } from '$lib/paraglide/runtime';
 	import { page } from '$app/state';
 
@@ -22,7 +22,7 @@
 
 <Drawer>
 	<Trigger>
-		<MenuIcon />
+		<MenuIcon class="mr-2" />
 	</Trigger>
 	<Content class="font-freeserif uppercase">
 		<Header>
