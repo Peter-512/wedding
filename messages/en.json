@@ -66,6 +66,8 @@
 	"party_title": "Party",
 	"patchy_front_horse_bake": "You can buy a day ticket for 7.50€.",
 	"patient_cozy_slug_smile": "Car: if you're more the road trip type, it's 1100km from Vienna to Antwerp ;)",
+	"people_above_max": "Maximum number of people: {max}",
+	"people_below_min": "Minimum number of people: {min}",
 	"per_person": "Per person",
 	"price": "Costs",
 	"proof_crisp_ox_dash": "Across from the Brewery right around our corner. Especially a tip for those that like beer.",

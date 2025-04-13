@@ -19,12 +19,18 @@
 
 	const { offerings }: Props = $props();
 
-	const options = $derived([offerings[0], offerings[1], { ...offerings[3], price: '€0,00' }]);
+	const options = $derived([
+		{ ...offerings[0], min: 1, max: 8 },
+		{ ...offerings[1], min: 2, max: 4 },
+		{ ...offerings[3], price: '€0,00', min: 1, max: null }
+	]);
 
 	let accommodation = $state('');
 	let linen = $state(false);
 	let breakfast = $state(false);
 	let people = $state(2);
+
+	const selectedOption = $derived(options.find((o) => o.what === accommodation));
 
 	const linenDisabled = $derived(accommodation === options[2].what);
 
@@ -50,6 +56,16 @@
 				onValueChange={() => {
 					if (accommodation === options[2].what) {
 						linen = false;
+					}
+					if (selectedOption) {
+						if (people < selectedOption.min) {
+							people = selectedOption.min;
+							toast.warning(m.people_below_min({ min: selectedOption.min }));
+						}
+						if (selectedOption.max && people > selectedOption.max) {
+							people = selectedOption.max;
+							toast.warning(m.people_above_max({ max: selectedOption.max }));
+						}
 					}
 				}}
 			>
@@ -82,7 +98,22 @@
 
 			<Label>
 				{m.number_of_people()}
-				<Input type="number" min="1" bind:value={people} class="mt-1 w-24" />
+				<Input
+					type="number"
+					bind:value={people}
+					class="mt-1 w-24"
+					onchange={() => {
+						if (!selectedOption) return;
+						if (people < selectedOption.min) {
+							people = selectedOption.min;
+							toast.warning(m.people_below_min({ min: selectedOption.min }));
+						}
+						if (selectedOption.max && people > selectedOption.max) {
+							people = selectedOption.max;
+							toast.warning(m.people_above_max({ max: selectedOption.max }));
+						}
+					}}
+				/>
 			</Label>
 		</div>
 

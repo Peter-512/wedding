@@ -66,6 +66,8 @@
 	"party_title": "Party",
 	"patchy_front_horse_bake": "Eine Tageskarte könnt ihr für 7,50 € kaufen.",
 	"patient_cozy_slug_smile": "Auto: wenn ihr eher der Roadtrip-Typ seid, sind es von Wien nach Antwerpen 1100 km ;)",
+	"people_above_max": "Maximale Anzahl Personen: {max}",
+	"people_below_min": "Mindestanzahl Personen: {min}",
 	"per_person": "Pro Person",
 	"price": "Kosten",
 	"proof_crisp_ox_dash": "Gegenüber der Brauerei, gleich um die Ecke. Besonders ein Tipp für Bierliebhaber.",
