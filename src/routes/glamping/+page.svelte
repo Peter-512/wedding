@@ -2,13 +2,15 @@
 	import * as m from '$lib/paraglide/messages.js';
 	import * as Table from '$lib/components/ui/table/index.js';
 	import { languageTag } from '$lib/paraglide/runtime';
+	import Calculator from './Calculator.svelte';
+	import { Separator } from '$lib/components/ui/separator';
 
 	const offeringsEnglish = [
 		{
 			what: 'Guest tipi for 8 people',
 			price: '€135.00',
 			notes:
-				"Incl. 8 air mattresses. Also possible with 2 cabines for more privacy, then it's only suitable for 2x2 people."
+				"Incl. 8 air mattresses. Also possible with 2 cabins for more privacy, then it's only suitable for 2x2 people."
 		},
 		{
 			what: 'Guest tipi for 2-4 people',
@@ -29,7 +31,7 @@
 			what: 'Breakfast',
 			price: '€20.00',
 			notes:
-				'Price per person: 1 croissant, pistolets, breads, assortment of toppings, koffiekoek. Warm drinks (coffee, tea), water and juice.'
+				'Price per person: 1 croissant, pistolets, breads, assortment of toppings, pastries. Warm drinks (coffee, tea), water and juice.'
 		}
 	];
 
@@ -89,7 +91,7 @@
 			what: 'Frühstück',
 			price: '€20,00',
 			notes:
-				'Preis pro Person: 1 Croissant, Brötchen, Sandwiches, verschiedene Aufschnitte, Gebäck. Heiße Getränke, Wasser und Orangensaft.'
+				'Preis pro Person: 1 Croissant, Brötchen, Sandwiches, verschiedene Aufschnitte, Süßgebäck. Heiße Getränke, Wasser und Orangensaft.'
 		}
 	];
 
@@ -189,7 +191,7 @@
 	<p>{m.glamping_intro()}</p>
 	<p>{m.glamping_below()}</p>
 
-	<Table.Root class="font-freeserif mb-20 tracking-widest">
+	<Table.Root class="font-freeserif tracking-widest">
 		<Table.Caption>{m.overview_caption()}</Table.Caption>
 		<Table.Header class="not-prose bg-primary/80">
 			<Table.Row>
@@ -208,6 +210,8 @@
 			{/each}
 		</Table.Body>
 	</Table.Root>
+
+	<Separator class="my-5 bg-violet-200" />
 
 	<Table.Root class="font-freeserif tracking-widest">
 		<Table.Caption>{m.example_caption()}</Table.Caption>
@@ -236,3 +240,5 @@
 		</Table.Footer>
 	</Table.Root>
 </section>
+
+<Calculator {offerings} />
