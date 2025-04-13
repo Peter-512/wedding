@@ -8,7 +8,6 @@
 	import LanguageSwitcher from '$lib/components/LanguageSwitcher.svelte';
 	import Drawer from './Drawer.svelte';
 	import { MediaQuery } from 'svelte/reactivity';
-	import Logo from './Logo.svelte';
 	import { Toaster } from '$lib/components/ui/sonner/index.js';
 	import Home from './Home.svelte';
 
