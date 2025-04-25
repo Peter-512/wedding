@@ -22,8 +22,8 @@
 
 	let display = $derived([
 		{
-			top: days.toString().padStart(3, '0'),
-			bottom: days.toString().padStart(3, '0'),
+			top: days.toString(),
+			bottom: days.toString(),
 			transition: false
 		},
 		{
