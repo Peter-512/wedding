@@ -38,7 +38,7 @@
 			</Close>
 			<Close>
 				{#snippet child({ props })}
-					<Button {...props} class="text-lg" variant="link" href="/timeline">
+					<Button {...props} class="text-lg" variant="link" href="/our-day">
 						{m.timeline()}
 					</Button>
 				{/snippet}

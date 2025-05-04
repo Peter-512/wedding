@@ -28,7 +28,7 @@
 						{@html m.travel_information()}
 					</Button>
 					<Separator orientation="vertical" />
-					<Button class="no-underline" variant="link" href="/timeline">{m.timeline()}</Button>
+					<Button class="no-underline" variant="link" href="/our-day">{m.timeline()}</Button>
 					<Separator orientation="vertical" />
 					<Button class="no-underline" variant="link" href="/favorite-spots"
 						>{@html m.fave_spots()}</Button

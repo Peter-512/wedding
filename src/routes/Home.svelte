@@ -8,7 +8,7 @@
 	const links = {
 		'/favorite-spots': m.favorites,
 		'/glamping': m.glamping,
-		'/timeline': m.timeline,
+		'/our-day': m.timeline,
 		'/travel-information': m.travel_information
 	};
 
