@@ -138,7 +138,7 @@
 							size="inline"
 							class="font-freeserif"
 							href="https://www.google.com/maps/place/Arboretum+Merksplas/@51.3496389,4.8265818,637m/data=!3m1!1e3!4m6!3m5!1s0x47c6ae9464d04827:0x82a13159a40053e7!8m2!3d51.3496389!4d4.8265818!16s%2Fg%2F11c4bbjskh?entry=ttu&g_ep=EgoyMDI1MDUyNy4wIKXMDSoASAFQAw%3D%3D"
-							>Ossenweg 1,2330 Merksplas</Button
+							>Ossenweg 1, 2330 Merksplas</Button
 						>
 					</div>
 				</div>
