@@ -74,7 +74,7 @@
 	<meta content={imgSrc} property="og:image" />
 	<meta content="3.8.2025 ❤️" property="og:title" />
 	<meta content="Charlotte's and Peter's wedding" property="og:description" />
-	<meta content="https://wedding-beta-sooty-68.vercel.app/" property="og:url" />
+	<meta content="https://www.charlotte-peter.com" property="og:url" />
 </svelte:head>
 
 <section class="w-full pb-12 pt-8 md:pb-16 md:pt-12 lg:pb-24 lg:pt-16">
