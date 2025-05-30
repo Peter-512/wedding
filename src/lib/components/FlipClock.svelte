@@ -117,7 +117,7 @@
 <style>
 	.clock {
 		position: relative;
-		height: 1.51em;
+		height: 2.51em;
 	}
 	.base,
 	.overlay {

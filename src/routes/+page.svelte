@@ -4,6 +4,7 @@
 	import { Button } from '$lib/components/ui/button';
 	import FlipClock from '$lib/components/FlipClock.svelte';
 	import { Shine, Tilt } from 'svelte-ux';
+	import * as Card from '$lib/components/ui/card';
 	import imgSrc from '$lib/images/hands.jpg';
 	import MediaQuery from '$lib/components/MediaQuery.svelte';
 	import { Textarea } from '$lib/components/ui/textarea';
@@ -14,6 +15,7 @@
 	import Canvas from './Canvas.svelte';
 	import type { ComponentProps } from 'svelte';
 	import { toast } from 'svelte-sonner';
+	import { Separator } from '$lib/components/ui/select';
 
 	let locale = getCurrentLocale();
 
@@ -111,7 +113,12 @@
 			<div class="flex flex-col justify-center space-y-4">
 				<div class="space-y-2">
 					<h1 class="text-bold text-3xl uppercase tracking-widest sm:text-5xl xl:text-6xl/none">
-						Charlotte <div class="font-scandilover lowercase tracking-normal">{m.and()}</div>
+						Charlotte
+						<br />
+						<span class="font-scandilover lowercase tracking-normal">
+							{m.and()}
+						</span>
+						<br />
 						Peter
 					</h1>
 					<p
@@ -120,6 +127,20 @@
 						{formattedDate}
 					</p>
 					<FlipClock date={weddingDate} />
+				</div>
+				<Separator />
+				<div class="not-prose">
+					<p class="font-freeserif">De Kleine Boerderij</p>
+					<div class="flex items-center">
+						<Button
+							target="_blank"
+							variant="link"
+							size="inline"
+							class="font-freeserif"
+							href="https://www.google.com/maps/place/Arboretum+Merksplas/@51.3496389,4.8265818,637m/data=!3m1!1e3!4m6!3m5!1s0x47c6ae9464d04827:0x82a13159a40053e7!8m2!3d51.3496389!4d4.8265818!16s%2Fg%2F11c4bbjskh?entry=ttu&g_ep=EgoyMDI1MDUyNy4wIKXMDSoASAFQAw%3D%3D"
+							>Ossenweg 1,2330 Merksplas</Button
+						>
+					</div>
 				</div>
 			</div>
 		</div>
