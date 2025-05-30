@@ -129,7 +129,7 @@
 					<FlipClock date={weddingDate} />
 				</div>
 				<Separator />
-				<div class="not-prose">
+				<div class="not-prose tracking-widest">
 					<p class="font-freeserif">De Kleine Boerderij</p>
 					<div class="flex items-center">
 						<Button
